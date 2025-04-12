@@ -1,6 +1,10 @@
 package com.linmjie.linmjietestmod;
 
+import com.linmjie.linmjietestmod.block.ModBlocks;
+import com.linmjie.linmjietestmod.item.ModCreativeModeTabs;
+import com.linmjie.linmjietestmod.item.ModItems;
 import com.mojang.logging.LogUtils;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -15,15 +19,15 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(ExampleMod.MOD_ID)
-public class ExampleMod {
+@Mod(TestingMod.MOD_ID)
+public class TestingMod {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "linmjietestmod";
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
 
-    public ExampleMod(FMLJavaModLoadingContext context) {
+    public TestingMod(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
 
         // Register the commonSetup method for modloading
@@ -32,6 +36,14 @@ public class ExampleMod {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
+
+        //stuff added
+        ModCreativeModeTabs.register(modEventBus);
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -44,9 +56,21 @@ public class ExampleMod {
 
     }
 
-    // Add the example block item to the building blocks tab
+    // ADD ITEMS TO CREATIVE MENU
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
 
+        //INGREDIENTS TAB
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.SOAP);
+            event.accept(ModItems.NEON);
+            event.accept(ModItems.SHARPIE);
+        }
+
+        //BUILDING BLOCKS TAB
+        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
+            event.accept(ModBlocks.SOAP_BLOCK);
+            event.accept(ModBlocks.SIGMA_BLOCK);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
