@@ -64,12 +64,14 @@ public class TestingMod {
             event.accept(ModItems.SOAP);
             event.accept(ModItems.NEON);
             event.accept(ModItems.SHARPIE);
+            event.accept(ModItems.CONDENSED_SOAP);
         }
 
         //BUILDING BLOCKS TAB
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
             event.accept(ModBlocks.SOAP_BLOCK);
             event.accept(ModBlocks.SIGMA_BLOCK);
+            event.accept(ModBlocks.CONDENSED_SOAP_BLOCK);
         }
     }
 

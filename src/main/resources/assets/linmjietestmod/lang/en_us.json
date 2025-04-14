@@ -2,8 +2,10 @@
   "item.linmjietestmod.soap": "Soap",
   "item.linmjietestmod.neon": "Dirty Neon Glob",
   "item.linmjietestmod.sharpie": "Sharpie",
+  "item.linmjietestmod.condensed_soap": "Condensed Soap",
 
   "block.linmjietestmod.soap_block": "Soap Block",
+  "block.linmjietestmod.condensed_soap_block": "Condensed Soap Block",
   "block.linmjietestmod.sigma_block": "Block of Sigma",
 
   "creativetab.linmjietestmod.testmod_items": "Sigma Items",

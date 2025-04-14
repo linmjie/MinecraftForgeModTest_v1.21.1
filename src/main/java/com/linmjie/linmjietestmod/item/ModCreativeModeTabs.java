@@ -20,6 +20,7 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.NEON.get());
                         output.accept(ModItems.SOAP.get());
+                        output.accept(ModItems.CONDENSED_SOAP.get());
                         output.accept(ModItems.SHARPIE.get());
 
                     }).build());
@@ -31,6 +32,7 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModBlocks.SIGMA_BLOCK.get());
                         output.accept(ModBlocks.SOAP_BLOCK.get());
+                        output.accept(ModBlocks.CONDENSED_SOAP_BLOCK.get());
 
                     }).build());
 

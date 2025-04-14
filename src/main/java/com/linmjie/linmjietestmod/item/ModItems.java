@@ -18,6 +18,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SHARPIE = ITEMS.register("sharpie",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CONDENSED_SOAP = ITEMS.register("condensed_soap",
+            () -> new Item(new Item.Properties()));
     //REGISTRIES END
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
