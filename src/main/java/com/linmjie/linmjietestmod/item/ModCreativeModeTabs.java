@@ -25,6 +25,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SCRUB_DADDY.get());
                         output.accept(ModItems.ADVANCED_SCRUB_DADDY.get());
                         output.accept(ModItems.CHISEL.get());
+                        output.accept(ModItems.RAINBOW_SHARD.get());
+                        output.accept(ModItems.RAINBOW_CANDY.get());
+                        output.accept(ModItems.URANIUM.get());
 
                     }).build());
 

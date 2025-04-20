@@ -65,12 +65,20 @@ public class TestingMod {
             event.accept(ModItems.CHISEL);
         }
 
+        //FOOD TAB
+        if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
+            event.accept(ModItems.RAINBOW_SHARD);
+            event.accept(ModItems.RAINBOW_CANDY);
+        }
+
         //INGREDIENTS TAB
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.RAINBOW_SHARD);
             event.accept(ModItems.SOAP);
             event.accept(ModItems.NEON);
             event.accept(ModItems.SHARPIE);
             event.accept(ModItems.CONDENSED_SOAP);
+            event.accept(ModItems.URANIUM);
         }
 
         //BUILDING BLOCKS TAB

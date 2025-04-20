@@ -4,6 +4,11 @@
   "item.linmjietestmod.sharpie": "Sharpie",
   "item.linmjietestmod.condensed_soap": "Condensed Soap",
 
+  "item.linmjietestmod.uranium": "Uranium",
+
+  "item.linmjietestmod.rainbow_shard": "Rainbow Shard",
+  "item.linmjietestmod.rainbow_candy": "Rainbow Candy",
+
   "item.linmjietestmod.scrub_daddy": "Scrub Daddy",
   "item.linmjietestmod.advanced_scrub_daddy": "Scrub Mommy",
 
@@ -18,5 +23,11 @@
   "block.linmjietestmod.neon_hole_block": "Hollowed Neon Block",
 
   "creativetab.linmjietestmod.testmod_items": "Sigma Items",
-  "creativetab.linmjietestmod.testmod_blocks": "Sigma Blocks"
+  "creativetab.linmjietestmod.testmod_blocks": "Sigma Blocks",
+
+  "tooltip.linmjietestmod.neon_transposer_block.tooltip": "This Block takes your Neon Globs and gives you Netherite Ingots",
+  "tooltip.linmjietestmod.chisel": "Chisel a hole in a Neon Block!",
+  "tooltip.linmjietestmod.cleaning_item.shift_down": "Erase the Sharpie off of a block of sigma!\nCan also turn your Neon Blocks into something special...",
+  "tooltip.linmjietestmod.cleaning_item": "Press §eShift§r for more Information!",
+  "tooltip.linmjietestmod.stardew_not_plagarized_tooltip": "Definitely not stolen from Stardew Valley"
 }
