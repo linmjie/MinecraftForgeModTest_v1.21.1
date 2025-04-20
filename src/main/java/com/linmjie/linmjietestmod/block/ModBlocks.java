@@ -23,13 +23,16 @@ public class ModBlocks {
     //BLOCK REGISTRIES START
     public static final RegistryObject<Block> SOAP_BLOCK = registerBlock("soap_block",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(0.5f).sound(SoundType.HONEY_BLOCK)));
+                    .strength(0.5F).sound(SoundType.HONEY_BLOCK)));
     public static final RegistryObject<Block> SIGMA_BLOCK = registerBlock("sigma_block",
             () -> new DropExperienceBlock(UniformInt.of(1237,2476),(BlockBehaviour.Properties.of()
-                    .strength(69.420f).requiresCorrectToolForDrops())));
+                    .strength(69.420F).requiresCorrectToolForDrops())));
+    public static final RegistryObject<Block> NEON_BLOCK = registerBlock("neon_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(10F).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
     public static final RegistryObject<Block> CONDENSED_SOAP_BLOCK = registerBlock("condensed_soap_block",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(2).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+                    .strength(2F).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
     //BLOCK REGISTRIES END
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){

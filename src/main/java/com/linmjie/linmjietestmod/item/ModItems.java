@@ -1,6 +1,7 @@
 package com.linmjie.linmjietestmod.item;
 
 import com.linmjie.linmjietestmod.TestingMod;
+import com.linmjie.linmjietestmod.item.custom.CleaningItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -20,6 +21,11 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CONDENSED_SOAP = ITEMS.register("condensed_soap",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> SCRUB_DADDY = ITEMS.register("scrub_daddy",
+            () -> new CleaningItem(new Item.Properties().durability(24)));
+    public static final RegistryObject<Item> ADVANCED_SCRUB_DADDY = ITEMS.register("advanced_scrub_daddy",
+            () -> new CleaningItem(new Item.Properties().durability(320)));
     //REGISTRIES END
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

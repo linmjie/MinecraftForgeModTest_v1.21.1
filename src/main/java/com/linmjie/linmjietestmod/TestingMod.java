@@ -58,7 +58,11 @@ public class TestingMod {
 
     // ADD ITEMS TO CREATIVE MENU
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        //TOOLS TAB
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
+            event.accept(ModItems.SCRUB_DADDY);
+            event.accept(ModItems.ADVANCED_SCRUB_DADDY);
+        }
         //INGREDIENTS TAB
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.accept(ModItems.SOAP);
@@ -72,6 +76,7 @@ public class TestingMod {
             event.accept(ModBlocks.SOAP_BLOCK);
             event.accept(ModBlocks.SIGMA_BLOCK);
             event.accept(ModBlocks.CONDENSED_SOAP_BLOCK);
+            event.accept(ModBlocks.NEON_BLOCK);
         }
     }
 
