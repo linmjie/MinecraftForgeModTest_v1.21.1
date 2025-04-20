@@ -1,6 +1,7 @@
 package com.linmjie.linmjietestmod.item;
 
 import com.linmjie.linmjietestmod.TestingMod;
+import com.linmjie.linmjietestmod.item.custom.ChiselItem;
 import com.linmjie.linmjietestmod.item.custom.CleaningItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -26,6 +27,10 @@ public class ModItems {
             () -> new CleaningItem(new Item.Properties().durability(24)));
     public static final RegistryObject<Item> ADVANCED_SCRUB_DADDY = ITEMS.register("advanced_scrub_daddy",
             () -> new CleaningItem(new Item.Properties().durability(320)));
+
+    public static final RegistryObject<Item> CHISEL = ITEMS.register("chisel",
+            () -> new ChiselItem(new Item.Properties().durability(32)));
+
     //REGISTRIES END
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

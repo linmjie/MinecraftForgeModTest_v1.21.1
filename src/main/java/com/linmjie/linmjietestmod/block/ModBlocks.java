@@ -1,6 +1,7 @@
 package com.linmjie.linmjietestmod.block;
 
 import com.linmjie.linmjietestmod.TestingMod;
+import com.linmjie.linmjietestmod.block.custom.NeonTransposerBlock;
 import com.linmjie.linmjietestmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -30,6 +31,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> NEON_BLOCK = registerBlock("neon_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(10F).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+    public static final RegistryObject<Block> NEON_HOLE_BLOCK = registerBlock("neon_hole_block",
+            () -> new NeonTransposerBlock(BlockBehaviour.Properties.of()
+                    .strength(2F).noOcclusion().requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
     public static final RegistryObject<Block> CONDENSED_SOAP_BLOCK = registerBlock("condensed_soap_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(2F).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));

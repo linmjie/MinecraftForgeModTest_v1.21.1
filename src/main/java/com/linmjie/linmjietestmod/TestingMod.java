@@ -62,7 +62,9 @@ public class TestingMod {
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
             event.accept(ModItems.SCRUB_DADDY);
             event.accept(ModItems.ADVANCED_SCRUB_DADDY);
+            event.accept(ModItems.CHISEL);
         }
+
         //INGREDIENTS TAB
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.accept(ModItems.SOAP);
@@ -77,6 +79,7 @@ public class TestingMod {
             event.accept(ModBlocks.SIGMA_BLOCK);
             event.accept(ModBlocks.CONDENSED_SOAP_BLOCK);
             event.accept(ModBlocks.NEON_BLOCK);
+            event.accept(ModBlocks.NEON_HOLE_BLOCK);
         }
     }
 

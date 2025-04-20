@@ -3,6 +3,7 @@
   "values": [
     "linmjietestmod:sigma_block",
     "linmjietestmod:condensed_soap_block",
-    "linmjietestmod:neon_block"
+    "linmjietestmod:neon_block",
+    "linmjietestmod:neon_hole_block"
   ]
 }

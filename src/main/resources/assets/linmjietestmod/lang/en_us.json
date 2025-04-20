@@ -3,13 +3,19 @@
   "item.linmjietestmod.neon": "Dirty Neon Glob",
   "item.linmjietestmod.sharpie": "Sharpie",
   "item.linmjietestmod.condensed_soap": "Condensed Soap",
+
   "item.linmjietestmod.scrub_daddy": "Scrub Daddy",
   "item.linmjietestmod.advanced_scrub_daddy": "Scrub Mommy",
+
+  "item.linmjietestmod.chisel": "Chisel",
+
+
 
   "block.linmjietestmod.soap_block": "Soap Block",
   "block.linmjietestmod.condensed_soap_block": "Condensed Soap Block",
   "block.linmjietestmod.sigma_block": "Block of Sigma",
   "block.linmjietestmod.neon_block": "Block of Neon",
+  "block.linmjietestmod.neon_hole_block": "Hollowed Neon Block",
 
   "creativetab.linmjietestmod.testmod_items": "Sigma Items",
   "creativetab.linmjietestmod.testmod_blocks": "Sigma Blocks"

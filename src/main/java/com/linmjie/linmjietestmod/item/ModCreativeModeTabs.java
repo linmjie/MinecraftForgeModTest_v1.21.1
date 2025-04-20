@@ -24,6 +24,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHARPIE.get());
                         output.accept(ModItems.SCRUB_DADDY.get());
                         output.accept(ModItems.ADVANCED_SCRUB_DADDY.get());
+                        output.accept(ModItems.CHISEL.get());
 
                     }).build());
 
@@ -36,6 +37,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.SOAP_BLOCK.get());
                         output.accept(ModBlocks.CONDENSED_SOAP_BLOCK.get());
                         output.accept(ModBlocks.NEON_BLOCK.get());
+                        output.accept(ModBlocks.NEON_HOLE_BLOCK.get());
 
                     }).build());
 
