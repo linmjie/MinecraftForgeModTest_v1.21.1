@@ -37,6 +37,16 @@ public class ModBlocks {
     public static final RegistryObject<Block> CONDENSED_SOAP_BLOCK = registerBlock("condensed_soap_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(2F).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> URANIUM_ORE = registerBlock("uranium_ore",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(5F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DEEPSLATE_URANIUM_ORE = registerBlock("deepslate_uranium_ore",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(7.5F).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+    public static final RegistryObject<Block> URANIUM_BLOCK = registerBlock("uranium_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(5F).requiresCorrectToolForDrops()));
     //BLOCK REGISTRIES END
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){

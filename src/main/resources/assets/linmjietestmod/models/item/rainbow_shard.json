@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "linmjietestmod:item/recolored_prismatic"
-  }
-}
