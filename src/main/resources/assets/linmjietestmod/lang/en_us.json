@@ -21,6 +21,9 @@
   "block.linmjietestmod.sigma_block": "Block of Sigma",
   "block.linmjietestmod.neon_block": "Block of Neon",
   "block.linmjietestmod.neon_hole_block": "Hollowed Neon Block",
+  "block.linmjietestmod.uranium_ore": "Uranium Ore",
+  "block.linmjietestmod.deepslate_uranium_ore": "Deepslate Uranium Ore",
+  "block.linmjietestmod.uranium_block": "Uranium Block",
 
   "creativetab.linmjietestmod.testmod_items": "Sigma Items",
   "creativetab.linmjietestmod.testmod_blocks": "Sigma Blocks",

@@ -16,6 +16,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(ModItems.SOAP.get());
+        basicItem(ModItems.NEON.get());
         basicItem(ModItems.SHARPIE.get());
         basicItem(ModItems.CONDENSED_SOAP.get());
         basicItem(ModItems.CONDENSED_SOAP.get());

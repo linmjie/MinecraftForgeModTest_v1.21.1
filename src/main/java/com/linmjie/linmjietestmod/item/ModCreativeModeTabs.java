@@ -41,6 +41,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.CONDENSED_SOAP_BLOCK.get());
                         output.accept(ModBlocks.NEON_BLOCK.get());
                         output.accept(ModBlocks.NEON_HOLE_BLOCK.get());
+                        output.accept(ModBlocks.URANIUM_ORE.get());
+                        output.accept(ModBlocks.DEEPSLATE_URANIUM_ORE.get());
+                        output.accept(ModBlocks.URANIUM_BLOCK.get());
 
                     }).build());
 

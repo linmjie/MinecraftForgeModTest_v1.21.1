@@ -88,6 +88,13 @@ public class TestingMod {
             event.accept(ModBlocks.CONDENSED_SOAP_BLOCK);
             event.accept(ModBlocks.NEON_BLOCK);
             event.accept(ModBlocks.NEON_HOLE_BLOCK);
+            event.accept(ModBlocks.URANIUM_BLOCK);
+        }
+
+        //NATURAL BLOCKS TAB
+        if(event.getTabKey()==CreativeModeTabs.NATURAL_BLOCKS){
+            event.accept(ModBlocks.URANIUM_ORE);
+            event.accept(ModBlocks.DEEPSLATE_URANIUM_ORE);
         }
     }
 
@@ -102,7 +109,6 @@ public class TestingMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
         }
     }
 }

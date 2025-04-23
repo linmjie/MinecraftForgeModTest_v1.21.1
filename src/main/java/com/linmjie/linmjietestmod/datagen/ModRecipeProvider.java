@@ -7,8 +7,7 @@ import com.linmjie.linmjietestmod.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
@@ -73,10 +72,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModItems.RAINBOW_SHARD.get()), has(ModItems.RAINBOW_SHARD.get()))
                 .save(pRecipeOutput);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SHARPIE.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SOAP.get())
                 .requires(Items.PORKCHOP)
                 .requires(Items.WATER_BUCKET)
+                .requires(ItemTags.PLANKS)
+                .unlockedBy(getHasName(Items.PORKCHOP), has(Items.PORKCHOP))
+                .save(pRecipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SHARPIE.get())
                 .requires(Items.INK_SAC)
+                .requires(Items.IRON_INGOT)
                 .unlockedBy(getHasName(Items.INK_SAC), has(Items.INK_SAC))
                 .save(pRecipeOutput);
 
@@ -143,11 +148,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, pPacked)
                 .requires(pUnpacked, 9)
                 .unlockedBy(getHasName(pUnpacked), has(pUnpacked))
-                .save(pRecipeOutput, TestingMod.MOD_ID+":"+pPackedName+"_from"+pUnpackedName);
+                .save(pRecipeOutput, TestingMod.MOD_ID+":"+pPackedName+"_from_"+pUnpackedName);
         ShapelessRecipeBuilder.shapeless(recipeCategory, pPacked, 9)
                 .requires(pPacked)
                 .unlockedBy(getHasName(pPacked), has(pPacked))
-                .save(pRecipeOutput, TestingMod.MOD_ID+":"+pUnpackedName+"_from"+pPackedName);
+                .save(pRecipeOutput, TestingMod.MOD_ID+":"+pUnpackedName+"_from_"+pPackedName);
     }
 
     //thank you kaupenjoe <3

@@ -4,7 +4,9 @@ import com.linmjie.linmjietestmod.TestingMod;
 import com.linmjie.linmjietestmod.block.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -22,7 +24,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
        blockWithItem(ModBlocks.DEEPSLATE_URANIUM_ORE);
        blockWithItem(ModBlocks.URANIUM_ORE);
 
-       blockWithItem(ModBlocks.NEON_HOLE_BLOCK);
+       blockWithItemAndRenderType(ModBlocks.NEON_HOLE_BLOCK, "minecraft:cutout");
        blockWithItem(ModBlocks.NEON_BLOCK);
        blockWithItem(ModBlocks.CONDENSED_SOAP_BLOCK);
 
@@ -30,5 +32,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject){
        simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
+    }
+    private void blockWithItemAndRenderType(RegistryObject<Block> blockRegistryObject, String renderType){
+       String blockName = blockRegistryObject.getId().getPath();
+       ModelFile parentModel = models().cubeAll(blockName, modLoc("block/" + blockName));
+       BlockModelBuilder model = models().getBuilder(blockName)
+               .parent(parentModel)
+               .renderType(renderType);
+       simpleBlock(blockRegistryObject.get(), model);
+       simpleBlockItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
     }
 }
