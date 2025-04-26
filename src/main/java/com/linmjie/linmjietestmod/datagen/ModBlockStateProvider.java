@@ -2,10 +2,14 @@ package com.linmjie.linmjietestmod.datagen;
 
 import com.linmjie.linmjietestmod.TestingMod;
 import com.linmjie.linmjietestmod.block.ModBlocks;
+import com.linmjie.linmjietestmod.block.custom.ShinyNeonBlock;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -28,6 +32,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItemAndRenderType(ModBlocks.NEON_HOLE_BLOCK, "minecraft:cutout");
 
         blockWithItem(ModBlocks.NEON_BLOCK);
+        shinyNeonBlockWithItem(ModBlocks.SHINY_NEON_BLOCK.get(), "neon_block", "shiny_neon_block_unlit");
 
         blockWithItem(ModBlocks.NEON_BRICKS);
         stairsBlock(ModBlocks.NEON_BRICK_STAIRS.get(), blockTexture(ModBlocks.NEON_BRICKS.get()));
@@ -52,6 +57,20 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(ModBlocks.CONDENSED_SOAP_BLOCK);
 
+    }
+
+    private void shinyNeonBlockWithItem(Block block, String litBlockString, String unlitBlockString) {
+        getVariantBuilder(block).forAllStates(state -> {
+            if(state.getValue(ShinyNeonBlock.CLICKED)) {
+                return new ConfiguredModel[]{new ConfiguredModel(models().cubeAll(litBlockString,
+                        ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "block/" + litBlockString)))};
+            } else {
+                return new ConfiguredModel[]{new ConfiguredModel(models().cubeAll(unlitBlockString,
+                        ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "block/" + unlitBlockString)))};
+            }
+        });
+        simpleBlockItem(block, models().cubeAll(litBlockString,
+                ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "block/" + litBlockString)));
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {

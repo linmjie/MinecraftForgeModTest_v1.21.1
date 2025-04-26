@@ -108,6 +108,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Items.EMERALD)
                 .unlockedBy(getHasName(Items.NETHERITE_INGOT), has(Items.NETHERITE_INGOT))
                 .save(pRecipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHINY_NEON_BLOCK.get())
+                .requires(ModBlocks.NEON_BLOCK.get())
+                .requires(Items.GLOWSTONE_DUST, 3)
+                .unlockedBy(getHasName(ModBlocks.NEON_BLOCK.get()), has(ModBlocks.NEON_BLOCK.get()))
+                .save(pRecipeOutput);
 
 
         ninePacker(pRecipeOutput, ModItems.SOAP.get(), ModBlocks.SOAP_BLOCK.get(), "soap");

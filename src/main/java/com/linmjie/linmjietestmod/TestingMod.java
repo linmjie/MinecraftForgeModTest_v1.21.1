@@ -1,6 +1,7 @@
 package com.linmjie.linmjietestmod;
 
 import com.linmjie.linmjietestmod.block.ModBlocks;
+import com.linmjie.linmjietestmod.component.ModDataComponentTypes;
 import com.linmjie.linmjietestmod.item.ModCreativeModeTabs;
 import com.linmjie.linmjietestmod.item.ModItems;
 import com.mojang.logging.LogUtils;
@@ -44,6 +45,8 @@ public class TestingMod {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
+        ModDataComponentTypes.register(modEventBus);
+
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -83,6 +86,7 @@ public class TestingMod {
 
         //BUILDING BLOCKS TAB
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
+            event.accept(ModBlocks.SHINY_NEON_BLOCK);
             event.accept(ModBlocks.SOAP_BLOCK);
             event.accept(ModBlocks.SIGMA_BLOCK);
             event.accept(ModBlocks.CONDENSED_SOAP_BLOCK);

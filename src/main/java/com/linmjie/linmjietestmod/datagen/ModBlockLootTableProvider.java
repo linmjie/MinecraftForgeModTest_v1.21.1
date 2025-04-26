@@ -33,7 +33,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.CONDENSED_SOAP_BLOCK.get());
         dropSelf(ModBlocks.NEON_BLOCK.get());
         dropSelf(ModBlocks.NEON_HOLE_BLOCK.get());
-
+        dropSelf(ModBlocks.SHINY_NEON_BLOCK.get());
 
         dropSelf(ModBlocks.NEON_BRICKS.get());
         dropSelf(ModBlocks.NEON_BRICK_STAIRS.get());

@@ -54,6 +54,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.NEON_WALL.get());
                         output.accept(ModBlocks.NEON_DOOR.get());
                         output.accept(ModBlocks.NEON_TRAPDOOR.get());
+                        output.accept(ModBlocks.SHINY_NEON_BLOCK.get());
 
 
                     }).build());

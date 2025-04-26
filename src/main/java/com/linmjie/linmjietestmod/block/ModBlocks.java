@@ -2,6 +2,7 @@ package com.linmjie.linmjietestmod.block;
 
 import com.linmjie.linmjietestmod.TestingMod;
 import com.linmjie.linmjietestmod.block.custom.NeonTransposerBlock;
+import com.linmjie.linmjietestmod.block.custom.ShinyNeonBlock;
 import com.linmjie.linmjietestmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -36,32 +37,37 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> NEON_BRICKS = registerBlock("neon_bricks",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(12F).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+                    .strength(12F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
     public static final RegistryObject<SlabBlock> NEON_BRICK_SLAB = registerBlock("neon_brick_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.of().strength(12F).requiresCorrectToolForDrops()));
+            () -> new SlabBlock(BlockBehaviour.Properties.of().strength(12F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops()));
     public static final RegistryObject<StairBlock> NEON_BRICK_STAIRS = registerBlock("neon_stairs",
             () -> new StairBlock(ModBlocks.NEON_BRICKS.get().defaultBlockState(),
-                    BlockBehaviour.Properties.of().strength(12F).requiresCorrectToolForDrops()));
+                    BlockBehaviour.Properties.of().strength(12F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<PressurePlateBlock> NEON_PRESSURE_PLATE = registerBlock("neon_pressure_plate",
-            () -> new PressurePlateBlock(BlockSetType.IRON, BlockBehaviour.Properties.of().strength(12F).requiresCorrectToolForDrops()));
+            () -> new PressurePlateBlock(BlockSetType.IRON, BlockBehaviour.Properties.of().strength(12F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops()));
     public static final RegistryObject<ButtonBlock> NEON_BUTTON = registerBlock("neon_button",
             () -> new ButtonBlock(BlockSetType.IRON,50, BlockBehaviour.Properties.of().strength(12F)
-                    .requiresCorrectToolForDrops().noCollission()));
+                    .sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops().noCollission()));
 
     public static final RegistryObject<FenceBlock> NEON_FENCE = registerBlock("neon_fence",
-            () -> new FenceBlock(BlockBehaviour.Properties.of().strength(12F).requiresCorrectToolForDrops()));
+            () -> new FenceBlock(BlockBehaviour.Properties.of().strength(12F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops()));
     public static final RegistryObject<FenceGateBlock> NEON_FENCE_GATE = registerBlock("neon_fence_gate",
-            () -> new FenceGateBlock(WoodType.ACACIA, BlockBehaviour.Properties.of().strength(12F).requiresCorrectToolForDrops()));
+            () -> new FenceGateBlock(WoodType.ACACIA, BlockBehaviour.Properties.of().strength(12F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops()));
     public static final RegistryObject<WallBlock> NEON_WALL = registerBlock("neon_wall",
-            () -> new WallBlock(BlockBehaviour.Properties.of().strength(12F).requiresCorrectToolForDrops()));
+            () -> new WallBlock(BlockBehaviour.Properties.of().strength(12F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<DoorBlock> NEON_DOOR = registerBlock("neon_door",
-            () -> new DoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().strength(12F).requiresCorrectToolForDrops().noOcclusion()));
+            () -> new DoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().strength(12F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops().noOcclusion()));
     public static final RegistryObject<TrapDoorBlock> NEON_TRAPDOOR = registerBlock("neon_trapdoor",
-            () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().strength(12F).requiresCorrectToolForDrops().noOcclusion()));
+            () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().strength(12F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops().noOcclusion()));
 
     //NEON BLOCK CATEGORY END
+
+    public static final RegistryObject<Block> SHINY_NEON_BLOCK = registerBlock("shiny_neon_block",
+            () -> new ShinyNeonBlock(BlockBehaviour.Properties.of()
+                    .strength(5F)
+                    .lightLevel(state -> state.getValue(ShinyNeonBlock.CLICKED)? 15 : 0).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> NEON_HOLE_BLOCK = registerBlock("neon_hole_block",
             () -> new NeonTransposerBlock(BlockBehaviour.Properties.of()
