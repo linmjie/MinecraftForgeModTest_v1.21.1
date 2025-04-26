@@ -14,9 +14,8 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
@@ -26,7 +25,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(RecipeOutput pRecipeOutput) {
-        List<ItemLike>URANIUM_SMELTABLES = List.of(
+        final List<ItemLike>URANIUM_SMELTABLES = List.of(
                 ModBlocks.URANIUM_ORE.get(),
                 ModBlocks.DEEPSLATE_URANIUM_ORE.get()
         );
@@ -117,32 +116,71 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ninePacker(pRecipeOutput, ModItems.URANIUM.get(), ModBlocks.URANIUM_BLOCK.get(), "uranium");
 
+        //NEON /NEON BRICK
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NEON_BRICKS.get(),4)
+                .pattern("##")
+                .pattern("##")
+                .define('#', ModBlocks.NEON_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.NEON_BLOCK.get()), has(ModBlocks.NEON_BLOCK.get()))
+                .save(pRecipeOutput);
+        stairBuilder(ModBlocks.NEON_BRICK_STAIRS.get(), Ingredient.of(ModBlocks.NEON_BRICKS.get())).group("neon")
+                .unlockedBy(getHasName(ModBlocks.NEON_BRICKS.get()), has(ModBlocks.NEON_BRICKS.get())).save(pRecipeOutput);
+        slab(pRecipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.NEON_BRICK_SLAB.get(), ModBlocks.NEON_BRICKS.get());
+
+        //THROUGH STONECUTTER
+        final Map<ItemLike,Integer>NEON_BLOCK_CUTTABLES = Map.of(
+                ModBlocks.NEON_BRICKS.get(), 1
+        );
+        final Map<ItemLike,Integer>NEON_BRICK_CUTTABLES = Map.of(
+                ModBlocks.NEON_BRICK_STAIRS.get(),1,
+                ModBlocks.NEON_BRICK_SLAB.get(), 2,
+                ModBlocks.NEON_WALL.get(), 1
+        );
+        stonecutterResultFromMap(pRecipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.NEON_BLOCK.get(), NEON_BLOCK_CUTTABLES);
+        stonecutterResultFromMap(pRecipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.NEON_BLOCK.get(), NEON_BRICK_CUTTABLES);
+        stonecutterResultFromMap(pRecipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.NEON_BRICKS.get(), NEON_BRICK_CUTTABLES);
+
+        buttonBuilder(ModBlocks.NEON_BUTTON.get(), Ingredient.of(ModBlocks.NEON_BLOCK.get())).group("neon")
+                .unlockedBy(getHasName(ModBlocks.NEON_BLOCK.get()), has(ModBlocks.NEON_BLOCK.get())).save(pRecipeOutput);
+        pressurePlate(pRecipeOutput, ModBlocks.NEON_PRESSURE_PLATE.get(), ModBlocks.NEON_BLOCK.get());
+
+        fenceBuilder(ModBlocks.NEON_FENCE.get(), Ingredient.of(ModBlocks.NEON_BLOCK.get())).group("neon")
+                .unlockedBy(getHasName(ModBlocks.NEON_BLOCK.get()), has(ModBlocks.NEON_BLOCK.get())).save(pRecipeOutput);
+        fenceGateBuilder(ModBlocks.NEON_FENCE_GATE.get(), Ingredient.of(ModBlocks.NEON_BLOCK.get())).group("neon")
+                .unlockedBy(getHasName(ModBlocks.NEON_BLOCK.get()), has(ModBlocks.NEON_BRICKS.get())).save(pRecipeOutput);
+        wall(pRecipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.NEON_WALL.get(), ModBlocks.NEON_BRICKS.get());
+
+        doorBuilder(ModBlocks.NEON_DOOR.get(), Ingredient.of(ModBlocks.NEON_BLOCK.get())).group("neon")
+                .unlockedBy(getHasName(ModBlocks.NEON_BLOCK.get()), has(ModBlocks.NEON_BLOCK.get())).save(pRecipeOutput);
+        trapdoorBuilder(ModBlocks.NEON_TRAPDOOR.get(), Ingredient.of(ModBlocks.NEON_BLOCK.get())).group("neon")
+                .unlockedBy(getHasName(ModBlocks.NEON_BLOCK.get()), has(ModBlocks.NEON_BLOCK.get())).save(pRecipeOutput);
+
     }
 
     //HELPER METHODS FOR STANDARDIZED RECIPE TYPES
 
     //ninePacker with default RecipeCategory.MISC and default "item_block" name for packed block
-    private static void ninePacker(RecipeOutput pRecipeOutput,
+    protected static void ninePacker(RecipeOutput pRecipeOutput,
                                    ItemLike pUnpacked, ItemLike pPacked,
                                    String pUnpackedName) {
         ninePacker(pRecipeOutput, RecipeCategory.MISC, pUnpacked, pPacked,
                 pUnpackedName, pUnpackedName+"_block");
     }
     //ninePacker with specified RecipeCategory and default "item_block" name for packed block
-    private static void ninePacker(RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
+    protected static void ninePacker(RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
                                    ItemLike pUnpacked, ItemLike pPacked,
                                    String pUnpackedName) {
         ninePacker(pRecipeOutput, recipeCategory, pUnpacked, pPacked,
                 pUnpackedName, pUnpackedName+"_block");
     }
     //ninePacker with default RecipeCategory.MISC & specified ids for unpacked and packed items
-    private static void ninePacker(RecipeOutput pRecipeOutput,
+    protected static void ninePacker(RecipeOutput pRecipeOutput,
                                    ItemLike pUnpacked, ItemLike pPacked,
                                    String pUnpackedName, String pPackedName){
         ninePacker( pRecipeOutput, RecipeCategory.MISC, pUnpacked, pPacked,
                 pUnpackedName, pPackedName);
     }
-    private static void ninePacker(RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
+    protected static void ninePacker(RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
                                    ItemLike pUnpacked, ItemLike pPacked,
                                    String pUnpackedName, String pPackedName){
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, pPacked)
@@ -153,6 +191,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(pPacked)
                 .unlockedBy(getHasName(pPacked), has(pPacked))
                 .save(pRecipeOutput, TestingMod.MOD_ID+":"+pUnpackedName+"_from_"+pPackedName);
+    }
+
+    //stonecutter recipes given a map of results(to quantity of result)
+    protected static void stonecutterResultFromMap(RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
+                                               ItemLike pMaterial, Map<ItemLike,Integer> pResultMap){
+        for(Map.Entry<ItemLike, Integer> entry: pResultMap.entrySet()){
+            ItemLike pResult=entry.getKey();
+            int pResultCount=entry.getValue();
+            stonecutterResultFromBase(pRecipeOutput, recipeCategory, pResult, pMaterial, pResultCount);
+        }
+
     }
 
     //thank you kaupenjoe <3

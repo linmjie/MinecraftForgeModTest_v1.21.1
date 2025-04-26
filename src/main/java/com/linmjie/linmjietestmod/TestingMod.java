@@ -89,6 +89,17 @@ public class TestingMod {
             event.accept(ModBlocks.NEON_BLOCK);
             event.accept(ModBlocks.NEON_HOLE_BLOCK);
             event.accept(ModBlocks.URANIUM_BLOCK);
+            event.accept(ModBlocks.NEON_BRICKS);
+            event.accept(ModBlocks.NEON_BRICK_STAIRS);
+            event.accept(ModBlocks.NEON_BRICK_SLAB);
+            event.accept(ModBlocks.NEON_BUTTON);
+            event.accept(ModBlocks.NEON_PRESSURE_PLATE);
+            event.accept(ModBlocks.NEON_FENCE);
+            event.accept(ModBlocks.NEON_FENCE_GATE);
+            event.accept(ModBlocks.NEON_WALL);
+            event.accept(ModBlocks.NEON_DOOR);
+            event.accept(ModBlocks.NEON_TRAPDOOR);
+
         }
 
         //NATURAL BLOCKS TAB

@@ -25,8 +25,24 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SIGMA_BLOCK.get())
                 .add(ModBlocks.NEON_BLOCK.get())
                 .add(ModBlocks.NEON_HOLE_BLOCK.get())
-                .add(ModBlocks.CONDENSED_SOAP_BLOCK.get());
+                .add(ModBlocks.CONDENSED_SOAP_BLOCK.get())
+                .add(ModBlocks.NEON_BRICK_STAIRS.get())
+                .add(ModBlocks.NEON_BRICK_SLAB.get())
+                .add(ModBlocks.NEON_BUTTON.get())
+                .add(ModBlocks.NEON_PRESSURE_PLATE.get())
+                .add(ModBlocks.NEON_FENCE.get())
+                .add(ModBlocks.NEON_FENCE_GATE.get())
+                .add(ModBlocks.NEON_WALL.get())
+                .add(ModBlocks.NEON_DOOR.get())
+                .add(ModBlocks.NEON_TRAPDOOR.get());
+
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.SOAP_BLOCK.get());
+        tag(BlockTags.FENCES)
+                .add(ModBlocks.NEON_FENCE.get());
+        tag(BlockTags.FENCE_GATES)
+                .add(ModBlocks.NEON_FENCE_GATE.get());
+        tag(BlockTags.WALLS)
+                .add(ModBlocks.NEON_WALL.get());
     }
 }

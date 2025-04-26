@@ -44,6 +44,17 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.URANIUM_ORE.get());
                         output.accept(ModBlocks.DEEPSLATE_URANIUM_ORE.get());
                         output.accept(ModBlocks.URANIUM_BLOCK.get());
+                        output.accept(ModBlocks.NEON_BRICKS.get());
+                        output.accept(ModBlocks.NEON_BRICK_STAIRS.get());
+                        output.accept(ModBlocks.NEON_BRICK_SLAB.get());
+                        output.accept(ModBlocks.NEON_BUTTON.get());
+                        output.accept(ModBlocks.NEON_PRESSURE_PLATE.get());
+                        output.accept(ModBlocks.NEON_FENCE.get());
+                        output.accept(ModBlocks.NEON_FENCE_GATE.get());
+                        output.accept(ModBlocks.NEON_WALL.get());
+                        output.accept(ModBlocks.NEON_DOOR.get());
+                        output.accept(ModBlocks.NEON_TRAPDOOR.get());
+
 
                     }).build());
 
