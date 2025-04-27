@@ -4,6 +4,7 @@ import com.linmjie.linmjietestmod.TestingMod;
 import com.linmjie.linmjietestmod.item.custom.AdvancedShovelItem;
 import com.linmjie.linmjietestmod.item.custom.ChiselItem;
 import com.linmjie.linmjietestmod.item.custom.CleaningItem;
+import com.linmjie.linmjietestmod.item.custom.ModArmorItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -32,18 +33,37 @@ public class ModItems {
             () -> new FuelItem(new Item.Properties(), 3600));
 
     public static final RegistryObject<Item> URANIUM_HELMET = ITEMS.register("uranium_helmet",
-            () -> new ArmorItem(ModArmorMaterials.URANIUM_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
-            new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(25))));
+            () -> new ModArmorItem(ModArmorMaterials.URANIUM_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
+            new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(25))){
+        @Override
+        public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+            pTooltipComponents.add(Component.translatable("tooltip.linmjietestmod.radioactive_armor_tooltip"));
+            super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+    }});
     public static final RegistryObject<Item> URANIUM_CHESTPLATE = ITEMS.register("uranium_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.URANIUM_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(25))));
+            () -> new ModArmorItem(ModArmorMaterials.URANIUM_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(25))){
+        @Override
+        public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+            pTooltipComponents.add(Component.translatable("tooltip.linmjietestmod.radioactive_armor_tooltip"));
+            super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+        }});
     public static final RegistryObject<Item> URANIUM_LEGGINGS = ITEMS.register("uranium_leggings",
-            () -> new ArmorItem(ModArmorMaterials.URANIUM_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(25))));
+            () -> new ModArmorItem(ModArmorMaterials.URANIUM_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(25))){
+        @Override
+        public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+            pTooltipComponents.add(Component.translatable("tooltip.linmjietestmod.radioactive_armor_tooltip"));
+            super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+        }});
     public static final RegistryObject<Item> URANIUM_BOOTS = ITEMS.register("uranium_boots",
-            () -> new ArmorItem(ModArmorMaterials.URANIUM_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
-                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(25))));
-
+            () -> new ModArmorItem(ModArmorMaterials.URANIUM_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(25))){
+        @Override
+    public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+            pTooltipComponents.add(Component.translatable("tooltip.linmjietestmod.radioactive_armor_tooltip"));
+            super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+        }});
     public static final RegistryObject<Item> URANIUM_SWORD = ITEMS.register("uranium_sword",
             () -> new SwordItem(ModToolTiers.URANIUM, new Item.Properties()
                     .attributes(SwordItem.createAttributes(ModToolTiers.URANIUM, 3, -2.4F))));

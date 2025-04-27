@@ -1,11 +1,17 @@
 package com.linmjie.linmjietestmod.event;
 
 import com.linmjie.linmjietestmod.TestingMod;
+import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.item.custom.AdvancedShovelItem;
+import com.linmjie.linmjietestmod.potions.ModPotions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionBrewing;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraftforge.event.brewing.BrewingRecipeRegisterEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -40,5 +46,13 @@ public class ModEventsClass {
                 HARVESTED_BLOCKS.remove(pos);
             }
         }
+    }
+    @SubscribeEvent
+    public static void onBrewRecipeRegister(BrewingRecipeRegisterEvent event){
+        PotionBrewing.Builder builder = event.getBuilder();
+
+        builder.addMix(Potions.AWKWARD, ModItems.URANIUM.get(), ModPotions.RADIATED_POTION.getHolder().get());
+        builder.addMix(ModPotions.RADIATED_POTION.getHolder().get(), Items.REDSTONE, ModPotions.LONG_RADIATED_POTION.getHolder().get());
+        builder.addMix(ModPotions.RADIATED_POTION.getHolder().get(), Items.GLOWSTONE_DUST, ModPotions.STRONG_RADIATED_POTION.getHolder().get());
     }
 }

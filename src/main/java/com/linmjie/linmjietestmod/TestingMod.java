@@ -2,8 +2,10 @@ package com.linmjie.linmjietestmod;
 
 import com.linmjie.linmjietestmod.block.ModBlocks;
 import com.linmjie.linmjietestmod.component.ModDataComponentTypes;
+import com.linmjie.linmjietestmod.effect.ModEffects;
 import com.linmjie.linmjietestmod.item.ModCreativeModeTabs;
 import com.linmjie.linmjietestmod.item.ModItems;
+import com.linmjie.linmjietestmod.potions.ModPotions;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -45,6 +47,9 @@ public class TestingMod {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
+        ModEffects.register(modEventBus);
+        ModPotions.register(modEventBus);
+
         ModDataComponentTypes.register(modEventBus);
 
 
@@ -75,7 +80,6 @@ public class TestingMod {
             event.accept(ModItems.SCRUB_DADDY);
             event.accept(ModItems.ADVANCED_SCRUB_DADDY);
             event.accept(ModItems.CHISEL);
-            event.accept(ModItems.URANIUM_SWORD);
             event.accept(ModItems.URANIUM_SHOVEL);
             event.accept(ModItems.URANIUM_PICKAXE);
             event.accept(ModItems.URANIUM_AXE);

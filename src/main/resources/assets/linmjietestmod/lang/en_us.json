@@ -53,6 +53,14 @@
   "block.linmjietestmod.neon_door": "Neon Door",
   "block.linmjietestmod.neon_trapdoor": "Neon Trapdoor",
 
+
+
+  "effect.linmjietestmod.radiated": "Radiated",
+
+  "item.minecraft.potion.effect.radiated_potion": "Potion of Radiation",
+  "item.minecraft.splash_potion.effect.radiated_potion": "Splash Potion of Radiation",
+  "item.minecraft.lingering_potion.effect.radiated_potion": "Lingering Potion of Radiation ",
+
   "creativetab.linmjietestmod.testmod_items": "Sigma Items",
   "creativetab.linmjietestmod.testmod_blocks": "Sigma Blocks",
 
@@ -60,5 +68,7 @@
   "tooltip.linmjietestmod.chisel": "Chisel a hole in a Neon Block!",
   "tooltip.linmjietestmod.cleaning_item.shift_down": "Erase the Sharpie off of a block of sigma!\nCan also turn your Neon Blocks into something special...",
   "tooltip.linmjietestmod.cleaning_item": "Press §eShift§r for more Information!",
-  "tooltip.linmjietestmod.stardew_not_plagarized_tooltip": "Definitely not stolen from Stardew Valley"
+  "tooltip.linmjietestmod.stardew_not_plagarized_tooltip": "Definitely not stolen from Stardew Valley",
+  "tooltip.linmjietestmod.radioactive_armor_tooltip": "§cWARNING§r: §eRADIOACTIVE§r!",
+  "tooltip.linmjietestmod.terraria_not_plagarized_tooltip": "Definitely not stolen from Terraria"
 }
