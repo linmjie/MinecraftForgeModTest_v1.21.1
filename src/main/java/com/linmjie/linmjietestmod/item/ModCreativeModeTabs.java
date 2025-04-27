@@ -33,6 +33,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.URANIUM_PICKAXE.get());
                         output.accept(ModItems.URANIUM_AXE.get());
                         output.accept(ModItems.URANIUM_HOE.get());
+                        output.accept(ModItems.URANIUM_PLOUGH.get());
+                        output.accept(ModItems.URANIUM_HELMET.get());
+                        output.accept(ModItems.URANIUM_CHESTPLATE.get());
+                        output.accept(ModItems.URANIUM_LEGGINGS.get());
+                        output.accept(ModItems.URANIUM_BOOTS.get());
 
                     }).build());
 

@@ -31,6 +31,19 @@ public class ModItems {
     public static final RegistryObject<Item> URANIUM = ITEMS.register("uranium",
             () -> new FuelItem(new Item.Properties(), 3600));
 
+    public static final RegistryObject<Item> URANIUM_HELMET = ITEMS.register("uranium_helmet",
+            () -> new ArmorItem(ModArmorMaterials.URANIUM_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
+            new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(25))));
+    public static final RegistryObject<Item> URANIUM_CHESTPLATE = ITEMS.register("uranium_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.URANIUM_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(25))));
+    public static final RegistryObject<Item> URANIUM_LEGGINGS = ITEMS.register("uranium_leggings",
+            () -> new ArmorItem(ModArmorMaterials.URANIUM_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(25))));
+    public static final RegistryObject<Item> URANIUM_BOOTS = ITEMS.register("uranium_boots",
+            () -> new ArmorItem(ModArmorMaterials.URANIUM_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(25))));
+
     public static final RegistryObject<Item> URANIUM_SWORD = ITEMS.register("uranium_sword",
             () -> new SwordItem(ModToolTiers.URANIUM, new Item.Properties()
                     .attributes(SwordItem.createAttributes(ModToolTiers.URANIUM, 3, -2.4F))));

@@ -161,11 +161,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModBlocks.NEON_BLOCK.get()), has(ModBlocks.NEON_BLOCK.get())).save(pRecipeOutput);
 
 
-        swordRecipe(pRecipeOutput, RecipeCategory.TOOLS, ModItems.URANIUM.get(), ModItems.URANIUM_SWORD.get(), "uranium_sword");
-        shovelRecipe(pRecipeOutput, RecipeCategory.TOOLS, ModItems.URANIUM.get(), ModItems.URANIUM_SHOVEL.get(), "uranium_shovel");
-        pickaxeRecipe(pRecipeOutput, RecipeCategory.TOOLS, ModItems.URANIUM.get(), ModItems.URANIUM_PICKAXE.get(), "uranium_pickaxe");
-        axeRecipe(pRecipeOutput, RecipeCategory.TOOLS, ModItems.URANIUM.get(), ModItems.URANIUM_AXE.get(), "uranium_axe");
-        hoeRecipe(pRecipeOutput, RecipeCategory.TOOLS, ModItems.URANIUM.get(), ModItems.URANIUM_HOE.get(), "uranium_hoe");
+        swordRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_SWORD.get());
+        shovelRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_SHOVEL.get());
+        pickaxeRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_PICKAXE.get());
+        axeRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_AXE.get());
+        hoeRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_HOE.get());
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.URANIUM_PLOUGH.get())
                 .pattern("** ")
                 .pattern("*S ")
@@ -175,6 +175,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('#', Items.IRON_INGOT)
                 .unlockedBy(getHasName(ModItems.URANIUM_SHOVEL.get()), has(ModItems.URANIUM_SHOVEL.get()))
                 .save(pRecipeOutput);
+
+        helmetRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_HELMET.get());
+        chestplateRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_CHESTPLATE.get());
+        leggingsRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_LEGGINGS.get());
+        bootsRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_BOOTS.get());
     }
 
     //HELPER METHODS FOR STANDARDIZED RECIPE TYPES
@@ -207,7 +212,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(pUnpacked, 9)
                 .unlockedBy(getHasName(pUnpacked), has(pUnpacked))
                 .save(pRecipeOutput, TestingMod.MOD_ID+":"+pPackedName+"_from_"+pUnpackedName);
-        ShapelessRecipeBuilder.shapeless(recipeCategory, pPacked, 9)
+        ShapelessRecipeBuilder.shapeless(recipeCategory, pUnpacked, 9)
                 .requires(pPacked)
                 .unlockedBy(getHasName(pPacked), has(pPacked))
                 .save(pRecipeOutput, TestingMod.MOD_ID+":"+pUnpackedName+"_from_"+pPackedName);
@@ -225,9 +230,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     //Standard Tool Recipes
-    protected static void swordRecipe (RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
-                                       ItemLike pMaterial, ItemLike tool, String name){
-        ShapedRecipeBuilder.shaped(recipeCategory, tool)
+    protected static void swordRecipe (RecipeOutput pRecipeOutput,
+                                       ItemLike pMaterial, ItemLike tool){
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, tool)
                 .pattern("#")
                 .pattern("#")
                 .pattern("I")
@@ -236,9 +241,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(pMaterial), has(pMaterial))
                 .save(pRecipeOutput);
     }
-    protected static void shovelRecipe (RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
-                                       ItemLike pMaterial, ItemLike tool, String name){
-        ShapedRecipeBuilder.shaped(recipeCategory, tool)
+    protected static void shovelRecipe (RecipeOutput pRecipeOutput,
+                                       ItemLike pMaterial, ItemLike tool){
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, tool)
                 .pattern("#")
                 .pattern("I")
                 .pattern("I")
@@ -247,9 +252,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(pMaterial), has(pMaterial))
                 .save(pRecipeOutput);
     }
-    protected static void pickaxeRecipe (RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
-                                       ItemLike pMaterial, ItemLike tool, String name){
-        ShapedRecipeBuilder.shaped(recipeCategory, tool)
+    protected static void pickaxeRecipe (RecipeOutput pRecipeOutput,
+                                       ItemLike pMaterial, ItemLike tool){
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, tool)
                 .pattern("###")
                 .pattern(" I ")
                 .pattern(" I ")
@@ -258,9 +263,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(pMaterial), has(pMaterial))
                 .save(pRecipeOutput);
     }
-    protected static void axeRecipe (RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
-                                      ItemLike pMaterial, ItemLike tool, String name){
-        ShapedRecipeBuilder.shaped(recipeCategory, tool)
+    protected static void axeRecipe (RecipeOutput pRecipeOutput,
+                                      ItemLike pMaterial, ItemLike tool){
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, tool)
                 .pattern("##")
                 .pattern("I#")
                 .pattern("I ")
@@ -269,14 +274,52 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(pMaterial), has(pMaterial))
                 .save(pRecipeOutput);
     }
-    protected static void hoeRecipe (RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
-                                       ItemLike pMaterial, ItemLike tool, String name){
-        ShapedRecipeBuilder.shaped(recipeCategory, tool)
+    protected static void hoeRecipe (RecipeOutput pRecipeOutput,
+                                       ItemLike pMaterial, ItemLike tool){
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, tool)
                 .pattern("##")
                 .pattern(" I")
                 .pattern(" I")
                 .define('#', pMaterial)
                 .define('I', Items.STICK)
+                .unlockedBy(getHasName(pMaterial), has(pMaterial))
+                .save(pRecipeOutput);
+    }
+    protected static void helmetRecipe(RecipeOutput pRecipeOutput,
+                                       ItemLike pMaterial, ItemLike armor){
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, armor)
+                .pattern("###")
+                .pattern("# #")
+                .define('#', pMaterial)
+                .unlockedBy(getHasName(pMaterial), has(pMaterial))
+                .save(pRecipeOutput);
+    }
+    protected static void chestplateRecipe(RecipeOutput pRecipeOutput,
+                                       ItemLike pMaterial, ItemLike armor){
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, armor)
+                .pattern("# #")
+                .pattern("###")
+                .pattern("###")
+                .define('#', pMaterial)
+                .unlockedBy(getHasName(pMaterial), has(pMaterial))
+                .save(pRecipeOutput);
+    }
+    protected static void leggingsRecipe(RecipeOutput pRecipeOutput,
+                                       ItemLike pMaterial, ItemLike armor){
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, armor)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("# #")
+                .define('#', pMaterial)
+                .unlockedBy(getHasName(pMaterial), has(pMaterial))
+                .save(pRecipeOutput);
+    }
+    protected static void bootsRecipe(RecipeOutput pRecipeOutput,
+                                       ItemLike pMaterial, ItemLike armor){
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, armor)
+                .pattern("# #")
+                .pattern("# #")
+                .define('#', pMaterial)
                 .unlockedBy(getHasName(pMaterial), has(pMaterial))
                 .save(pRecipeOutput);
     }

@@ -61,6 +61,15 @@ public class TestingMod {
 
     // ADD ITEMS TO CREATIVE MENU
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        //COMBAT TAB
+        if (event.getTabKey() == CreativeModeTabs.COMBAT){
+            event.accept(ModItems.URANIUM_SWORD);
+            event.accept(ModItems.URANIUM_AXE);
+            event.accept(ModItems.URANIUM_HELMET);
+            event.accept(ModItems.URANIUM_CHESTPLATE);
+            event.accept(ModItems.URANIUM_LEGGINGS);
+            event.accept(ModItems.URANIUM_BOOTS);
+        }
         //TOOLS TAB
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
             event.accept(ModItems.SCRUB_DADDY);
