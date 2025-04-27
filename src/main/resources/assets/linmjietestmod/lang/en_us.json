@@ -14,6 +14,13 @@
 
   "item.linmjietestmod.chisel": "Chisel",
 
+  "item.linmjietestmod.uranium_sword": "Radioactive Sword",
+  "item.linmjietestmod.uranium_shovel": "Radioactive Shovel",
+  "item.linmjietestmod.uranium_pickaxe": "Radioactive Pickaxe",
+  "item.linmjietestmod.uranium_axe": "Radioactive Axe",
+  "item.linmjietestmod.uranium_hoe": "Radioactive Hoe",
+  "item.linmjietestmod.uranium_plough": "Radioactive Plough",
+
 
 
   "block.linmjietestmod.soap_block": "Soap Block",

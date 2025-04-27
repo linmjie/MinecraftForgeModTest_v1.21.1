@@ -160,6 +160,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         trapdoorBuilder(ModBlocks.NEON_TRAPDOOR.get(), Ingredient.of(ModBlocks.NEON_BLOCK.get())).group("neon")
                 .unlockedBy(getHasName(ModBlocks.NEON_BLOCK.get()), has(ModBlocks.NEON_BLOCK.get())).save(pRecipeOutput);
 
+
+        swordRecipe(pRecipeOutput, RecipeCategory.TOOLS, ModItems.URANIUM.get(), ModItems.URANIUM_SWORD.get(), "uranium_sword");
+        shovelRecipe(pRecipeOutput, RecipeCategory.TOOLS, ModItems.URANIUM.get(), ModItems.URANIUM_SHOVEL.get(), "uranium_shovel");
+        pickaxeRecipe(pRecipeOutput, RecipeCategory.TOOLS, ModItems.URANIUM.get(), ModItems.URANIUM_PICKAXE.get(), "uranium_pickaxe");
+        axeRecipe(pRecipeOutput, RecipeCategory.TOOLS, ModItems.URANIUM.get(), ModItems.URANIUM_AXE.get(), "uranium_axe");
+        hoeRecipe(pRecipeOutput, RecipeCategory.TOOLS, ModItems.URANIUM.get(), ModItems.URANIUM_HOE.get(), "uranium_hoe");
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.URANIUM_PLOUGH.get())
+                .pattern("** ")
+                .pattern("*S ")
+                .pattern("  #")
+                .define('*', ModItems.URANIUM.get())
+                .define('S', ModItems.URANIUM_SHOVEL.get())
+                .define('#', Items.IRON_INGOT)
+                .unlockedBy(getHasName(ModItems.URANIUM_SHOVEL.get()), has(ModItems.URANIUM_SHOVEL.get()))
+                .save(pRecipeOutput);
     }
 
     //HELPER METHODS FOR STANDARDIZED RECIPE TYPES
@@ -208,6 +223,64 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
 
     }
+
+    //Standard Tool Recipes
+    protected static void swordRecipe (RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
+                                       ItemLike pMaterial, ItemLike tool, String name){
+        ShapedRecipeBuilder.shaped(recipeCategory, tool)
+                .pattern("#")
+                .pattern("#")
+                .pattern("I")
+                .define('#', pMaterial)
+                .define('I', Items.STICK)
+                .unlockedBy(getHasName(pMaterial), has(pMaterial))
+                .save(pRecipeOutput);
+    }
+    protected static void shovelRecipe (RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
+                                       ItemLike pMaterial, ItemLike tool, String name){
+        ShapedRecipeBuilder.shaped(recipeCategory, tool)
+                .pattern("#")
+                .pattern("I")
+                .pattern("I")
+                .define('#', pMaterial)
+                .define('I', Items.STICK)
+                .unlockedBy(getHasName(pMaterial), has(pMaterial))
+                .save(pRecipeOutput);
+    }
+    protected static void pickaxeRecipe (RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
+                                       ItemLike pMaterial, ItemLike tool, String name){
+        ShapedRecipeBuilder.shaped(recipeCategory, tool)
+                .pattern("###")
+                .pattern(" I ")
+                .pattern(" I ")
+                .define('#', pMaterial)
+                .define('I', Items.STICK)
+                .unlockedBy(getHasName(pMaterial), has(pMaterial))
+                .save(pRecipeOutput);
+    }
+    protected static void axeRecipe (RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
+                                      ItemLike pMaterial, ItemLike tool, String name){
+        ShapedRecipeBuilder.shaped(recipeCategory, tool)
+                .pattern("##")
+                .pattern("I#")
+                .pattern("I ")
+                .define('#', pMaterial)
+                .define('I', Items.STICK)
+                .unlockedBy(getHasName(pMaterial), has(pMaterial))
+                .save(pRecipeOutput);
+    }
+    protected static void hoeRecipe (RecipeOutput pRecipeOutput, RecipeCategory recipeCategory,
+                                       ItemLike pMaterial, ItemLike tool, String name){
+        ShapedRecipeBuilder.shaped(recipeCategory, tool)
+                .pattern("##")
+                .pattern(" I")
+                .pattern(" I")
+                .define('#', pMaterial)
+                .define('I', Items.STICK)
+                .unlockedBy(getHasName(pMaterial), has(pMaterial))
+                .save(pRecipeOutput);
+    }
+
 
     //thank you kaupenjoe <3
     protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,

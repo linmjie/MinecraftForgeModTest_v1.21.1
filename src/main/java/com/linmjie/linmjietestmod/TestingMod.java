@@ -66,6 +66,11 @@ public class TestingMod {
             event.accept(ModItems.SCRUB_DADDY);
             event.accept(ModItems.ADVANCED_SCRUB_DADDY);
             event.accept(ModItems.CHISEL);
+            event.accept(ModItems.URANIUM_SWORD);
+            event.accept(ModItems.URANIUM_SHOVEL);
+            event.accept(ModItems.URANIUM_PICKAXE);
+            event.accept(ModItems.URANIUM_AXE);
+            event.accept(ModItems.URANIUM_HOE);
         }
 
         //FOOD TAB

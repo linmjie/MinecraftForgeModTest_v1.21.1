@@ -28,6 +28,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAINBOW_SHARD.get());
                         output.accept(ModItems.RAINBOW_CANDY.get());
                         output.accept(ModItems.URANIUM.get());
+                        output.accept(ModItems.URANIUM_SWORD.get());
+                        output.accept(ModItems.URANIUM_SHOVEL.get());
+                        output.accept(ModItems.URANIUM_PICKAXE.get());
+                        output.accept(ModItems.URANIUM_AXE.get());
+                        output.accept(ModItems.URANIUM_HOE.get());
 
                     }).build());
 

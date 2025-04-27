@@ -1,13 +1,13 @@
 package com.linmjie.linmjietestmod.item;
 
 import com.linmjie.linmjietestmod.TestingMod;
+import com.linmjie.linmjietestmod.item.custom.AdvancedShovelItem;
 import com.linmjie.linmjietestmod.item.custom.ChiselItem;
 import com.linmjie.linmjietestmod.item.custom.CleaningItem;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -30,6 +30,26 @@ public class ModItems {
 
     public static final RegistryObject<Item> URANIUM = ITEMS.register("uranium",
             () -> new FuelItem(new Item.Properties(), 3600));
+
+    public static final RegistryObject<Item> URANIUM_SWORD = ITEMS.register("uranium_sword",
+            () -> new SwordItem(ModToolTiers.URANIUM, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(ModToolTiers.URANIUM, 3, -2.4F))));
+    public static final RegistryObject<Item> URANIUM_PICKAXE = ITEMS.register("uranium_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.URANIUM, new Item.Properties()
+                    .attributes(PickaxeItem.createAttributes(ModToolTiers.URANIUM, 1, -2.8F))));
+    public static final RegistryObject<Item> URANIUM_SHOVEL = ITEMS.register("uranium_shovel",
+            () -> new ShovelItem(ModToolTiers.URANIUM, new Item.Properties()
+                    .attributes(ShovelItem.createAttributes(ModToolTiers.URANIUM, 1.5F, -3.0F))));
+    public static final RegistryObject<Item> URANIUM_AXE = ITEMS.register("uranium_axe",
+            () -> new AxeItem(ModToolTiers.URANIUM, new Item.Properties()
+                    .attributes(AxeItem.createAttributes(ModToolTiers.URANIUM, 6, -3.2F))));
+    public static final RegistryObject<Item> URANIUM_HOE = ITEMS.register("uranium_hoe",
+            () -> new HoeItem(ModToolTiers.URANIUM, new Item.Properties()
+                    .attributes(HoeItem.createAttributes(ModToolTiers.URANIUM, 0, -3.0F))));
+
+    public static final RegistryObject<Item> URANIUM_PLOUGH = ITEMS.register("uranium_plough",
+            () -> new AdvancedShovelItem(ModToolTiers.URANIUM, new Item.Properties()
+                    .attributes(ShovelItem.createAttributes(ModToolTiers.URANIUM, 3F, -3.5F))));
 
     public static final RegistryObject<Item> RAINBOW_SHARD = ITEMS.register("rainbow_shard",
             () -> new Item(new Item.Properties().food((ModFoodProperties.RAINBOW_SHARD))){
