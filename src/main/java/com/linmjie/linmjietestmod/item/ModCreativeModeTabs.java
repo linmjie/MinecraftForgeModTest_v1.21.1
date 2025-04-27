@@ -40,6 +40,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.URANIUM_CHESTPLATE.get());
                         output.accept(ModItems.URANIUM_LEGGINGS.get());
                         output.accept(ModItems.URANIUM_BOOTS.get());
+                        output.accept(ModItems.NETHERITE_HORSE_ARMOR.get());
 
                     }).build());
 

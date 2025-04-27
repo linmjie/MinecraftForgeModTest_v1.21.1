@@ -74,6 +74,7 @@ public class TestingMod {
             event.accept(ModItems.URANIUM_CHESTPLATE);
             event.accept(ModItems.URANIUM_LEGGINGS);
             event.accept(ModItems.URANIUM_BOOTS);
+            event.accept(ModItems.NETHERITE_HORSE_ARMOR);
         }
         //TOOLS TAB
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){

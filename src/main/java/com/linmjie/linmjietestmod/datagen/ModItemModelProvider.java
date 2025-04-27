@@ -67,6 +67,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.URANIUM_LEGGINGS);
         trimmedArmorItem(ModItems.URANIUM_BOOTS);
 
+        basicItem(ModItems.NETHERITE_HORSE_ARMOR.get());
+
         buttonItem(ModBlocks.NEON_BUTTON, ModBlocks.NEON_BLOCK);
         fenceItem(ModBlocks.NEON_FENCE, ModBlocks.NEON_BLOCK);
         wallItem(ModBlocks.NEON_WALL, ModBlocks.NEON_BRICKS);

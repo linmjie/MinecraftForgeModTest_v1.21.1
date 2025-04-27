@@ -29,6 +29,10 @@ public class ModItems {
     public static final RegistryObject<Item> CONDENSED_SOAP = ITEMS.register("condensed_soap",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> NETHERITE_HORSE_ARMOR = ITEMS.register("netherite_horse_armor",
+            () -> new AnimalArmorItem(ModArmorMaterials.NETHERITE, AnimalArmorItem.BodyType.EQUESTRIAN
+                    ,false, new Item.Properties().stacksTo(1)));
+
     public static final RegistryObject<Item> URANIUM = ITEMS.register("uranium",
             () -> new FuelItem(new Item.Properties(), 3600));
 

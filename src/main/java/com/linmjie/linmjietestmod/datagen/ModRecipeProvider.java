@@ -180,6 +180,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         chestplateRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_CHESTPLATE.get());
         leggingsRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_LEGGINGS.get());
         bootsRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_BOOTS.get());
+
+        netheriteSmithing(pRecipeOutput, Items.DIAMOND_HORSE_ARMOR, RecipeCategory.COMBAT, ModItems.NETHERITE_HORSE_ARMOR.get());
     }
 
     //HELPER METHODS FOR STANDARDIZED RECIPE TYPES
