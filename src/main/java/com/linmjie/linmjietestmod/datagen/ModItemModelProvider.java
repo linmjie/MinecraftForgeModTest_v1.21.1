@@ -54,6 +54,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.RAINBOW_SHARD.get());
         basicItem(ModItems.RAINBOW_CANDY.get());
         basicItem(ModItems.URANIUM.get());
+        basicItem(ModItems.I_DO_MUSIC_DISC.get());
 
         handheldItem(ModItems.URANIUM_SWORD);
         handheldItem(ModItems.URANIUM_SHOVEL);

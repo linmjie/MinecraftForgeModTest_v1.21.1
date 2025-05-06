@@ -6,6 +6,7 @@ import com.linmjie.linmjietestmod.effect.ModEffects;
 import com.linmjie.linmjietestmod.item.ModCreativeModeTabs;
 import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.potions.ModPotions;
+import com.linmjie.linmjietestmod.sound.ModSounds;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -52,6 +53,8 @@ public class TestingMod {
 
         ModDataComponentTypes.register(modEventBus);
 
+        ModSounds.register(modEventBus);
+
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -78,6 +81,7 @@ public class TestingMod {
         }
         //TOOLS TAB
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
+            event.accept(ModItems.I_DO_MUSIC_DISC);
             event.accept(ModItems.SCRUB_DADDY);
             event.accept(ModItems.ADVANCED_SCRUB_DADDY);
             event.accept(ModItems.CHISEL);

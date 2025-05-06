@@ -5,6 +5,7 @@ import com.linmjie.linmjietestmod.item.custom.AdvancedShovelItem;
 import com.linmjie.linmjietestmod.item.custom.ChiselItem;
 import com.linmjie.linmjietestmod.item.custom.CleaningItem;
 import com.linmjie.linmjietestmod.item.custom.ModArmorItem;
+import com.linmjie.linmjietestmod.sound.ModSounds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -111,6 +112,9 @@ public class ModItems {
     public static final RegistryObject<Item> CHISEL = ITEMS.register("chisel",
             () -> new ChiselItem(new Item.Properties().durability(32)));
 
+
+    public static final RegistryObject<Item> I_DO_MUSIC_DISC = ITEMS.register("i_do_music_disc",
+            () -> new Item(new Item.Properties().jukeboxPlayable(ModSounds.I_DO_KEY).stacksTo(1).rarity(Rarity.RARE)));
     //REGISTRIES END
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

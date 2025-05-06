@@ -1,0 +1,10 @@
+{
+  "i_do": {
+    "sounds": [
+      {
+        "name": "linmjietestmod:i_do",
+        "stream": true
+      }
+    ]
+  }
+}

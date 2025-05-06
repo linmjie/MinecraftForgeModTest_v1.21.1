@@ -41,7 +41,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.URANIUM_LEGGINGS.get());
                         output.accept(ModItems.URANIUM_BOOTS.get());
                         output.accept(ModItems.NETHERITE_HORSE_ARMOR.get());
-
+                        output.accept(ModItems.I_DO_MUSIC_DISC.get());
                     }).build());
 
     public static final RegistryObject<CreativeModeTab> TESTMOD_BLOCKS_TAB = CREATIVE_MODE_TABS.register("testmod_blocks_tab",
