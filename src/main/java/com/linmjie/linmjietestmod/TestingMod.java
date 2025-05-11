@@ -7,6 +7,7 @@ import com.linmjie.linmjietestmod.item.ModCreativeModeTabs;
 import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.potions.ModPotions;
 import com.linmjie.linmjietestmod.sound.ModSounds;
+import com.linmjie.linmjietestmod.util.ModItemProperties;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -78,6 +79,7 @@ public class TestingMod {
             event.accept(ModItems.URANIUM_LEGGINGS);
             event.accept(ModItems.URANIUM_BOOTS);
             event.accept(ModItems.NETHERITE_HORSE_ARMOR);
+            event.accept(ModItems.REPEATER);
         }
         //TOOLS TAB
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
@@ -147,6 +149,7 @@ public class TestingMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            ModItemProperties.addCustomItemProperties();
         }
     }
 }

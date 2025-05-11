@@ -20,7 +20,8 @@ public class ModArmorItem extends ArmorItem {
             (new ImmutableMap.Builder<Holder<ArmorMaterial>, List<MobEffectInstance>>())
                     .put(ModArmorMaterials.URANIUM_ARMOR_MATERIAL,
                             List.of(new MobEffectInstance(ModEffects.RADIATED_EFFECT.getHolder().get(), 100, 0, false, false),
-                                    new MobEffectInstance(MobEffects.WEAKNESS, 100, 0, false, false)))
+                                    new MobEffectInstance(MobEffects.WEAKNESS, 100, 0, false, false),
+                                    new MobEffectInstance(MobEffects.GLOWING, 100, 0, false, false)))
                     .build();
 
     public ModArmorItem(Holder<ArmorMaterial> material, Type type, Properties properties) {

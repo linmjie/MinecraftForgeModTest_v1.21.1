@@ -161,6 +161,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModBlocks.NEON_BLOCK.get()), has(ModBlocks.NEON_BLOCK.get())).save(pRecipeOutput);
 
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.REPEATER.get(),1)
+                .pattern("INI")
+                .pattern("I$I")
+                .pattern(" U ")
+                .define('I', Items.STICK)
+                .define('N', Items.NETHERITE_INGOT)
+                .define('$', Items.TRIPWIRE_HOOK)
+                .define('U', ModItems.URANIUM.get())
+                .unlockedBy(getHasName(ModItems.URANIUM.get()), has(ModItems.URANIUM.get()))
+                .save(pRecipeOutput);
         swordRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_SWORD.get());
         shovelRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_SHOVEL.get());
         pickaxeRecipe(pRecipeOutput, ModItems.URANIUM.get(), ModItems.URANIUM_PICKAXE.get());

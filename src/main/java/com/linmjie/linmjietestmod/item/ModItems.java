@@ -1,15 +1,13 @@
 package com.linmjie.linmjietestmod.item;
 
 import com.linmjie.linmjietestmod.TestingMod;
-import com.linmjie.linmjietestmod.item.custom.AdvancedShovelItem;
-import com.linmjie.linmjietestmod.item.custom.ChiselItem;
-import com.linmjie.linmjietestmod.item.custom.CleaningItem;
-import com.linmjie.linmjietestmod.item.custom.ModArmorItem;
+import com.linmjie.linmjietestmod.item.custom.*;
 import com.linmjie.linmjietestmod.sound.ModSounds;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.ChargedProjectiles;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -35,7 +33,7 @@ public class ModItems {
                     ,false, new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> URANIUM = ITEMS.register("uranium",
-            () -> new FuelItem(new Item.Properties(), 3600));
+            () -> new FuelItem(new Item.Properties().food(ModFoodProperties.URANIUM), 3600));
 
     public static final RegistryObject<Item> URANIUM_HELMET = ITEMS.register("uranium_helmet",
             () -> new ModArmorItem(ModArmorMaterials.URANIUM_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
@@ -69,6 +67,8 @@ public class ModItems {
             pTooltipComponents.add(Component.translatable("tooltip.linmjietestmod.radioactive_armor_tooltip"));
             super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
         }});
+    public static final RegistryObject<Item> REPEATER = ITEMS.register("repeater",
+            () -> new AdvancedCrossbowItem(new Item.Properties().durability(500).component(DataComponents.CHARGED_PROJECTILES, ChargedProjectiles.EMPTY)));
     public static final RegistryObject<Item> URANIUM_SWORD = ITEMS.register("uranium_sword",
             () -> new SwordItem(ModToolTiers.URANIUM, new Item.Properties()
                     .attributes(SwordItem.createAttributes(ModToolTiers.URANIUM, 3, -2.4F))));

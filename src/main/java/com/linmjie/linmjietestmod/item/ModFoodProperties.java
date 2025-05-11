@@ -1,5 +1,6 @@
 package com.linmjie.linmjietestmod.item;
 
+import com.linmjie.linmjietestmod.effect.ModEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -20,4 +21,8 @@ public class ModFoodProperties {
             .effect(new MobEffectInstance(MobEffects.LUCK, 10080, 4), 1.0F)
             .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 1200), 0.67F)
             .usingConvertsTo(Items.STICK).alwaysEdible().build();
+    public static final FoodProperties URANIUM = new FoodProperties.Builder().nutrition(7).saturationModifier(0.8F)
+            .effect(new MobEffectInstance(MobEffects.HARM, 1, 12), 1.0F)
+            .effect(new MobEffectInstance(ModEffects.RADIATED_EFFECT.getHolder().get(), 2000, 1), 1.0F)
+            .alwaysEdible().build();
 }

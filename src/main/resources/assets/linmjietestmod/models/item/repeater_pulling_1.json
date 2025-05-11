@@ -1,0 +1,6 @@
+{
+    "parent": "linmjietestmod:item/repeater",
+    "textures": {
+        "layer0": "linmjietestmod:item/repeater_pulling_1"
+    }
+}

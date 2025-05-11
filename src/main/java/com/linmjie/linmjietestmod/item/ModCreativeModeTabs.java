@@ -2,12 +2,10 @@ package com.linmjie.linmjietestmod.item;
 
 import com.linmjie.linmjietestmod.TestingMod;
 import com.linmjie.linmjietestmod.block.ModBlocks;
-import com.linmjie.linmjietestmod.potions.ModPotions;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -42,6 +40,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.URANIUM_BOOTS.get());
                         output.accept(ModItems.NETHERITE_HORSE_ARMOR.get());
                         output.accept(ModItems.I_DO_MUSIC_DISC.get());
+                        output.accept(ModItems.REPEATER.get());
                     }).build());
 
     public static final RegistryObject<CreativeModeTab> TESTMOD_BLOCKS_TAB = CREATIVE_MODE_TABS.register("testmod_blocks_tab",
