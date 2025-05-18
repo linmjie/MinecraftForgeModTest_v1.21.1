@@ -82,6 +82,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> DEEPSLATE_URANIUM_ORE = registerBlock("deepslate_uranium_ore",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(7.5F).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+    public static final RegistryObject<Block> END_URANIUM_ORE = registerBlock("end_uranium_ore",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(7.5F).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
     public static final RegistryObject<Block> URANIUM_BLOCK = registerBlock("uranium_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(5F).requiresCorrectToolForDrops()));

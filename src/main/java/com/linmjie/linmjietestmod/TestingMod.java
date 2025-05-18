@@ -138,6 +138,7 @@ public class TestingMod {
         if(event.getTabKey()==CreativeModeTabs.NATURAL_BLOCKS){
             event.accept(ModBlocks.URANIUM_ORE);
             event.accept(ModBlocks.DEEPSLATE_URANIUM_ORE);
+            event.accept(ModBlocks.END_URANIUM_ORE);
         }
     }
 

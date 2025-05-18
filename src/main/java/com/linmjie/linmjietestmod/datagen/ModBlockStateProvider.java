@@ -28,6 +28,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.URANIUM_BLOCK);
         blockWithItem(ModBlocks.DEEPSLATE_URANIUM_ORE);
         blockWithItem(ModBlocks.URANIUM_ORE);
+        blockWithItem(ModBlocks.END_URANIUM_ORE);
+        blockWithItem(ModBlocks.CONDENSED_SOAP_BLOCK);
 
         blockWithItemAndRenderType(ModBlocks.NEON_HOLE_BLOCK, "minecraft:cutout");
 
@@ -55,7 +57,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.NEON_TRAPDOOR, "_bottom");
 
 
-        blockWithItem(ModBlocks.CONDENSED_SOAP_BLOCK);
+
 
     }
 

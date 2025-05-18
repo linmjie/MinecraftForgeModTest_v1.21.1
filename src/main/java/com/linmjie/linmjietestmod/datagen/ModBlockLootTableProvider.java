@@ -58,7 +58,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                         ModItems.URANIUM.get()));
         this.add(ModBlocks.DEEPSLATE_URANIUM_ORE.get(),
                 block -> (createMultiOreDrops(ModBlocks.DEEPSLATE_URANIUM_ORE.get(),
-                        ModItems.URANIUM.get(), 2F, 4F)));
+                        ModItems.URANIUM.get(), 1F, 3F)));
+        this.add(ModBlocks.END_URANIUM_ORE.get(),
+                block -> (createMultiOreDrops(ModBlocks.END_URANIUM_ORE.get(),
+                        ModItems.URANIUM.get(), 1F, 4F)));
     }
 
 
