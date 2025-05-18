@@ -3,9 +3,11 @@ package com.linmjie.linmjietestmod.util;
 import com.linmjie.linmjietestmod.TestingMod;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 
 public class ModTags {
@@ -24,6 +26,14 @@ public class ModTags {
 
         private static net.minecraft.tags.TagKey<Item> createTag(String name){
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, name));
+        }
+    }
+
+    public static class Enchantments{
+        public static final TagKey<Enchantment> MOB_EFFECT_APPLIER_EXCLUSIVE = createTag("exclusive_set/mob_effect_applier");
+
+        private static net.minecraft.tags.TagKey<Enchantment> createTag(String name){
+            return EnchantmentTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", name));
         }
     }
 }

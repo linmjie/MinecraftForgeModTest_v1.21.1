@@ -65,6 +65,10 @@
   "item.minecraft.potion.effect.radiated_potion": "Potion of Radiation",
   "item.minecraft.splash_potion.effect.radiated_potion": "Splash Potion of Radiation",
   "item.minecraft.lingering_potion.effect.radiated_potion": "Lingering Potion of Radiation ",
+  "item.minecraft.tipped_arrow.effect.radiated_potion": "Arrow of Radiation",
+
+  "enchantment.linmjietestmod.dolphin_spawner": "Dolphin Summoner",
+  "enchantment.linmjietestmod.radiator": "Radiator",
 
   "creativetab.linmjietestmod.testmod_items": "Sigma Items",
   "creativetab.linmjietestmod.testmod_blocks": "Sigma Blocks",

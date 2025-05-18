@@ -3,6 +3,7 @@ package com.linmjie.linmjietestmod;
 import com.linmjie.linmjietestmod.block.ModBlocks;
 import com.linmjie.linmjietestmod.component.ModDataComponentTypes;
 import com.linmjie.linmjietestmod.effect.ModEffects;
+import com.linmjie.linmjietestmod.enchantment.ModEnchantmentsEffects;
 import com.linmjie.linmjietestmod.item.ModCreativeModeTabs;
 import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.potions.ModPotions;
@@ -55,6 +56,8 @@ public class TestingMod {
         ModDataComponentTypes.register(modEventBus);
 
         ModSounds.register(modEventBus);
+
+        ModEnchantmentsEffects.register(modEventBus);
 
 
         // Register the item to a creative tab
