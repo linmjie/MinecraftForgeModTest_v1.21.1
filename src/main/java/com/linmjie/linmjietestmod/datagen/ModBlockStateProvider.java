@@ -5,7 +5,6 @@ import com.linmjie.linmjietestmod.block.ModBlocks;
 import com.linmjie.linmjietestmod.block.custom.ShinyNeonBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
@@ -56,9 +55,31 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.NEON_FENCE_GATE);
         blockItem(ModBlocks.NEON_TRAPDOOR, "_bottom");
 
+        logBlock(ModBlocks.FIR_LOG.get());
+        axisBlock(ModBlocks.FIR_WOOD.get(), blockTexture(ModBlocks.FIR_LOG.get()), blockTexture(ModBlocks.FIR_LOG.get()));
+        logBlock(ModBlocks.STRIPPED_FIR_LOG.get());
+        axisBlock(ModBlocks.STRIPPED_FIR_WOOD.get(), blockTexture(ModBlocks.STRIPPED_FIR_LOG.get()), blockTexture(ModBlocks.STRIPPED_FIR_LOG.get()));
 
+        blockItem(ModBlocks.FIR_LOG);
+        blockItem(ModBlocks.FIR_WOOD);
+        blockItem(ModBlocks.STRIPPED_FIR_LOG);
+        blockItem(ModBlocks.STRIPPED_FIR_WOOD);
 
+        blockWithItem(ModBlocks.FIR_PLANKS);
 
+        leavesBlock(ModBlocks.FIR_LEAVES);
+        saplingBlock(ModBlocks.FIR_SAPLING);
+    }
+
+    private void saplingBlock(RegistryObject<Block> blockRegistryObject) {
+        simpleBlock(blockRegistryObject.get(),
+                models().cross(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(), blockTexture(blockRegistryObject.get())).renderType("cutout"));
+    }
+
+    private void leavesBlock(RegistryObject<Block> blockRegistryObject) {
+        simpleBlockWithItem(blockRegistryObject.get(),
+                models().singleTexture(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(), ResourceLocation.parse("minecraft:block/leaves"),
+                        "all", blockTexture(blockRegistryObject.get())).renderType("cutout"));
     }
 
     private void shinyNeonBlockWithItem(Block block, String litBlockString, String unlitBlockString) {

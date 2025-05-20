@@ -72,5 +72,15 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .addTag(ModTags.Blocks.NEEDS_NETHERITE_TOOL)
                 .addTag(ModTags.Blocks.NEEDS_URANIUM_TOOL);
 
+        this.tag(BlockTags.LOGS_THAT_BURN)
+                .add(ModBlocks.FIR_LOG.get())
+                .add(ModBlocks.FIR_WOOD.get())
+                .add(ModBlocks.STRIPPED_FIR_LOG.get())
+                .add(ModBlocks.STRIPPED_FIR_WOOD.get());
+        tag(ModTags.Blocks.FIR_LOGS)
+                .add(ModBlocks.FIR_LOG.get())
+                .add(ModBlocks.FIR_WOOD.get())
+                .add(ModBlocks.STRIPPED_FIR_LOG.get())
+                .add(ModBlocks.STRIPPED_FIR_WOOD.get());
     }
 }

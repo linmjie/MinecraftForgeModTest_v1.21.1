@@ -68,8 +68,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.NEON_DOOR.get());
                         output.accept(ModBlocks.NEON_TRAPDOOR.get());
                         output.accept(ModBlocks.SHINY_NEON_BLOCK.get());
-
-
+                        output.accept(ModBlocks.FIR_LOG.get());
+                        output.accept(ModBlocks.FIR_WOOD.get());
+                        output.accept(ModBlocks.STRIPPED_FIR_LOG.get());
+                        output.accept(ModBlocks.STRIPPED_FIR_WOOD.get());
+                        output.accept(ModBlocks.FIR_PLANKS.get());
+                        output.accept(ModBlocks.FIR_SAPLING.get());
+                        output.accept(ModBlocks.FIR_LEAVES.get());
                     }).build());
 
 

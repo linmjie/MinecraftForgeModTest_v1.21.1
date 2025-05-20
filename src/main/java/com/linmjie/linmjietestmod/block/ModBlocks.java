@@ -1,14 +1,20 @@
 package com.linmjie.linmjietestmod.block;
 
 import com.linmjie.linmjietestmod.TestingMod;
+import com.linmjie.linmjietestmod.block.custom.ModFlammableRotatedPillarBlock;
 import com.linmjie.linmjietestmod.block.custom.NeonTransposerBlock;
 import com.linmjie.linmjietestmod.block.custom.ShinyNeonBlock;
 import com.linmjie.linmjietestmod.item.ModItems;
+import com.linmjie.linmjietestmod.worldgen.tree.ModTreeGrowers;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -88,6 +94,56 @@ public class ModBlocks {
     public static final RegistryObject<Block> URANIUM_BLOCK = registerBlock("uranium_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(5F).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<RotatedPillarBlock> FIR_LOG = registerBlock("fir_log",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)));
+    public static final RegistryObject<RotatedPillarBlock> FIR_WOOD = registerBlock("fir_wood",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
+    public static final RegistryObject<RotatedPillarBlock> STRIPPED_FIR_LOG = registerBlock("stripped_fir_log",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG)));
+    public static final RegistryObject<RotatedPillarBlock> STRIPPED_FIR_WOOD = registerBlock("stripped_fir_wood",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)));
+
+    public static final RegistryObject<Block> FIR_PLANKS = registerBlock("fir_planks",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)) {
+                @Override
+                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return true;
+                }
+
+                @Override
+                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 20;
+                }
+
+                @Override
+                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 5;
+                }
+            });
+
+    public static final RegistryObject<Block> FIR_LEAVES = registerBlock("fir_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)) {
+                @Override
+                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return true;
+                }
+
+                @Override
+                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 60;
+                }
+
+                @Override
+                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 30;
+                }
+            });
+
+    public static final RegistryObject<Block> FIR_SAPLING = registerBlock("fir_sapling",
+            () -> new SaplingBlock(ModTreeGrowers.FIR, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
+
+
     //BLOCK REGISTRIES END
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){

@@ -1,6 +1,7 @@
 package com.linmjie.linmjietestmod.datagen;
 
 import com.linmjie.linmjietestmod.TestingMod;
+import com.linmjie.linmjietestmod.block.ModBlocks;
 import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.util.ModTags;
 import net.minecraft.core.HolderLookup;
@@ -29,5 +30,17 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.URANIUM_CHESTPLATE.get())
                 .add(ModItems.URANIUM_LEGGINGS.get())
                 .add(ModItems.URANIUM_BOOTS.get());
+        tag(ItemTags.LOGS_THAT_BURN)
+                .add(ModBlocks.FIR_LOG.get().asItem())
+                .add(ModBlocks.FIR_WOOD.get().asItem())
+                .add(ModBlocks.STRIPPED_FIR_LOG.get().asItem())
+                .add(ModBlocks.STRIPPED_FIR_WOOD.get().asItem());
+        tag(ItemTags.PLANKS)
+                .add(ModBlocks.FIR_PLANKS.get().asItem());
+        tag(ModTags.Items.FIR_LOGS)
+                .add(ModBlocks.FIR_LOG.get().asItem())
+                .add(ModBlocks.FIR_WOOD.get().asItem())
+                .add(ModBlocks.STRIPPED_FIR_LOG.get().asItem())
+                .add(ModBlocks.STRIPPED_FIR_WOOD.get().asItem());
     }
 }

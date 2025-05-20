@@ -1,9 +1,12 @@
 package com.linmjie.linmjietestmod.worldgen;
 
 import com.linmjie.linmjietestmod.TestingMod;
+import com.linmjie.linmjietestmod.block.ModBlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -23,6 +26,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> END_URANIUM_ORE_PLACED_KEY = registerKey("end_uranium_ore_placed");
     public static final ResourceKey<PlacedFeature> END_URANIUM_ORE_PLACED_LARGE_KEY = registerKey("end_uranium_ore_large_placed");
 
+    public static final ResourceKey<PlacedFeature> FIR_PLACED_KEY = registerKey("fir_placed");
+
     public static void bootstrap(BootstrapContext<PlacedFeature> context){
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
@@ -39,6 +44,10 @@ public class ModPlacedFeatures {
         register(context, END_URANIUM_ORE_PLACED_LARGE_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.END_URANIUM_ORE_LARGE_KEY),
                 ModOrePlacement.commonOrePlacement(12,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(50))));
+
+        register(context, FIR_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.FIR_KEY),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.1F, 2),
+                        ModBlocks.FIR_SAPLING.get()));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name){

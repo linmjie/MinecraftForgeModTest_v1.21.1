@@ -8,6 +8,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
@@ -159,6 +160,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModBlocks.NEON_BLOCK.get()), has(ModBlocks.NEON_BLOCK.get())).save(pRecipeOutput);
         trapdoorBuilder(ModBlocks.NEON_TRAPDOOR.get(), Ingredient.of(ModBlocks.NEON_BLOCK.get())).group("neon")
                 .unlockedBy(getHasName(ModBlocks.NEON_BLOCK.get()), has(ModBlocks.NEON_BLOCK.get())).save(pRecipeOutput);
+
+        planksFromLogs(pRecipeOutput, ModBlocks.FIR_PLANKS.get(), ModTags.Items.FIR_LOGS, 4);
+        woodFromLogs(pRecipeOutput, ModBlocks.FIR_WOOD.get(), ModBlocks.FIR_LOG.get());
+        woodFromLogs(pRecipeOutput, ModBlocks.STRIPPED_FIR_WOOD.get(), ModBlocks.STRIPPED_FIR_LOG.get());
 
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.REPEATER.get(),1)

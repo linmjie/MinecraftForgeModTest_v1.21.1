@@ -50,6 +50,16 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 block -> createDoorTable(ModBlocks.NEON_DOOR.get()));
         dropSelf(ModBlocks.NEON_TRAPDOOR.get());
 
+        this.dropSelf(ModBlocks.FIR_LOG.get());
+        this.dropSelf(ModBlocks.FIR_WOOD.get());
+        this.dropSelf(ModBlocks.STRIPPED_FIR_LOG.get());
+        this.dropSelf(ModBlocks.STRIPPED_FIR_WOOD.get());
+        this.dropSelf(ModBlocks.FIR_PLANKS.get());
+        this.dropSelf(ModBlocks.FIR_SAPLING.get());
+
+        this.add(ModBlocks.FIR_LEAVES.get(), block ->
+                createLeavesDrops(block, ModBlocks.FIR_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+
 
 
 

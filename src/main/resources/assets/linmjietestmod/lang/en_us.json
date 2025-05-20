@@ -59,6 +59,14 @@
   "block.linmjietestmod.neon_door": "Neon Door",
   "block.linmjietestmod.neon_trapdoor": "Neon Trapdoor",
 
+  "block.linmjietestmod.fir_log": "Fir Log",
+  "block.linmjietestmod.fir_wood": "Fir Wood",
+  "block.linmjietestmod.stripped_fir_log": "Stripped Fir Log",
+  "block.linmjietestmod.stripped_fir_wood": "Stripped Fir Wood",
+  "block.linmjietestmod.fir_planks": "Fir Planks",
+  "block.linmjietestmod.fir_leaves": "Fir Leaves",
+  "block.linmjietestmod.fir_sapling": "Fir Sapling",
+
 
 
   "effect.linmjietestmod.radiated": "Radiated",
