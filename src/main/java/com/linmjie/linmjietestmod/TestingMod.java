@@ -4,12 +4,17 @@ import com.linmjie.linmjietestmod.block.ModBlocks;
 import com.linmjie.linmjietestmod.component.ModDataComponentTypes;
 import com.linmjie.linmjietestmod.effect.ModEffects;
 import com.linmjie.linmjietestmod.enchantment.ModEnchantmentsEffects;
+import com.linmjie.linmjietestmod.entity.ModEntities;
+import com.linmjie.linmjietestmod.entity.client.EvanRenderer;
+import com.linmjie.linmjietestmod.entity.custom.EvanEntity;
 import com.linmjie.linmjietestmod.item.ModCreativeModeTabs;
 import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.potions.ModPotions;
 import com.linmjie.linmjietestmod.sound.ModSounds;
 import com.linmjie.linmjietestmod.util.ModItemProperties;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -59,6 +64,8 @@ public class TestingMod {
 
         ModEnchantmentsEffects.register(modEventBus);
 
+        ModEntities.register(modEventBus);
+
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -73,6 +80,9 @@ public class TestingMod {
 
     // ADD ITEMS TO CREATIVE MENU
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS){
+            event.accept(ModItems.BETA_EVAN_SPAWN_EGG);
+        }
         //COMBAT TAB
         if (event.getTabKey() == CreativeModeTabs.COMBAT){
             event.accept(ModItems.URANIUM_SWORD);
@@ -80,6 +90,7 @@ public class TestingMod {
             event.accept(ModItems.URANIUM_HELMET);
             event.accept(ModItems.URANIUM_CHESTPLATE);
             event.accept(ModItems.URANIUM_LEGGINGS);
+            event.accept(ModItems.BANANA_BOOTS);
             event.accept(ModItems.URANIUM_BOOTS);
             event.accept(ModItems.NETHERITE_HORSE_ARMOR);
             event.accept(ModItems.REPEATER);
@@ -98,6 +109,7 @@ public class TestingMod {
 
         //FOOD TAB
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
+            event.accept(ModItems.BANANA);
             event.accept(ModItems.RAINBOW_SHARD);
             event.accept(ModItems.RAINBOW_CANDY);
         }
@@ -154,6 +166,7 @@ public class TestingMod {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             ModItemProperties.addCustomItemProperties();
+            EntityRenderers.register(ModEntities.BETA_EVAN.get(), EvanRenderer::new);
         }
     }
 }

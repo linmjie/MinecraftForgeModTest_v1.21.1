@@ -22,6 +22,8 @@ public class ModArmorItem extends ArmorItem {
                             List.of(new MobEffectInstance(ModEffects.RADIATED_EFFECT.getHolder().get(), 100, 0, false, false),
                                     new MobEffectInstance(MobEffects.WEAKNESS, 100, 0, false, false),
                                     new MobEffectInstance(MobEffects.GLOWING, 100, 0, false, false)))
+                    .put(ModArmorMaterials.BANANA_ARMOR_MATERIAL,
+                            List.of(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1, false, false)))
                     .build();
 
     public ModArmorItem(Holder<ArmorMaterial> material, Type type, Properties properties) {

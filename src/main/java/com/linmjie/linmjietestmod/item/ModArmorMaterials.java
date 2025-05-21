@@ -27,6 +27,14 @@ public class ModArmorMaterials {
                 attribute.put(ArmorItem.Type.HELMET, 3);
                 attribute.put(ArmorItem.Type.BODY, 11);
             }), 18, 4f, 0.1f, () -> ModItems.URANIUM.get());
+    public static final Holder<ArmorMaterial> BANANA_ARMOR_MATERIAL = register("banana", Util.make(new EnumMap<>(ArmorItem.Type.class),
+            attribute -> {
+                attribute.put(ArmorItem.Type.BOOTS, 1);
+                attribute.put(ArmorItem.Type.LEGGINGS, 2);
+                attribute.put(ArmorItem.Type.CHESTPLATE, 3);
+                attribute.put(ArmorItem.Type.HELMET, 1);
+                attribute.put(ArmorItem.Type.BODY, 3);
+            }), 18, 0f, 0f, () -> ModItems.BANANA.get());
     public static final Holder<ArmorMaterial> NETHERITE = register("netherite", Util.make(new EnumMap<>(ArmorItem.Type.class),
             attribute -> {
                 attribute.put(ArmorItem.Type.BOOTS, 3);

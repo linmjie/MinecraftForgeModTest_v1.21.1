@@ -13,9 +13,7 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.heightproviders.TrapezoidHeight;
 import net.minecraft.world.level.levelgen.heightproviders.VeryBiasedToBottomHeight;
-import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
@@ -27,6 +25,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> END_URANIUM_ORE_PLACED_LARGE_KEY = registerKey("end_uranium_ore_large_placed");
 
     public static final ResourceKey<PlacedFeature> FIR_PLACED_KEY = registerKey("fir_placed");
+
+    public static final ResourceKey<PlacedFeature> BANANA_BERRY_BUSH_KEY = registerKey("banana_berry_bush");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context){
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -48,6 +48,9 @@ public class ModPlacedFeatures {
         register(context, FIR_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.FIR_KEY),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.1F, 2),
                         ModBlocks.FIR_SAPLING.get()));
+
+        register(context, BANANA_BERRY_BUSH_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.BANANA_BERRY_BUSH_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(48), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name){

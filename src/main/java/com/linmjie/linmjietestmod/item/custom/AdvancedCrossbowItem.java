@@ -60,7 +60,7 @@ public class AdvancedCrossbowItem extends CrossbowItem {
         if (chargedprojectiles != null && !chargedprojectiles.isEmpty()) {
             this.performShooting(pLevel, pPlayer, pHand, itemstack, getShootingPower(chargedprojectiles), 1.0F, null);
             return InteractionResultHolder.consume(itemstack);
-        } else if (!pPlayer.getProjectile(itemstack).isEmpty() && !(pPlayer.getProjectile(itemstack).getCount() < 2)) { //line two changed
+        } else if (pPlayer.hasInfiniteMaterials() || (!pPlayer.getProjectile(itemstack).isEmpty() && !(pPlayer.getProjectile(itemstack).getCount() < 2))) { //line two changed
             this.startSoundPlayed = false;
             this.midLoadSoundPlayed = false;
             pPlayer.startUsingItem(pHand);

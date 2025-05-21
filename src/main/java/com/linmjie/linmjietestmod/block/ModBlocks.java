@@ -4,6 +4,7 @@ import com.linmjie.linmjietestmod.TestingMod;
 import com.linmjie.linmjietestmod.block.custom.ModFlammableRotatedPillarBlock;
 import com.linmjie.linmjietestmod.block.custom.NeonTransposerBlock;
 import com.linmjie.linmjietestmod.block.custom.ShinyNeonBlock;
+import com.linmjie.linmjietestmod.block.custom.BananaBerryBushBlock;
 import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.worldgen.tree.ModTreeGrowers;
 import net.minecraft.core.BlockPos;
@@ -143,6 +144,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> FIR_SAPLING = registerBlock("fir_sapling",
             () -> new SaplingBlock(ModTreeGrowers.FIR, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
 
+
+    public static final RegistryObject<Block> BANANA_BERRY_BUSH = BLOCKS.register("banana_berry_bush",
+            () -> new BananaBerryBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 
     //BLOCK REGISTRIES END
 

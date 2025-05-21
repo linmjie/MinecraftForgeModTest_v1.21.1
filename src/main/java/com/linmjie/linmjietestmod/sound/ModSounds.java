@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.JukeboxSong;
+import net.minecraftforge.common.util.ForgeSoundType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -16,6 +17,7 @@ public class ModSounds {
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, TestingMod.MOD_ID);
 
     public static final RegistryObject<SoundEvent> I_DO = registrySoundEvent("i_do");
+    public static final RegistryObject<SoundEvent> MONKEY_NOISE = registrySoundEvent("monkey_noise");
 
     public static final ResourceKey<JukeboxSong> I_DO_KEY = ResourceKey.create(Registries.JUKEBOX_SONG,
             ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "i_do"));

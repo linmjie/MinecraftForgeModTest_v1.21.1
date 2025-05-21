@@ -29,6 +29,9 @@
 
   "item.linmjietestmod.netherite_horse_armor": "Netherite Horse Armor",
 
+  "item.linmjietestmod.banana": "Banana",
+  "item.linmjietestmod.banana_boots": "Evan's Britton's Boots",
+
   "item.linmjietestmod.i_do_music_disc": "§aMusic Disc",
   "item.linmjietestmod.i_do_music_disc.desc": "Rhema Erebholo, Joseph Kasongo, Victor Minero-Erazo, Shyota Smith - I Do",
 
@@ -66,6 +69,7 @@
   "block.linmjietestmod.fir_planks": "Fir Planks",
   "block.linmjietestmod.fir_leaves": "Fir Leaves",
   "block.linmjietestmod.fir_sapling": "Fir Sapling",
+  "block.linmjietestmod.banana_berry_bush": "Banana Berry Bush",
 
 
 
@@ -79,6 +83,9 @@
   "enchantment.linmjietestmod.dolphin_spawner": "Dolphin Summoner",
   "enchantment.linmjietestmod.radiator": "Radiator",
 
+  "entity.linmjietestmod.evan": "Evan Britton",
+  "item.linmjietestmod.beta_evan_spawn_egg": "Evan Britton Spawn Egg",
+
   "creativetab.linmjietestmod.testmod_items": "Sigma Items",
   "creativetab.linmjietestmod.testmod_blocks": "Sigma Blocks",
 
@@ -88,5 +95,6 @@
   "tooltip.linmjietestmod.cleaning_item": "Press §eShift§r for more Information!",
   "tooltip.linmjietestmod.stardew_not_plagarized_tooltip": "Definitely not stolen from Stardew Valley",
   "tooltip.linmjietestmod.radioactive_armor_tooltip": "§cWARNING§r: §eRADIOACTIVE§r!",
-  "tooltip.linmjietestmod.terraria_not_plagarized_tooltip": "Definitely not stolen from Terraria"
+  "tooltip.linmjietestmod.terraria_not_plagarized_tooltip": "Definitely not stolen from Terraria",
+  "tooltip.linmjietestmod.banana_tooltip": "So this is how bananas really grow?"
 }

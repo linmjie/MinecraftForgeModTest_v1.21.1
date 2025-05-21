@@ -27,6 +27,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CHISEL.get());
                         output.accept(ModItems.RAINBOW_SHARD.get());
                         output.accept(ModItems.RAINBOW_CANDY.get());
+                        output.accept(ModItems.BANANA.get());
                         output.accept(ModItems.URANIUM.get());
                         output.accept(ModItems.URANIUM_SWORD.get());
                         output.accept(ModItems.URANIUM_SHOVEL.get());
@@ -41,6 +42,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.NETHERITE_HORSE_ARMOR.get());
                         output.accept(ModItems.I_DO_MUSIC_DISC.get());
                         output.accept(ModItems.REPEATER.get());
+                        output.accept(ModItems.BANANA_BOOTS.get());
+                        output.accept(ModItems.BETA_EVAN_SPAWN_EGG.get());
                     }).build());
 
     public static final RegistryObject<CreativeModeTab> TESTMOD_BLOCKS_TAB = CREATIVE_MODE_TABS.register("testmod_blocks_tab",

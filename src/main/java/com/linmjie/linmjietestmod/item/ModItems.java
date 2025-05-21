@@ -1,12 +1,15 @@
 package com.linmjie.linmjietestmod.item;
 
 import com.linmjie.linmjietestmod.TestingMod;
+import com.linmjie.linmjietestmod.block.ModBlocks;
+import com.linmjie.linmjietestmod.entity.ModEntities;
 import com.linmjie.linmjietestmod.item.custom.*;
 import com.linmjie.linmjietestmod.sound.ModSounds;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ChargedProjectiles;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -115,6 +118,17 @@ public class ModItems {
 
     public static final RegistryObject<Item> I_DO_MUSIC_DISC = ITEMS.register("i_do_music_disc",
             () -> new Item(new Item.Properties().jukeboxPlayable(ModSounds.I_DO_KEY).stacksTo(1).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> BETA_EVAN_SPAWN_EGG = ITEMS.register("beta_evan_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.BETA_EVAN,  0x53524b, 0xdac741, new Item.Properties()));
+
+
+    public static final RegistryObject<Item> BANANA = ITEMS.register("banana",
+            () -> new ItemNameBlockItem(ModBlocks.BANANA_BERRY_BUSH.get(), new Item.Properties().food(ModFoodProperties.BANANA)));
+    public static final RegistryObject<Item> BANANA_BOOTS = ITEMS.register("banana_boots",
+            () -> new ModArmorItem(ModArmorMaterials.BANANA_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(12))));
+
     //REGISTRIES END
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

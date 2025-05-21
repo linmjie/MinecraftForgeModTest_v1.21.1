@@ -2,10 +2,13 @@ package com.linmjie.linmjietestmod.datagen;
 
 import com.linmjie.linmjietestmod.TestingMod;
 import com.linmjie.linmjietestmod.block.ModBlocks;
+import com.linmjie.linmjietestmod.block.custom.BananaBerryBushBlock;
 import com.linmjie.linmjietestmod.block.custom.ShinyNeonBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SweetBerryBushBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -13,6 +16,8 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.function.Function;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -69,6 +74,22 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         leavesBlock(ModBlocks.FIR_LEAVES);
         saplingBlock(ModBlocks.FIR_SAPLING);
+
+        makeBush((SweetBerryBushBlock) ModBlocks.BANANA_BERRY_BUSH.get(),"banana_bush_stage", "banana_bush_stage" );
+    }
+
+    public void makeBush(SweetBerryBushBlock block, String modelName, String textureName) {
+        Function<BlockState, ConfiguredModel[]> function = state -> states(state, modelName, textureName);
+
+        getVariantBuilder(block).forAllStates(function);
+    }
+
+    private ConfiguredModel[] states(BlockState state, String modelName, String textureName) {
+        ConfiguredModel[] models = new ConfiguredModel[1];
+        models[0] = new ConfiguredModel(models().cross(modelName + state.getValue(BananaBerryBushBlock.AGE),
+                ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "block/" + textureName + state.getValue(BananaBerryBushBlock.AGE))).renderType("cutout"));
+
+        return models;
     }
 
     private void saplingBlock(RegistryObject<Block> blockRegistryObject) {

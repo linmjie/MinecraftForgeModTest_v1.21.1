@@ -68,6 +68,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.URANIUM_LEGGINGS);
         trimmedArmorItem(ModItems.URANIUM_BOOTS);
 
+        trimmedArmorItem(ModItems.BANANA_BOOTS);
+
         basicItem(ModItems.NETHERITE_HORSE_ARMOR.get());
 
         buttonItem(ModBlocks.NEON_BUTTON, ModBlocks.NEON_BLOCK);
@@ -77,6 +79,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleBlockItem(ModBlocks.NEON_DOOR);
 
         saplingItem(ModBlocks.FIR_SAPLING);
+
+        withExistingParent(ModItems.BETA_EVAN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+
+        basicItem(ModItems.BANANA.get());
     }
     private ItemModelBuilder saplingItem(RegistryObject<Block> item) {
         return withExistingParent(item.getId().getPath(),

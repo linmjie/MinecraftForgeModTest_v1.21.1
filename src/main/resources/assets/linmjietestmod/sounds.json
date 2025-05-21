@@ -1,4 +1,10 @@
 {
+  "monkey_noise": {
+    "subtitle": "sound.linmjietestmod.monkey_noise",
+    "sounds": [
+      "linmjietestmod:monkey_noise"
+    ]
+  },
   "i_do": {
     "sounds": [
       {

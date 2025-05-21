@@ -25,4 +25,6 @@ public class ModFoodProperties {
             .effect(new MobEffectInstance(MobEffects.HARM, 1, 12), 1.0F)
             .effect(new MobEffectInstance(ModEffects.RADIATED_EFFECT.getHolder().get(), 2000, 1), 1.0F)
             .alwaysEdible().build();
+    public static final FoodProperties BANANA = new FoodProperties.Builder().nutrition(2).saturationModifier(0.2F)
+            .fast().alwaysEdible().build();
 }
