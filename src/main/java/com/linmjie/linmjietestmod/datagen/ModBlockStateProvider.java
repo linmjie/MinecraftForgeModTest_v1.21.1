@@ -35,7 +35,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.END_URANIUM_ORE);
         blockWithItem(ModBlocks.CONDENSED_SOAP_BLOCK);
 
-        blockWithItemAndRenderType(ModBlocks.NEON_HOLE_BLOCK, "minecraft:cutout");
 
         blockWithItem(ModBlocks.NEON_BLOCK);
         shinyNeonBlockWithItem(ModBlocks.SHINY_NEON_BLOCK.get(), "neon_block", "shiny_neon_block_unlit");

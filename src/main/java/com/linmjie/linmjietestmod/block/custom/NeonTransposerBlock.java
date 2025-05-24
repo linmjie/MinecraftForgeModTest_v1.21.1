@@ -16,12 +16,13 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HalfTransparentBlock;
+import net.minecraft.world.level.block.TransparentBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.List;
 
-public class NeonTransposerBlock extends HalfTransparentBlock {
+public class NeonTransposerBlock extends TransparentBlock {
     public NeonTransposerBlock(Properties properties){
         super(properties);
     }
