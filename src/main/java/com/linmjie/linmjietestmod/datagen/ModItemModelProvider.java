@@ -61,7 +61,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.URANIUM_PICKAXE);
         handheldItem(ModItems.URANIUM_AXE);
         handheldItem(ModItems.URANIUM_HOE);
-        handheldItem(ModItems.URANIUM_PLOUGH);
 
         trimmedArmorItem(ModItems.URANIUM_HELMET);
         trimmedArmorItem(ModItems.URANIUM_CHESTPLATE);
