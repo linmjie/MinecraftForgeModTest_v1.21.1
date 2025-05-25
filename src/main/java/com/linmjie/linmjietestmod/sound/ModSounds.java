@@ -19,6 +19,10 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> I_DO = registrySoundEvent("i_do");
     public static final RegistryObject<SoundEvent> MONKEY_NOISE = registrySoundEvent("monkey_noise");
 
+    public static final RegistryObject<SoundEvent> JACK_BLACK_AMBIENT = registrySoundEvent("jack_black_ambient");
+    public static final RegistryObject<SoundEvent> LAVA_CHICKEN = registrySoundEvent("lava_chicken");
+    public static final RegistryObject<SoundEvent> THE_NETHER = registrySoundEvent("the_nether");
+
     public static final ResourceKey<JukeboxSong> I_DO_KEY = ResourceKey.create(Registries.JUKEBOX_SONG,
             ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "i_do"));
 

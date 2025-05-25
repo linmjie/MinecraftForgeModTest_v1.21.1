@@ -41,6 +41,20 @@ public class ModEntityLootTableProvider extends EntityLootSubProvider {
                                         .when(LootItemKilledByPlayerCondition.killedByPlayer())
                         )
         );
+        this.add(
+                ModEntities.JACK_BLACK.get(),
+                LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(ModItems.I_DO_MUSIC_DISC.get())
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                                        .when(LootItemKilledByPlayerCondition.killedByPlayer())
+                        )
+        );
     }
 
     protected Stream<EntityType<?>> getKnownEntityTypes() {

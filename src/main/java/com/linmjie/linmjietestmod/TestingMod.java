@@ -6,6 +6,7 @@ import com.linmjie.linmjietestmod.effect.ModEffects;
 import com.linmjie.linmjietestmod.enchantment.ModEnchantmentsEffects;
 import com.linmjie.linmjietestmod.entity.ModEntities;
 import com.linmjie.linmjietestmod.entity.client.EvanRenderer;
+import com.linmjie.linmjietestmod.entity.client.JackBlackRenderer;
 import com.linmjie.linmjietestmod.entity.custom.EvanEntity;
 import com.linmjie.linmjietestmod.item.ModCreativeModeTabs;
 import com.linmjie.linmjietestmod.item.ModItems;
@@ -82,6 +83,7 @@ public class TestingMod {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS){
             event.accept(ModItems.BETA_EVAN_SPAWN_EGG);
+            event.accept(ModItems.JACK_BLACK_SPAWN_EGG);
         }
         //COMBAT TAB
         if (event.getTabKey() == CreativeModeTabs.COMBAT){
@@ -112,6 +114,7 @@ public class TestingMod {
             event.accept(ModItems.BANANA);
             event.accept(ModItems.RAINBOW_SHARD);
             event.accept(ModItems.RAINBOW_CANDY);
+            event.accept(ModBlocks.LAVA_CHICKEN);
         }
 
         //INGREDIENTS TAB
@@ -167,6 +170,7 @@ public class TestingMod {
         public static void onClientSetup(FMLClientSetupEvent event) {
             ModItemProperties.addCustomItemProperties();
             EntityRenderers.register(ModEntities.BETA_EVAN.get(), EvanRenderer::new);
+            EntityRenderers.register(ModEntities.JACK_BLACK.get(), JackBlackRenderer::new);
         }
     }
 }

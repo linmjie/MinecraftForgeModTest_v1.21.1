@@ -1,0 +1,67 @@
+{
+  "variants": {
+    "lava_chicken_bites=0,facing=north": {
+      "model": "linmjietestmod:block/lava_chicken_stage_0"
+    },
+    "lava_chicken_bites=0,facing=south": {
+      "model": "linmjietestmod:block/lava_chicken_stage_0",
+      "y": 180
+    },
+    "lava_chicken_bites=0,facing=east": {
+      "model": "linmjietestmod:block/lava_chicken_stage_0",
+      "y": 90
+    },
+    "lava_chicken_bites=0,facing=west": {
+      "model": "linmjietestmod:block/lava_chicken_stage_0",
+      "y": 270
+    },
+
+    "lava_chicken_bites=1,facing=north": {
+      "model": "linmjietestmod:block/lava_chicken_stage_1"
+    },
+    "lava_chicken_bites=1,facing=south": {
+      "model": "linmjietestmod:block/lava_chicken_stage_1",
+      "y": 180
+    },
+    "lava_chicken_bites=1,facing=east": {
+      "model": "linmjietestmod:block/lava_chicken_stage_1",
+      "y": 90
+    },
+    "lava_chicken_bites=1,facing=west": {
+      "model": "linmjietestmod:block/lava_chicken_stage_1",
+      "y": 270
+    },
+
+    "lava_chicken_bites=2,facing=north": {
+      "model": "linmjietestmod:block/lava_chicken_stage_2"
+    },
+    "lava_chicken_bites=2,facing=south": {
+      "model": "linmjietestmod:block/lava_chicken_stage_2",
+      "y": 180
+    },
+    "lava_chicken_bites=2,facing=east": {
+      "model": "linmjietestmod:block/lava_chicken_stage_2",
+      "y": 90
+    },
+    "lava_chicken_bites=2,facing=west": {
+      "model": "linmjietestmod:block/lava_chicken_stage_2",
+      "y": 270
+    },
+
+    "lava_chicken_bites=3,facing=north": {
+      "model": "linmjietestmod:block/lava_chicken_stage_3"
+    },
+    "lava_chicken_bites=3,facing=south": {
+      "model": "linmjietestmod:block/lava_chicken_stage_3",
+      "y": 180
+    },
+    "lava_chicken_bites=3,facing=east": {
+      "model": "linmjietestmod:block/lava_chicken_stage_3",
+      "y": 90
+    },
+    "lava_chicken_bites=3,facing=west": {
+      "model": "linmjietestmod:block/lava_chicken_stage_3",
+      "y": 270
+    }
+  }
+}

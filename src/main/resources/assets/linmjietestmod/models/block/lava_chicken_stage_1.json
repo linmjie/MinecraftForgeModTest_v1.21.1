@@ -1,0 +1,123 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "linmjietestmod:block/lava_chicken_stage_1",
+		"particle": "linmjietestmod:block/lava_chicken_stage_1"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 5],
+			"to": [11, 6, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.9875, 4.67884, 7.21322]},
+			"faces": {
+				"north": {"uv": [0, 6, 3, 9], "texture": "#0"},
+				"east": {"uv": [0, 0, 4, 3], "texture": "#0"},
+				"south": {"uv": [7, 0, 10, 3], "texture": "#0"},
+				"west": {"uv": [0, 3, 4, 6], "texture": "#0"},
+				"up": {"uv": [7, 4, 4, 0], "texture": "#0"},
+				"down": {"uv": [7, 4, 4, 8], "texture": "#0"}
+			}
+		},
+		{
+			"from": [11, 3.31671, 6.40498],
+			"to": [12.75, 5.81671, 8.90498],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [7.9875, 4.67884, 7.21322]},
+			"faces": {
+				"north": {"uv": [6, 8, 7, 9.5], "texture": "#0"},
+				"east": {"uv": [7, 3, 9, 4.5], "texture": "#0"},
+				"south": {"uv": [0, 9, 1, 10.5], "texture": "#0"},
+				"west": {"uv": [7, 4.5, 9, 6], "texture": "#0"},
+				"up": {"uv": [4, 8, 3, 6], "texture": "#0"},
+				"down": {"uv": [4, 8, 3, 10], "texture": "#0"}
+			}
+		},
+		{
+			"from": [3.5, 3.39344, 5.39071],
+			"to": [5, 5.89344, 8.89071],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [7.9875, 4.67884, 7.21322]},
+			"faces": {
+				"north": {"uv": [1, 9, 2, 10.5], "texture": "#0"},
+				"east": {"uv": [7, 6, 9, 7.5], "texture": "#0"},
+				"south": {"uv": [2, 9, 3, 10.5], "texture": "#0"},
+				"west": {"uv": [7, 7.5, 9, 9], "texture": "#0"},
+				"up": {"uv": [5, 10, 4, 8], "texture": "#0"},
+				"down": {"uv": [6, 8, 5, 10], "texture": "#0"}
+			}
+		},
+		{
+			"from": [4, 4.39344, 3.09071],
+			"to": [4.25, 4.89344, 5.09071],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [7.9875, 4.67884, 7.21322]},
+			"faces": {
+				"north": {"uv": [9, 10, 9.5, 10.5], "texture": "#0"},
+				"east": {"uv": [9, 6, 10, 6.5], "texture": "#0"},
+				"south": {"uv": [10, 9, 10.5, 9.5], "texture": "#0"},
+				"west": {"uv": [9, 6.5, 10, 7], "texture": "#0"},
+				"up": {"uv": [7.5, 10, 7, 9], "texture": "#0"},
+				"down": {"uv": [9.5, 7, 9, 8], "texture": "#0"}
+			}
+		},
+		{
+			"from": [3.75, 4.14344, 4.99071],
+			"to": [4.5, 5.14344, 5.39071],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [7.9875, 4.67884, 7.21322]},
+			"faces": {
+				"north": {"uv": [9.5, 10, 10, 10.5], "texture": "#0"},
+				"east": {"uv": [10, 9.5, 10.5, 10], "texture": "#0"},
+				"south": {"uv": [10, 10, 10.5, 10.5], "texture": "#0"},
+				"west": {"uv": [0, 10.5, 0.5, 11], "texture": "#0"},
+				"up": {"uv": [11, 0.5, 10.5, 0], "texture": "#0"},
+				"down": {"uv": [1, 10.5, 0.5, 11], "texture": "#0"}
+			}
+		},
+		{
+			"from": [3.8, 4.37344, 2.69071],
+			"to": [4.4, 4.92344, 3.19071],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [7.9875, 4.67884, 7.21322]},
+			"faces": {
+				"north": {"uv": [10.5, 0.5, 11, 1], "texture": "#0"},
+				"east": {"uv": [1, 10.5, 1.5, 11], "texture": "#0"},
+				"south": {"uv": [10.5, 1, 11, 1.5], "texture": "#0"},
+				"west": {"uv": [1.5, 10.5, 2, 11], "texture": "#0"},
+				"up": {"uv": [11, 2, 10.5, 1.5], "texture": "#0"},
+				"down": {"uv": [2.5, 10.5, 2, 11], "texture": "#0"}
+			}
+		},
+		{
+			"from": [3.85, 4.29344, 2.49071],
+			"to": [4.35, 4.99344, 2.99071],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [7.9875, 4.67884, 7.21322]},
+			"faces": {
+				"north": {"uv": [10.5, 2, 11, 2.5], "texture": "#0"},
+				"east": {"uv": [2.5, 10.5, 3, 11], "texture": "#0"},
+				"south": {"uv": [10.5, 2.5, 11, 3], "texture": "#0"},
+				"west": {"uv": [3, 10.5, 3.5, 11], "texture": "#0"},
+				"up": {"uv": [11, 3.5, 10.5, 3], "texture": "#0"},
+				"down": {"uv": [4, 10.5, 3.5, 11], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "lava_chicken",
+			"origin": [5, 0, 5],
+			"color": 0,
+			"children": [
+				0,
+				{
+					"name": "left_drum",
+					"origin": [13, 0, 2],
+					"color": 0,
+					"children": [1]
+				},
+				{
+					"name": "right_drum",
+					"origin": [13, 0, 2],
+					"color": 0,
+					"children": [2, 3, 4, 5, 6]
+				}
+			]
+		}
+	]
+}

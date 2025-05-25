@@ -5,6 +5,25 @@
       "linmjietestmod:monkey_noise"
     ]
   },
+  "jack_black_ambient": {
+    "subtitle": "sound.linmjietestmod.jack_black_ambient",
+    "sounds": [
+      "linmjietestmod:chicken_jockey",
+      "linmjietestmod:i_am_steve"
+    ]
+  },
+  "lava_chicken": {
+    "subtitle": "sound.linmjietestmod.lava_chicken",
+    "sounds": [
+      "linmjietestmod:lava_chicken"
+    ]
+  },
+  "the_nether": {
+    "subtitle": "sound.linmjietestmod.the_nether",
+    "sounds": [
+      "linmjietestmod:the_nether"
+    ]
+  },
   "i_do": {
     "sounds": [
       {

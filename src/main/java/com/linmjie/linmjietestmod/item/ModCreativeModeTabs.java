@@ -44,6 +44,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.REPEATER.get());
                         output.accept(ModItems.BANANA_BOOTS.get());
                         output.accept(ModItems.BETA_EVAN_SPAWN_EGG.get());
+                        output.accept(ModItems.JACK_BLACK_SPAWN_EGG.get());
                     }).build());
 
     public static final RegistryObject<CreativeModeTab> TESTMOD_BLOCKS_TAB = CREATIVE_MODE_TABS.register("testmod_blocks_tab",
@@ -78,6 +79,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.FIR_PLANKS.get());
                         output.accept(ModBlocks.FIR_SAPLING.get());
                         output.accept(ModBlocks.FIR_LEAVES.get());
+                        output.accept(ModBlocks.LAVA_CHICKEN.get());
                     }).build());
 
 

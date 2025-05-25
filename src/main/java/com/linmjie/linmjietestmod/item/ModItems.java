@@ -122,6 +122,9 @@ public class ModItems {
     public static final RegistryObject<Item> BETA_EVAN_SPAWN_EGG = ITEMS.register("beta_evan_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.BETA_EVAN,  0x53524b, 0xdac741, new Item.Properties()));
 
+    public static final RegistryObject<Item> JACK_BLACK_SPAWN_EGG = ITEMS.register("jack_black_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.JACK_BLACK,  0x00b1af, 0xd99072, new Item.Properties()));
+
 
     public static final RegistryObject<Item> BANANA = ITEMS.register("banana",
             () -> new ItemNameBlockItem(ModBlocks.BANANA_BERRY_BUSH.get(), new Item.Properties().food(ModFoodProperties.BANANA)));

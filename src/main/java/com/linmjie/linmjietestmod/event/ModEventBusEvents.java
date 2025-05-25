@@ -3,7 +3,9 @@ package com.linmjie.linmjietestmod.event;
 import com.linmjie.linmjietestmod.TestingMod;
 import com.linmjie.linmjietestmod.entity.ModEntities;
 import com.linmjie.linmjietestmod.entity.client.EvanModel;
+import com.linmjie.linmjietestmod.entity.client.JackBlackModel;
 import com.linmjie.linmjietestmod.entity.custom.EvanEntity;
+import com.linmjie.linmjietestmod.entity.custom.JackBlackEntity;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -19,16 +21,20 @@ public class ModEventBusEvents {
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event){
         event.registerLayerDefinition(EvanModel.LAYER_LOCATION, EvanModel::createBodyLayer);
+        event.registerLayerDefinition(JackBlackModel.LAYER_LOCATION, JackBlackModel::createBodyLayer);
     }
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event){
         event.put(ModEntities.BETA_EVAN.get(), EvanEntity.createAttributes().build());
+        event.put(ModEntities.JACK_BLACK.get(), JackBlackEntity.createAttributes().build());
     }
 
     @SubscribeEvent
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event){
         event.register(ModEntities.BETA_EVAN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(ModEntities.JACK_BLACK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 

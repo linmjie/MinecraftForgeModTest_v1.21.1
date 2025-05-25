@@ -32,7 +32,7 @@ public class EvanEntity extends Animal {
 
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.8));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.6));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, stack -> stack.is(ModItems.BANANA.get()), false));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.6, stack -> stack.is(ModItems.BANANA.get()), false));
 
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25));
 

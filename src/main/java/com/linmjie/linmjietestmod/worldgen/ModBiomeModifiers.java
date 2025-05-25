@@ -26,6 +26,7 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_BANANA_BERRY_BUSH = registerKey("add_banana_berry_bush");
 
     public static final ResourceKey<BiomeModifier> SPAWN_EVAN = registerKey("spawn_evan");
+    public static final ResourceKey<BiomeModifier> SPAWN_JACK_BLACK = registerKey("spawn_jack_black");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context){
         var placedFeature = context.lookup(Registries.PLACED_FEATURE);
@@ -58,6 +59,10 @@ public class ModBiomeModifiers {
         context.register(SPAWN_EVAN, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_JUNGLE),
                 List.of(new MobSpawnSettings.SpawnerData(ModEntities.BETA_EVAN.get(), 25, 1, 3))
+        ));
+        context.register(SPAWN_JACK_BLACK, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                List.of(new MobSpawnSettings.SpawnerData(ModEntities.JACK_BLACK.get(), 12, 1, 1))
         ));
     }
 

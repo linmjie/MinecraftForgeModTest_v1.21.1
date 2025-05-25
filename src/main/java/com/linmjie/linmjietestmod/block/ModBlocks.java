@@ -1,10 +1,7 @@
 package com.linmjie.linmjietestmod.block;
 
 import com.linmjie.linmjietestmod.TestingMod;
-import com.linmjie.linmjietestmod.block.custom.ModFlammableRotatedPillarBlock;
-import com.linmjie.linmjietestmod.block.custom.NeonTransposerBlock;
-import com.linmjie.linmjietestmod.block.custom.ShinyNeonBlock;
-import com.linmjie.linmjietestmod.block.custom.BananaBerryBushBlock;
+import com.linmjie.linmjietestmod.block.custom.*;
 import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.worldgen.tree.ModTreeGrowers;
 import net.minecraft.core.BlockPos;
@@ -147,6 +144,10 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> BANANA_BERRY_BUSH = BLOCKS.register("banana_berry_bush",
             () -> new BananaBerryBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+
+    public static final RegistryObject<Block> LAVA_CHICKEN = registerBlock("lava_chicken",
+            () -> new LavaChickenBlock(BlockBehaviour.Properties.of()
+                    .strength(1F).noOcclusion().noLootTable()));
 
     //BLOCK REGISTRIES END
 
