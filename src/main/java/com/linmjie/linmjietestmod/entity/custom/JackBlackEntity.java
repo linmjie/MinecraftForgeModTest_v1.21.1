@@ -1,11 +1,7 @@
 package com.linmjie.linmjietestmod.entity.custom;
 
 import com.linmjie.linmjietestmod.block.ModBlocks;
-import com.linmjie.linmjietestmod.entity.ModEntities;
-import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.sound.ModSounds;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -13,17 +9,13 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.npc.InventoryCarrier;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -41,7 +33,7 @@ public class JackBlackEntity extends Animal{
 
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.2));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.6));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.6, stack -> stack.is(Items.CHICKEN), false));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.6, stack -> stack.is(ModBlocks.LAVA_CHICKEN.get().asItem()), false));
 
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25));
 

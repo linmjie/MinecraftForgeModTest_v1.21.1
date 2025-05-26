@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -147,7 +148,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> LAVA_CHICKEN = registerBlock("lava_chicken",
             () -> new LavaChickenBlock(BlockBehaviour.Properties.of()
-                    .strength(1F).noOcclusion().noLootTable()));
+                    .strength(1F).noOcclusion().noLootTable().sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY)));
 
     //BLOCK REGISTRIES END
 
