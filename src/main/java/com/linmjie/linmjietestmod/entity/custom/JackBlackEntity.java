@@ -133,7 +133,7 @@ public class JackBlackEntity extends Animal{
                 lavaIndex=i;
             }
         }
-        if (chickenIndex>=0&&lavaIndex>=0){
+        if (chickenIndex >= 0 && lavaIndex >= 0){
             ItemEntity itemEntity = new ItemEntity(this.level(),
                     this.getX(), this.getY(), this.getZ(), new ItemStack(ModBlocks.LAVA_CHICKEN.get(), 1)
             );

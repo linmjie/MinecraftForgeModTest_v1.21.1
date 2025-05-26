@@ -1,6 +1,7 @@
 package com.linmjie.linmjietestmod.block.custom;
 
 import com.linmjie.linmjietestmod.util.ModBlockStateProperties;
+import com.linmjie.linmjietestmod.util.ModUtils;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -28,17 +29,12 @@ public class LavaChickenBlock extends HorizontalDirectionalBlock {
     public static final int MAX_LAVA_CHICKEN_BITES = 3;
     public static final IntegerProperty LAVA_CHICKEN_BITES = ModBlockStateProperties.LAVA_CHICKEN_BITES;
     public static final MapCodec<LavaChickenBlock> CODEC = simpleCodec(LavaChickenBlock::new);
-    /*
-        Placeholder
-        Will want to adjust voxel shapes for stage 2 and 3( -2 and -7 on z axis respectively)
-        needs to change with lengths go with which dimensions as these box shapes have absolute direction
-    */
-    public static final VoxelShape[] SHAPE_BY_BITE = new VoxelShape[]{
-            Block.box(3, 0, 2, 13, 7, 14),
-            Block.box(3, 0, 2, 13, 7, 14),
-            Block.box(3, 0, 2, 13, 7, 14),
-            Block.box(3, 0, 2, 13, 7, 14)
-    };
+    public static final VoxelShape[] SHAPE_BY_BITE = ModUtils.makeDirectionalVoxelShapes(new VoxelShape[]{
+            Block.box(3, 0, 4, 13, 7, 14),
+            Block.box(3, 0, 4, 13, 7, 14),
+            Block.box(5, 0, 5, 11, 6, 12),
+            Block.box(5, 0, 5, 11, 6, 8)
+    });
 
     public LavaChickenBlock(Properties properties) {
         super(properties);
@@ -52,7 +48,7 @@ public class LavaChickenBlock extends HorizontalDirectionalBlock {
 
     @Override
     protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return SHAPE_BY_BITE[pState.getValue(LAVA_CHICKEN_BITES)];
+        return SHAPE_BY_BITE[ModUtils.getIndexForDirectionalVoxelShape(pState.getValue(LAVA_CHICKEN_BITES), pState, FACING, MAX_LAVA_CHICKEN_BITES)];
     }
 
     @Override
@@ -90,7 +86,7 @@ public class LavaChickenBlock extends HorizontalDirectionalBlock {
 
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite());
+        return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection());
     }
 
     @Override
