@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "linmjietestmod:block/neon_pressure_plate"
+    },
+    "powered=true": {
+      "model": "linmjietestmod:block/neon_pressure_plate_down"
+    }
+  }
+}

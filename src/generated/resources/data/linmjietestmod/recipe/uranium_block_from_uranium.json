@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "linmjietestmod:uranium"
+    },
+    {
+      "item": "linmjietestmod:uranium"
+    },
+    {
+      "item": "linmjietestmod:uranium"
+    },
+    {
+      "item": "linmjietestmod:uranium"
+    },
+    {
+      "item": "linmjietestmod:uranium"
+    },
+    {
+      "item": "linmjietestmod:uranium"
+    },
+    {
+      "item": "linmjietestmod:uranium"
+    },
+    {
+      "item": "linmjietestmod:uranium"
+    },
+    {
+      "item": "linmjietestmod:uranium"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "linmjietestmod:uranium_block"
+  }
+}

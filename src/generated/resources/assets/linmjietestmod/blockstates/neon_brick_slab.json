@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "linmjietestmod:block/neon_brick_slab"
+    },
+    "type=double": {
+      "model": "linmjietestmod:block/neon_bricks"
+    },
+    "type=top": {
+      "model": "linmjietestmod:block/neon_brick_slab_top"
+    }
+  }
+}

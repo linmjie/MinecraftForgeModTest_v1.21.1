@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 5.0,
+  "group": "netherite_scrap",
+  "ingredient": {
+    "item": "linmjietestmod:neon"
+  },
+  "result": {
+    "id": "minecraft:netherite_scrap"
+  }
+}

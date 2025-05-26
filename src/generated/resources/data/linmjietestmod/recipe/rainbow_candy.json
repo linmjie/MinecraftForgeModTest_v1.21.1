@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "linmjietestmod:rainbow_shard"
+    },
+    "*": {
+      "item": "minecraft:nether_star"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "pattern": [
+    "#S#",
+    "#*#",
+    "SIS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "linmjietestmod:rainbow_candy"
+  }
+}

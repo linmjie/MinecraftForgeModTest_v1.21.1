@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "minecraft:wet_sponge"
+    },
+    {
+      "item": "linmjietestmod:condensed_soap"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "linmjietestmod:advanced_scrub_daddy"
+  }
+}

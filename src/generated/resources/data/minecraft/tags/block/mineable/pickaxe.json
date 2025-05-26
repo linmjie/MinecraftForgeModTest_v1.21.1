@@ -1,0 +1,20 @@
+{
+  "values": [
+    "linmjietestmod:uranium_block",
+    "linmjietestmod:uranium_ore",
+    "linmjietestmod:deepslate_uranium_ore",
+    "linmjietestmod:sigma_block",
+    "linmjietestmod:neon_block",
+    "linmjietestmod:neon_hole_block",
+    "linmjietestmod:condensed_soap_block",
+    "linmjietestmod:neon_stairs",
+    "linmjietestmod:neon_brick_slab",
+    "linmjietestmod:neon_button",
+    "linmjietestmod:neon_pressure_plate",
+    "linmjietestmod:neon_fence",
+    "linmjietestmod:neon_fence_gate",
+    "linmjietestmod:neon_wall",
+    "linmjietestmod:neon_door",
+    "linmjietestmod:neon_trapdoor"
+  ]
+}

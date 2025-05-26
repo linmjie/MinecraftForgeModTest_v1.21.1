@@ -1,0 +1,7 @@
+{
+  "values": [
+    "linmjietestmod:sigma_block",
+    "#linmjietestmod:needs_uranium_tool",
+    "#minecraft:needs_diamond_tool"
+  ]
+}

@@ -29,7 +29,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
-public class JackBlackEntity extends Animal implements InventoryCarrier{
+public class JackBlackEntity extends Animal{
 
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
@@ -63,7 +63,7 @@ public class JackBlackEntity extends Animal implements InventoryCarrier{
 
     @Override
     public boolean isFood(ItemStack pStack) {
-        return pStack.is(Items.CHICKEN);
+        return pStack.is(ModBlocks.LAVA_CHICKEN.get().asItem());
     }
 
     @Override
@@ -112,7 +112,6 @@ public class JackBlackEntity extends Animal implements InventoryCarrier{
 
     @Override
     protected void pickUpItem(ItemEntity pItemEntity) {
-        System.out.println("pickUpItem");
         ItemStack itemstack = pItemEntity.getItem();
         if (this.wantsItem(itemstack)) {
             this.onItemPickup(pItemEntity);
@@ -123,7 +122,6 @@ public class JackBlackEntity extends Animal implements InventoryCarrier{
                 itemstack.setCount(itemstack1.getCount());
             }
         }
-        System.out.println(inventory);
         //drop a lava chicken if possible
         int chickenIndex=-1;
         int lavaIndex=-1;
@@ -148,10 +146,5 @@ public class JackBlackEntity extends Animal implements InventoryCarrier{
 
     private boolean wantsItem(ItemStack itemstack) {
         return (itemstack.is(Items.CHICKEN) || itemstack.is(Items.LAVA_BUCKET));
-    }
-
-    @Override
-    public SimpleContainer getInventory() {
-        return this.inventory;
     }
 }

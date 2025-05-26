@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "*": {
+      "item": "linmjietestmod:uranium"
+    },
+    "S": {
+      "item": "linmjietestmod:uranium_shovel"
+    }
+  },
+  "pattern": [
+    "** ",
+    "*S ",
+    "  #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "linmjietestmod:uranium_plough"
+  }
+}

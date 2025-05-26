@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "clicked=false": {
+      "model": "linmjietestmod:block/shiny_neon_block_unlit"
+    },
+    "clicked=true": {
+      "model": "linmjietestmod:block/neon_block"
+    }
+  }
+}

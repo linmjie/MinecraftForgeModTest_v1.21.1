@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "$": {
+      "item": "minecraft:tripwire_hook"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "U": {
+      "item": "linmjietestmod:uranium"
+    }
+  },
+  "pattern": [
+    "INI",
+    "I$I",
+    " U "
+  ],
+  "result": {
+    "count": 1,
+    "id": "linmjietestmod:repeater"
+  }
+}

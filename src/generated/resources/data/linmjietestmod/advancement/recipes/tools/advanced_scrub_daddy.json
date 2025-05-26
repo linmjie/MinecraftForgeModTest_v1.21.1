@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_condensed_soap": {
+      "conditions": {
+        "items": [
+          {
+            "items": "linmjietestmod:condensed_soap"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "linmjietestmod:advanced_scrub_daddy"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_condensed_soap"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "linmjietestmod:advanced_scrub_daddy"
+    ]
+  }
+}

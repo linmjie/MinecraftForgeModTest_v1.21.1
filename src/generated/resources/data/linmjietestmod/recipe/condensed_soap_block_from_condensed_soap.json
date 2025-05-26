@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "linmjietestmod:condensed_soap"
+    },
+    {
+      "item": "linmjietestmod:condensed_soap"
+    },
+    {
+      "item": "linmjietestmod:condensed_soap"
+    },
+    {
+      "item": "linmjietestmod:condensed_soap"
+    },
+    {
+      "item": "linmjietestmod:condensed_soap"
+    },
+    {
+      "item": "linmjietestmod:condensed_soap"
+    },
+    {
+      "item": "linmjietestmod:condensed_soap"
+    },
+    {
+      "item": "linmjietestmod:condensed_soap"
+    },
+    {
+      "item": "linmjietestmod:condensed_soap"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "linmjietestmod:condensed_soap_block"
+  }
+}

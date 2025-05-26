@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 250,
+  "experience": 5.0,
+  "group": "neon",
+  "ingredient": {
+    "item": "minecraft:netherite_ingot"
+  },
+  "result": {
+    "id": "linmjietestmod:neon"
+  }
+}

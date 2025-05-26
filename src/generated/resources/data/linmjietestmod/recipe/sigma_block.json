@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "D": {
+      "item": "linmjietestmod:sharpie"
+    },
+    "N": {
+      "item": "linmjietestmod:neon"
+    },
+    "S": {
+      "item": "linmjietestmod:condensed_soap"
+    }
+  },
+  "pattern": [
+    "NDN",
+    "DSD",
+    "NDN"
+  ],
+  "result": {
+    "count": 1,
+    "id": "linmjietestmod:sigma_block"
+  }
+}

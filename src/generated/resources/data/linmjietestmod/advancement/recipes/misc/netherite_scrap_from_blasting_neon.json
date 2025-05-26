@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_neon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "linmjietestmod:neon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "linmjietestmod:netherite_scrap_from_blasting_neon"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_neon"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "linmjietestmod:netherite_scrap_from_blasting_neon"
+    ]
+  }
+}

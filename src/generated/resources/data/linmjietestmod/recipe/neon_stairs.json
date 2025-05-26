@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "neon",
+  "key": {
+    "#": {
+      "item": "linmjietestmod:neon_bricks"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "linmjietestmod:neon_stairs"
+  }
+}

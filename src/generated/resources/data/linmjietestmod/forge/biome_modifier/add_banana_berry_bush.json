@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_jungle",
+  "features": "linmjietestmod:banana_berry_bush",
+  "step": "vegetal_decoration"
+}

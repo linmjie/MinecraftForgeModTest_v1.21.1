@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "minecraft:forest",
+    "minecraft:windswept_forest"
+  ],
+  "features": "linmjietestmod:fir_placed",
+  "step": "vegetal_decoration"
+}

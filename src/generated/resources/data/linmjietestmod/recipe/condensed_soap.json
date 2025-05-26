@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "S": {
+      "item": "linmjietestmod:soap_block"
+    }
+  },
+  "pattern": [
+    " P ",
+    "OSO",
+    "OOO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "linmjietestmod:condensed_soap"
+  }
+}
