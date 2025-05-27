@@ -24,6 +24,24 @@
       "linmjietestmod:the_nether"
     ]
   },
+  "ender_pearl": {
+    "subtitle": "sound.linmjietestmod.ender_pearl",
+    "sounds": [
+      "linmjietestmod:ender_pearl"
+    ]
+  },
+  "flint_and_steel": {
+    "subtitle": "sound.linmjietestmod.flint_and_steel",
+    "sounds": [
+      "linmjietestmod:flint_and_steel"
+    ]
+  },
+  "water_bucket_release": {
+    "subtitle": "sound.linmjietestmod.water_bucket_release",
+    "sounds": [
+      "linmjietestmod:water_bucket_release"
+    ]
+  },
   "i_do": {
     "sounds": [
       {

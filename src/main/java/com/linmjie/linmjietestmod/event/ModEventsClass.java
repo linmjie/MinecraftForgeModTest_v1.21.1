@@ -1,13 +1,18 @@
 package com.linmjie.linmjietestmod.event;
 
 import com.linmjie.linmjietestmod.TestingMod;
+import com.linmjie.linmjietestmod.effect.ModEffects;
 import com.linmjie.linmjietestmod.entity.custom.EvanEntity;
 import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.item.custom.AdvancedShovelItem;
 import com.linmjie.linmjietestmod.potions.ModPotions;
+import com.linmjie.linmjietestmod.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
@@ -15,8 +20,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraftforge.event.PlayLevelSoundEvent;
 import net.minecraftforge.event.brewing.BrewingRecipeRegisterEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -77,6 +84,30 @@ public class ModEventsClass {
             }
         }
     }
+
+    @SubscribeEvent
+    public static void onPlayerRightClickItemEvent(PlayerInteractEvent.RightClickItem event){
+        if(event.getEntity() instanceof Player player &&
+                player.getEffect(ModEffects.JACK_BLACKED_EFFECT.getHolder().get()) != null){
+            if (event.getItemStack().getItem() == Items.ENDER_PEARL){
+                event.getLevel().playSound(player, player, ModSounds.ENDER_PEARL.get(), SoundSource.NEUTRAL, 1.0F, 1.0F );
+            }
+
+            if (event.getItemStack().getItem() == Items.WATER_BUCKET){
+                event.getLevel().playSound(player, player, ModSounds.WATER_BUCKET_RELEASE.get(), SoundSource.NEUTRAL, 1.0F, 1.0F );
+            }
+        }
+    }
+    @SubscribeEvent
+    public static void onPlayerRightClickBlockEvent(PlayerInteractEvent.RightClickBlock event){
+        if(event.getEntity() instanceof Player player &&
+                player.getEffect(ModEffects.JACK_BLACKED_EFFECT.getHolder().get()) != null){
+            if (event.getItemStack().getItem() == Items.FLINT_AND_STEEL){
+                event.getLevel().playSound(player, player, ModSounds.FLINT_AND_STEEL.get(), SoundSource.NEUTRAL, 1.0F, 1.0F );
+            }
+        }
+    }
+
     @SubscribeEvent
     public static void onBrewRecipeRegister(BrewingRecipeRegisterEvent event){
         PotionBrewing.Builder builder = event.getBuilder();

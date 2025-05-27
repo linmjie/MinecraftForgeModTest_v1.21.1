@@ -1,6 +1,7 @@
 package com.linmjie.linmjietestmod.entity.custom;
 
 import com.linmjie.linmjietestmod.block.ModBlocks;
+import com.linmjie.linmjietestmod.entity.ai.goal.NearestEntityTargetGoal;
 import com.linmjie.linmjietestmod.sound.ModSounds;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -13,8 +14,11 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.monster.AbstractSkeleton;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -34,12 +38,14 @@ public class JackBlackEntity extends Animal{
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.2));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.6));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.6, stack -> stack.is(ModBlocks.LAVA_CHICKEN.get().asItem()), false));
+        this.goalSelector.addGoal(4, new NearestEntityTargetGoal<>(this, ItemEntity.class, 16,
+                itemEntity -> itemEntity.getItem().getItem() == Items.LAVA_BUCKET || itemEntity.getItem().getItem() == Items.CHICKEN));
 
-        this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25));
+        this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.25));
 
-        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
-        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 10.0F));
-        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0));
+        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 10.0F));
+        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
     }
 
     public static AttributeSupplier.Builder createAttributes(){
@@ -129,9 +135,13 @@ public class JackBlackEntity extends Animal{
             ItemEntity itemEntity = new ItemEntity(this.level(),
                     this.getX(), this.getY(), this.getZ(), new ItemStack(ModBlocks.LAVA_CHICKEN.get(), 1)
             );
+            ItemEntity lavaBucketEntity = new ItemEntity(this.level(),
+                    this.getX(), this.getY(), this.getZ(), new ItemStack(Items.BUCKET, 1)
+            );
             this.inventory.removeItem(chickenIndex, 1);
             this.inventory.removeItem(lavaIndex, 1);
             this.level().addFreshEntity(itemEntity);
+            this.level().addFreshEntity(lavaBucketEntity);
             this.playSound(ModSounds.LAVA_CHICKEN.get());
         }
     }

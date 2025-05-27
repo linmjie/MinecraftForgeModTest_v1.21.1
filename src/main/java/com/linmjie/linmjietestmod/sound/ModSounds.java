@@ -22,6 +22,9 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> JACK_BLACK_AMBIENT = registrySoundEvent("jack_black_ambient");
     public static final RegistryObject<SoundEvent> LAVA_CHICKEN = registrySoundEvent("lava_chicken");
     public static final RegistryObject<SoundEvent> THE_NETHER = registrySoundEvent("the_nether");
+    public static final RegistryObject<SoundEvent> ENDER_PEARL = registrySoundEvent("ender_pearl");
+    public static final RegistryObject<SoundEvent> FLINT_AND_STEEL = registrySoundEvent("flint_and_steel");
+    public static final RegistryObject<SoundEvent> WATER_BUCKET_RELEASE = registrySoundEvent("water_bucket_release");
 
     public static final ResourceKey<JukeboxSong> I_DO_KEY = ResourceKey.create(Registries.JUKEBOX_SONG,
             ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "i_do"));
