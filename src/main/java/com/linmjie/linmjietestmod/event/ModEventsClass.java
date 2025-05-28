@@ -20,18 +20,20 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.levelgen.WorldDimensions;
 import net.minecraftforge.event.PlayLevelSoundEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.brewing.BrewingRecipeRegisterEvent;
+import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Mod.EventBusSubscriber(modid = TestingMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEventsClass {
@@ -61,7 +63,7 @@ public class ModEventsClass {
             }
         }
     }
-    private static final List<String> evanBananaResponseList = List.of(
+    private static final String[] evanBananaResponseArray = new String[]{
             "Evan Britton REALLY liked that",
             "Evan Britton wants you to give him more bananas",
             "Evan Britton wishes you hit him harder",
@@ -73,13 +75,13 @@ public class ModEventsClass {
             "Evan Britton says \"Oooo wowww... A big yellow butt plug!\" -(from Tyler Revere)",
             "Evan Britton says \"I'm used to eating bigger bananas\" -(from Kaylie Fainsan)",
             "Evan Britton says \"I'm sorry for cheating on you with Oran I only want you Tyler\" -(from Rhema Erebholo)"
-    );
+    };
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent event) {
         if(event.getEntity() instanceof EvanEntity evan && event.getSource().getDirectEntity() instanceof Player player) {
             if(player.getMainHandItem().getItem() == ModItems.BANANA.get()) {
-                int random = Math.toIntExact(Math.round(Math.random()*evanBananaResponseList.toArray().length-1));
-                player.sendSystemMessage(Component.literal(evanBananaResponseList.get(random)));
+                int random = Math.toIntExact(Math.round(Math.random()*evanBananaResponseArray.length-1));
+                player.sendSystemMessage(Component.literal(evanBananaResponseArray[random]));
                 evan.addEffect(new MobEffectInstance(MobEffects.HEAL, 1));
             }
         }
@@ -87,26 +89,51 @@ public class ModEventsClass {
 
     @SubscribeEvent
     public static void onPlayerRightClickItemEvent(PlayerInteractEvent.RightClickItem event){
-        if(event.getEntity() instanceof Player player &&
-                player.getEffect(ModEffects.JACK_BLACKED_EFFECT.getHolder().get()) != null){
+        if(event.getEntity().getEffect(ModEffects.JACK_BLACKED_EFFECT.getHolder().get()) != null){
             if (event.getItemStack().getItem() == Items.ENDER_PEARL){
-                event.getLevel().playSound(player, player, ModSounds.ENDER_PEARL.get(), SoundSource.NEUTRAL, 1.0F, 1.0F );
+                event.getEntity().playSound(ModSounds.ENDER_PEARL.get());
             }
 
             if (event.getItemStack().getItem() == Items.WATER_BUCKET){
-                event.getLevel().playSound(player, player, ModSounds.WATER_BUCKET_RELEASE.get(), SoundSource.NEUTRAL, 1.0F, 1.0F );
+                event.getEntity().playSound(ModSounds.WATER_BUCKET_RELEASE.get());
             }
         }
     }
+
     @SubscribeEvent
     public static void onPlayerRightClickBlockEvent(PlayerInteractEvent.RightClickBlock event){
-        if(event.getEntity() instanceof Player player &&
-                player.getEffect(ModEffects.JACK_BLACKED_EFFECT.getHolder().get()) != null){
+        if(event.getEntity().getEffect(ModEffects.JACK_BLACKED_EFFECT.getHolder().get()) != null){
             if (event.getItemStack().getItem() == Items.FLINT_AND_STEEL){
-                event.getLevel().playSound(player, player, ModSounds.FLINT_AND_STEEL.get(), SoundSource.NEUTRAL, 1.0F, 1.0F );
+                event.getEntity().playSound(ModSounds.FLINT_AND_STEEL.get());
             }
         }
     }
+
+    private static final HashMap<Player, Integer> playersToPlaySound = new HashMap<>();
+
+    @SubscribeEvent
+    public static void onEntityTravelToDimensionEvent(PlayerEvent.PlayerChangedDimensionEvent event){
+        if(event.getEntity().getEffect(ModEffects.JACK_BLACKED_EFFECT.getHolder().get()) != null &&
+                event.getTo() == Level.NETHER){
+            playersToPlaySound.put(event.getEntity(), 24);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase == TickEvent.Phase.END && event.player.level().isClientSide()) {
+            if (playersToPlaySound.containsKey(event.player)) {
+                int ticksLeft = playersToPlaySound.get(event.player);
+                if (ticksLeft <= 0) {
+                    event.player.playSound(ModSounds.THE_NETHER.get());
+                    playersToPlaySound.remove(event.player);
+                } else {
+                    playersToPlaySound.put(event.player, ticksLeft - 1);
+                }
+            }
+        }
+    }
+
 
     @SubscribeEvent
     public static void onBrewRecipeRegister(BrewingRecipeRegisterEvent event){

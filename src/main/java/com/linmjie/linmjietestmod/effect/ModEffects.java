@@ -21,7 +21,7 @@ public class ModEffects {
                     , -0.2f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
     public static final RegistryObject<MobEffect> JACK_BLACKED_EFFECT = MOB_EFFECTS.register("jack_blacked",
-            () -> new RadiatedMobEffect(MobEffectCategory.NEUTRAL, 0x3df550));
+            () -> new JackBlackedMobEffect(MobEffectCategory.NEUTRAL, 0x3df550));
 
     public static void register(IEventBus eventBus){
         MOB_EFFECTS.register(eventBus);

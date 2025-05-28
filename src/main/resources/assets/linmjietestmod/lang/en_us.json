@@ -76,6 +76,7 @@
 
 
   "effect.linmjietestmod.radiated": "Radiated",
+  "effect.linmjietestmod.jack_blacked": "Jack Blacked",
 
   "item.minecraft.potion.effect.radiated_potion": "Potion of Radiation",
   "item.minecraft.splash_potion.effect.radiated_potion": "Splash Potion of Radiation",
@@ -105,5 +106,8 @@
   "sound.linmjietestmod.monkey_noise": "Evan Britton making Monkey Noises",
   "sound.linmjietestmod.jack_black_ambient": "Jack Black Making Noise",
   "sound.linmjietestmod.lava_chicken": "Lava Chicken Song Plays",
+  "sound.linmjietestmod.flint_and_steel": "Flint and Steel!",
+  "sound.linmjietestmod.ender_pearl": "Ender Pearl!",
+  "sound.linmjietestmod.water_bucket_release": "Water Bucket... Release!",
   "sound.linmjietestmod.the_nether": "\"The Nether\""
 }

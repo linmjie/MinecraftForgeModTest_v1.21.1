@@ -6,7 +6,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 
 public class JackBlackedMobEffect extends MobEffect {
 
-    protected JackBlackedMobEffect(MobEffectCategory pCategory, int pColor, ParticleOptions pParticle) {
-        super(pCategory, pColor, pParticle);
+    protected JackBlackedMobEffect(MobEffectCategory pCategory, int pColor) {
+        super(pCategory, pColor);
     }
 }

@@ -1,5 +1,6 @@
 package com.linmjie.linmjietestmod.block.custom;
 
+import com.linmjie.linmjietestmod.effect.ModEffects;
 import com.linmjie.linmjietestmod.util.ModBlockStateProperties;
 import com.linmjie.linmjietestmod.util.ModUtils;
 import com.mojang.serialization.MapCodec;
@@ -10,6 +11,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -80,6 +82,7 @@ public class LavaChickenBlock extends HorizontalDirectionalBlock {
                 pLevel.removeBlock(pPos, false);
                 pLevel.gameEvent(pPlayer, GameEvent.BLOCK_DESTROY, pPos);
             }
+            pPlayer.addEffect(new MobEffectInstance(ModEffects.JACK_BLACKED_EFFECT.getHolder().get(), 12000, 0, false, false));
             pLevel.playSound(null, pPos, SoundEvents.GENERIC_EAT, SoundSource.BLOCKS, 1.0F, 1.0F);
             return InteractionResult.SUCCESS;
         }
