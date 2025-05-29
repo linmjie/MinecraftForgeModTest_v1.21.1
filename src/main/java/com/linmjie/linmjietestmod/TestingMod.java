@@ -10,6 +10,7 @@ import com.linmjie.linmjietestmod.entity.client.JackBlackRenderer;
 import com.linmjie.linmjietestmod.entity.custom.EvanEntity;
 import com.linmjie.linmjietestmod.item.ModCreativeModeTabs;
 import com.linmjie.linmjietestmod.item.ModItems;
+import com.linmjie.linmjietestmod.loot.ModLootModifiers;
 import com.linmjie.linmjietestmod.potions.ModPotions;
 import com.linmjie.linmjietestmod.sound.ModSounds;
 import com.linmjie.linmjietestmod.util.ModItemProperties;
@@ -69,6 +70,8 @@ public class TestingMod {
         ModEntities.register(modEventBus);
 
         ModVillagers.register(modEventBus);
+
+        ModLootModifiers.register(modEventBus);
 
 
         // Register the item to a creative tab
