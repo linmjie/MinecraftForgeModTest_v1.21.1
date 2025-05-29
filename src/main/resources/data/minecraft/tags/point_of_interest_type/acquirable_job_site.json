@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "linmjietestmod:sigmager_poi",
+      "required": false
+    }
+  ]
+}

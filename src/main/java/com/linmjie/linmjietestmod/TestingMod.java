@@ -13,6 +13,7 @@ import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.potions.ModPotions;
 import com.linmjie.linmjietestmod.sound.ModSounds;
 import com.linmjie.linmjietestmod.util.ModItemProperties;
+import com.linmjie.linmjietestmod.villager.ModVillagers;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -66,6 +67,8 @@ public class TestingMod {
         ModEnchantmentsEffects.register(modEventBus);
 
         ModEntities.register(modEventBus);
+
+        ModVillagers.register(modEventBus);
 
 
         // Register the item to a creative tab

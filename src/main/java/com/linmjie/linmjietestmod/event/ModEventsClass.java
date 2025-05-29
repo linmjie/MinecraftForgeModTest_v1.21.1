@@ -7,29 +7,31 @@ import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.item.custom.AdvancedShovelItem;
 import com.linmjie.linmjietestmod.potions.ModPotions;
 import com.linmjie.linmjietestmod.sound.ModSounds;
+import com.linmjie.linmjietestmod.villager.ModVillagers;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.trading.ItemCost;
+import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.levelgen.WorldDimensions;
-import net.minecraftforge.event.PlayLevelSoundEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.brewing.BrewingRecipeRegisterEvent;
-import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.event.village.VillagerTradesEvent;
+import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -109,31 +111,30 @@ public class ModEventsClass {
         }
     }
 
-    private static final HashMap<Player, Integer> playersToPlaySound = new HashMap<>();
+    private static final HashMap<Player, Integer> PLAYER_TICK_QUEUE = new HashMap<>();
 
     @SubscribeEvent
     public static void onEntityTravelToDimensionEvent(PlayerEvent.PlayerChangedDimensionEvent event){
         if(event.getEntity().getEffect(ModEffects.JACK_BLACKED_EFFECT.getHolder().get()) != null &&
                 event.getTo() == Level.NETHER){
-            playersToPlaySound.put(event.getEntity(), 24);
+            PLAYER_TICK_QUEUE.put(event.getEntity(), 24);
         }
     }
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase == TickEvent.Phase.END && event.player.level().isClientSide()) {
-            if (playersToPlaySound.containsKey(event.player)) {
-                int ticksLeft = playersToPlaySound.get(event.player);
+            if (PLAYER_TICK_QUEUE.containsKey(event.player)) {
+                int ticksLeft = PLAYER_TICK_QUEUE.get(event.player);
                 if (ticksLeft <= 0) {
                     event.player.playSound(ModSounds.THE_NETHER.get());
-                    playersToPlaySound.remove(event.player);
+                    PLAYER_TICK_QUEUE.remove(event.player);
                 } else {
-                    playersToPlaySound.put(event.player, ticksLeft - 1);
+                    PLAYER_TICK_QUEUE.put(event.player, ticksLeft - 1);
                 }
             }
         }
     }
-
 
     @SubscribeEvent
     public static void onBrewRecipeRegister(BrewingRecipeRegisterEvent event){
@@ -143,4 +144,61 @@ public class ModEventsClass {
         builder.addMix(ModPotions.RADIATED_POTION.getHolder().get(), Items.REDSTONE, ModPotions.LONG_RADIATED_POTION.getHolder().get());
         builder.addMix(ModPotions.RADIATED_POTION.getHolder().get(), Items.GLOWSTONE_DUST, ModPotions.STRONG_RADIATED_POTION.getHolder().get());
     }
+
+    @SubscribeEvent
+    public static void addCustomTrades(VillagerTradesEvent event){
+        if(event.getType() == VillagerProfession.WEAPONSMITH){
+            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+            trades.get(2).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 7),
+                    new ItemStack(ModItems.URANIUM_SWORD.get(), 1), 6, 4, 0.85F
+            ));
+        }
+
+        if(event.getType() == ModVillagers.SIGMAGER.get()){
+            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+
+            trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 7),
+                    new ItemStack(Items.EMERALD, 1), 12, 4, 0.85F
+            ));
+
+            trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD_BLOCK, 1),
+                    new ItemStack(Items.EMERALD, 2), 12, 4, 0.85F
+            ));
+
+            trades.get(2).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD_ORE, 8),
+                    new ItemStack(Items.EMERALD, 3), 10, 6, 0.85F
+            ));
+
+            trades.get(2).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.DEEPSLATE_EMERALD_ORE, 1),
+                    new ItemStack(Items.EMERALD, 4), 10, 6, 0.85F
+            ));
+
+            trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 7),
+                    new ItemStack(ModItems.I_DO_MUSIC_DISC.get(), 1), 4, 12, 0.85F
+            ));
+        }
+    }
+
+    @SubscribeEvent
+    public static void addWanderingTrades(WandererTradesEvent event){
+        List<VillagerTrades.ItemListing> genericTrades = event.getGenericTrades();
+        List<VillagerTrades.ItemListing> rareTrades = event.getRareTrades();
+
+        genericTrades.add((pTrader, pRandom) -> new MerchantOffer(
+                new ItemCost(Items.EMERALD, 4),
+                new ItemStack(ModItems.SOAP.get(), 1), 1, 6, 0.5F
+        ));
+
+        rareTrades.add((pTrader, pRandom) -> new MerchantOffer(
+                new ItemCost(Items.EMERALD, 14),
+                new ItemStack(ModItems.CHISEL.get(), 1), 1, 12, 0.5F
+        ));
+    }
+
 }

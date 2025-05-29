@@ -38,7 +38,7 @@ public class JackBlackEntity extends Animal{
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.2));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.6));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.6, stack -> stack.is(ModBlocks.LAVA_CHICKEN.get().asItem()), false));
-        this.goalSelector.addGoal(4, new NearestEntityTargetGoal<>(this, ItemEntity.class, 16,
+        this.goalSelector.addGoal(4, new NearestEntityTargetGoal<>(this, ItemEntity.class, 1.4,
                 itemEntity -> itemEntity.getItem().getItem() == Items.LAVA_BUCKET || itemEntity.getItem().getItem() == Items.CHICKEN));
 
         this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.25));
