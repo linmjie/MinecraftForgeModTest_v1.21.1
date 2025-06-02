@@ -53,7 +53,7 @@ public class ModEnchantments {
     }
 
 
-private static void register(BootstrapContext<Enchantment> registry, ResourceKey<Enchantment> key, Enchantment.Builder builder){
+    private static void register(BootstrapContext<Enchantment> registry, ResourceKey<Enchantment> key, Enchantment.Builder builder){
         registry.register(key, builder.build(key.location()));
     }
 }

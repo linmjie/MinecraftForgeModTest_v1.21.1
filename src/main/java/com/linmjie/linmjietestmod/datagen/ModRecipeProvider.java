@@ -72,6 +72,28 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModItems.RAINBOW_SHARD.get()), has(ModItems.RAINBOW_SHARD.get()))
                 .save(pRecipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.BANK_CARD.get(),1)
+                .pattern("##")
+                .pattern("IR")
+                .define('#', Items.LAPIS_LAZULI)
+                .define('I', Items.IRON_INGOT)
+                .define('R', Items.REDSTONE)
+                .unlockedBy(getHasName(ModBlocks.ATM.get()), has(ModBlocks.ATM.get()))
+                .save(pRecipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.ATM.get(),1)
+                .pattern("III")
+                .pattern("RPC")
+                .pattern("IEG")
+                .define('C', Items.COMPARATOR)
+                .define('R', Items.REPEATER)
+                .define('I', Items.IRON_INGOT)
+                .define('G', Items.GOLD_INGOT)
+                .define('E', Items.EMERALD_BLOCK)
+                .define('P', Items.GLASS_PANE)
+                .unlockedBy(getHasName(Items.EMERALD_BLOCK), has(Items.EMERALD_BLOCK))
+                .save(pRecipeOutput);
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SOAP.get())
                 .requires(Items.PORKCHOP)
                 .requires(Items.WATER_BUCKET)

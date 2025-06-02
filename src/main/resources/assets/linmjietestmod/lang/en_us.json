@@ -13,6 +13,7 @@
   "item.linmjietestmod.advanced_scrub_daddy": "Scrub Mommy",
 
   "item.linmjietestmod.chisel": "Chisel",
+  "item.linmjietestmod.bank_card": "Bank Card",
 
   "item.linmjietestmod.repeater": "Repeater",
   "item.linmjietestmod.uranium_sword": "Radioactive Sword",
@@ -35,6 +36,8 @@
   "item.linmjietestmod.i_do_music_disc": "§aMusic Disc",
   "item.linmjietestmod.i_do_music_disc.desc": "Rhema Erebholo, Joseph Kasongo, Victor Minero-Erazo, Shyota Smith - I Do",
 
+
+  "block.linmjietestmod.atm": "ATM",
 
   "block.linmjietestmod.soap_block": "Soap Block",
   "block.linmjietestmod.condensed_soap_block": "Condensed Soap Block",

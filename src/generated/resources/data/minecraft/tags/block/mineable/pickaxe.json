@@ -15,6 +15,7 @@
     "linmjietestmod:neon_fence_gate",
     "linmjietestmod:neon_wall",
     "linmjietestmod:neon_door",
-    "linmjietestmod:neon_trapdoor"
+    "linmjietestmod:neon_trapdoor",
+    "linmjietestmod:atm"
   ]
 }

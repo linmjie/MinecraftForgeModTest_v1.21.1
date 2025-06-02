@@ -1,6 +1,7 @@
 package com.linmjie.linmjietestmod.datagen;
 
 import com.linmjie.linmjietestmod.block.ModBlocks;
+import com.linmjie.linmjietestmod.block.custom.ATMBlock;
 import com.linmjie.linmjietestmod.item.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
@@ -12,6 +13,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SweetBerryBushBlock;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -60,6 +62,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.STRIPPED_FIR_WOOD.get());
         this.dropSelf(ModBlocks.FIR_PLANKS.get());
         this.dropSelf(ModBlocks.FIR_SAPLING.get());
+
+        this.add(ModBlocks.ATM.get(), block -> this.createSinglePropConditionTable(block, ATMBlock.HALF, DoubleBlockHalf.LOWER));
 
         this.add(ModBlocks.FIR_LEAVES.get(), block ->
                 createLeavesDrops(block, ModBlocks.FIR_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));

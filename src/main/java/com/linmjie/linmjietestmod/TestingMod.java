@@ -7,7 +7,6 @@ import com.linmjie.linmjietestmod.enchantment.ModEnchantmentsEffects;
 import com.linmjie.linmjietestmod.entity.ModEntities;
 import com.linmjie.linmjietestmod.entity.client.EvanRenderer;
 import com.linmjie.linmjietestmod.entity.client.JackBlackRenderer;
-import com.linmjie.linmjietestmod.entity.custom.EvanEntity;
 import com.linmjie.linmjietestmod.item.ModCreativeModeTabs;
 import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.loot.ModLootModifiers;
@@ -16,7 +15,6 @@ import com.linmjie.linmjietestmod.sound.ModSounds;
 import com.linmjie.linmjietestmod.util.ModItemProperties;
 import com.linmjie.linmjietestmod.villager.ModVillagers;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -113,6 +111,7 @@ public class TestingMod {
             event.accept(ModItems.URANIUM_PICKAXE);
             event.accept(ModItems.URANIUM_AXE);
             event.accept(ModItems.URANIUM_HOE);
+            event.accept(ModItems.BANK_CARD);
         }
 
         //FOOD TAB
@@ -152,6 +151,7 @@ public class TestingMod {
             event.accept(ModBlocks.NEON_WALL);
             event.accept(ModBlocks.NEON_DOOR);
             event.accept(ModBlocks.NEON_TRAPDOOR);
+            event.accept(ModBlocks.ATM);
 
         }
 

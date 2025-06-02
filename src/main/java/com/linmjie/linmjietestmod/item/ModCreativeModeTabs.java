@@ -43,6 +43,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.I_DO_MUSIC_DISC.get());
                         output.accept(ModItems.REPEATER.get());
                         output.accept(ModItems.BANANA_BOOTS.get());
+                        output.accept(ModItems.BANK_CARD.get());
                         output.accept(ModItems.BETA_EVAN_SPAWN_EGG.get());
                         output.accept(ModItems.JACK_BLACK_SPAWN_EGG.get());
                     }).build());
@@ -80,6 +81,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.FIR_SAPLING.get());
                         output.accept(ModBlocks.FIR_LEAVES.get());
                         output.accept(ModBlocks.LAVA_CHICKEN.get());
+                        output.accept(ModBlocks.ATM.get());
                     }).build());
 
 

@@ -150,6 +150,10 @@ public class ModBlocks {
             () -> new LavaChickenBlock(BlockBehaviour.Properties.of()
                     .strength(1F).noOcclusion().noLootTable().sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY)));
 
+    public static final RegistryObject<Block> ATM = registerBlock("atm",
+            () -> new ATMBlock(BlockBehaviour.Properties.of()
+                    .strength(4F).requiresCorrectToolForDrops().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
     //BLOCK REGISTRIES END
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){

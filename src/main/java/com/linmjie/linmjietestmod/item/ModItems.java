@@ -132,6 +132,9 @@ public class ModItems {
             () -> new ModArmorItem(ModArmorMaterials.BANANA_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(12))));
 
+    public static final RegistryObject<Item> BANK_CARD = ITEMS.register("bank_card",
+            () -> new BankCardItem(new Item.Properties().stacksTo(1)));
+
     //REGISTRIES END
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

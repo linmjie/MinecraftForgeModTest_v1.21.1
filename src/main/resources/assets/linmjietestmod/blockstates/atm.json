@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,half=lower": {
+      "model": "linmjietestmod:block/atm_bottom"
+    },
+    "facing=south,half=lower": {
+      "model": "linmjietestmod:block/atm_bottom",
+      "y": 180
+    },
+    "facing=east,half=lower": {
+      "model": "linmjietestmod:block/atm_bottom",
+      "y": 90
+    },
+    "facing=west,half=lower": {
+      "model": "linmjietestmod:block/atm_bottom",
+      "y": 270
+    },
+    "facing=north,half=upper": {
+      "model": "linmjietestmod:block/atm_top"
+    },
+    "facing=south,half=upper": {
+      "model": "linmjietestmod:block/atm_top",
+      "y": 180
+    },
+    "facing=east,half=upper": {
+      "model": "linmjietestmod:block/atm_top",
+      "y": 90
+    },
+    "facing=west,half=upper": {
+      "model": "linmjietestmod:block/atm_top",
+      "y": 270
+    }
+  }
+}

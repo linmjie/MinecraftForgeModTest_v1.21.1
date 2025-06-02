@@ -111,7 +111,7 @@ public class ModEventsClass {
         }
     }
 
-    private static final HashMap<Player, Integer> PLAYER_TICK_QUEUE = new HashMap<>();
+
 
     @SubscribeEvent
     public static void onEntityTravelToDimensionEvent(PlayerEvent.PlayerChangedDimensionEvent event){
@@ -121,6 +121,7 @@ public class ModEventsClass {
         }
     }
 
+    private static final HashMap<Player, Integer> PLAYER_TICK_QUEUE = new HashMap<>();
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase == TickEvent.Phase.END && event.player.level().isClientSide()) {
