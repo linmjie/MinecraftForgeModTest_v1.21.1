@@ -1,6 +1,5 @@
 package com.linmjie.linmjietestmod.block.custom;
 
-import com.linmjie.linmjietestmod.util.ModUtils;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -29,10 +28,10 @@ public class ATMBlock extends Block {
     public static final MapCodec<ATMBlock> CODEC = simpleCodec(ATMBlock::new);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
-    public static VoxelShape[] SHAPE_BY_DIRECTION_BOTTOM =
-            ModUtils.makeDirectionalVoxelShapes(1, 0, 1, 15, 16, 15);
-    public static VoxelShape[] SHAPE_BY_DIRECTION_TOP =
-            ModUtils.makeDirectionalVoxelShapes(1, 0, 1, 15, 14, 15);
+    public static VoxelShape[] SHAPE_BY_HALF = {
+            Block.box(1, 0, 1, 15, 16, 15),
+            Block.box(1, 0, 1, 15, 14, 15)
+    };
 
     public ATMBlock(Properties pProperties) {
         super(pProperties);
@@ -46,16 +45,7 @@ public class ATMBlock extends Block {
 
     @Override
     protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        int i = switch (pState.getValue(FACING)) {
-            case WEST -> 1;
-            case EAST -> 2;
-            case SOUTH -> 3;
-            default -> 0;
-        };
-        if (pState.getValue(HALF)==DoubleBlockHalf.LOWER) {
-            return SHAPE_BY_DIRECTION_BOTTOM[i];
-        } else
-            return SHAPE_BY_DIRECTION_TOP[i];
+        return SHAPE_BY_HALF[pState.getValue(HALF) == DoubleBlockHalf.UPPER ? 1 : 0];
     }
 
     @Override
