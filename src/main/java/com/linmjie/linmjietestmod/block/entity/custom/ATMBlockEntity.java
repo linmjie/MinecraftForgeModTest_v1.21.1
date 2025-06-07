@@ -17,7 +17,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class ATMBlockEntity extends BlockEntity {
+public class  ATMBlockEntity extends BlockEntity {
     public final ItemStackHandler inventory = new ItemStackHandler(1){
         @Override
         protected int getStackLimit(int slot, @NotNull ItemStack stack) {

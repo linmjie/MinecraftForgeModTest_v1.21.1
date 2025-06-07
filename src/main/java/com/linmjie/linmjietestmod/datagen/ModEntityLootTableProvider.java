@@ -53,6 +53,18 @@ public class ModEntityLootTableProvider extends EntityLootSubProvider {
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
                                         )
                                         .when(LootItemKilledByPlayerCondition.killedByPlayer())
+                                        .add(
+                                                LootItem.lootTableItem(ModItems.DRIFT_AWAY_MUSIC_DISC.get())
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                                        .when(LootItemKilledByPlayerCondition.killedByPlayer())
+                                        .add(
+                                                LootItem.lootTableItem(ModItems.JAZZ_JAZZ_JAZZ_MUSIC_DISC.get())
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                                        .when(LootItemKilledByPlayerCondition.killedByPlayer())
                         )
         );
     }

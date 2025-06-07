@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "linmjietestmod:item/jazz_jazz_jazz_music_disc"
+  }
+}
