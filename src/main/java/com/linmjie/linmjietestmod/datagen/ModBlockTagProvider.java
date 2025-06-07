@@ -23,6 +23,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.URANIUM_BLOCK.get())
                 .add(ModBlocks.URANIUM_ORE.get())
                 .add(ModBlocks.DEEPSLATE_URANIUM_ORE.get())
+                .add(ModBlocks.END_URANIUM_ORE.get())
                 .add(ModBlocks.SIGMA_BLOCK.get())
                 .add(ModBlocks.NEON_BLOCK.get())
                 .add(ModBlocks.NEON_HOLE_BLOCK.get())

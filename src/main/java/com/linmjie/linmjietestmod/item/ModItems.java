@@ -119,6 +119,13 @@ public class ModItems {
     public static final RegistryObject<Item> I_DO_MUSIC_DISC = ITEMS.register("i_do_music_disc",
             () -> new Item(new Item.Properties().jukeboxPlayable(ModSounds.I_DO_KEY).stacksTo(1).rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> DRIFT_AWAY_MUSIC_DISC = ITEMS.register("drift_away_music_disc",
+            () -> new Item(new Item.Properties().jukeboxPlayable(ModSounds.DRIFT_AWAY_KEY).stacksTo(1).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> JAZZ_JAZZ_JAZZ_MUSIC_DISC = ITEMS.register("jazz_jazz_jazz_music_disc",
+            () -> new Item(new Item.Properties().jukeboxPlayable(ModSounds.JAZZ_JAZZ_JAZZ_KEY).stacksTo(1).rarity(Rarity.RARE)));
+
+
     public static final RegistryObject<Item> BETA_EVAN_SPAWN_EGG = ITEMS.register("beta_evan_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.BETA_EVAN,  0x53524b, 0xdac741, new Item.Properties()));
 

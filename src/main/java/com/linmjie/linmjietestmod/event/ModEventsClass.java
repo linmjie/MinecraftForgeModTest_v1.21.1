@@ -1,6 +1,7 @@
 package com.linmjie.linmjietestmod.event;
 
 import com.linmjie.linmjietestmod.TestingMod;
+import com.linmjie.linmjietestmod.block.entity.custom.ATMBlockEntity;
 import com.linmjie.linmjietestmod.effect.ModEffects;
 import com.linmjie.linmjietestmod.entity.custom.EvanEntity;
 import com.linmjie.linmjietestmod.item.ModItems;
@@ -40,6 +41,10 @@ import java.util.*;
 @Mod.EventBusSubscriber(modid = TestingMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEventsClass {
     private static final Set<BlockPos> HARVESTED_BLOCKS = new HashSet<>();
+
+    public static HashMap<Player, Integer> getPlayerTickQueue(){
+        return PLAYER_TICK_QUEUE;
+    }
 
     // Done with the help of https://github.com/CoFH/CoFHCore/blob/1.19.x/src/main/java/cofh/core/event/AreaEffectEvents.java
     // Don't be a jerk License
@@ -122,9 +127,10 @@ public class ModEventsClass {
     }
 
     private static final HashMap<Player, Integer> PLAYER_TICK_QUEUE = new HashMap<>();
+    //private static final HashMap<Player, Integer> PLAYER_TICK_QUEUE_TWO = new HashMap<>();
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event.phase == TickEvent.Phase.END && event.player.level().isClientSide()) {
+        if (event.phase == TickEvent.Phase.END && event.player.level().isClientSide()) { //client only tick queue
             if (PLAYER_TICK_QUEUE.containsKey(event.player)) {
                 int ticksLeft = PLAYER_TICK_QUEUE.get(event.player);
                 if (ticksLeft <= 0) {
@@ -135,6 +141,22 @@ public class ModEventsClass {
                 }
             }
         }
+        /*
+        if (event.phase == TickEvent.Phase.END && !event.player.level().isClientSide()) { //client only tick queue
+            if (PLAYER_TICK_QUEUE_TWO.containsKey(event.player)) {
+                int ticksLeft = PLAYER_TICK_QUEUE_TWO.get(event.player);
+                if (ticksLeft <= 0) {
+                    event.player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 8));
+                    PLAYER_TICK_QUEUE_TWO.remove(event.player);
+                } else {
+                    PLAYER_TICK_QUEUE_TWO.put(event.player, ticksLeft - 1);
+                }
+            } else {
+                PLAYER_TICK_QUEUE_TWO.put(event.player, 200);
+            }
+        }
+
+         */
     }
 
     @SubscribeEvent

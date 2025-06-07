@@ -1,6 +1,7 @@
 package com.linmjie.linmjietestmod;
 
 import com.linmjie.linmjietestmod.block.ModBlocks;
+import com.linmjie.linmjietestmod.block.entity.ModBlockEntities;
 import com.linmjie.linmjietestmod.component.ModDataComponentTypes;
 import com.linmjie.linmjietestmod.effect.ModEffects;
 import com.linmjie.linmjietestmod.enchantment.ModEnchantmentsEffects;
@@ -71,6 +72,8 @@ public class TestingMod {
 
         ModLootModifiers.register(modEventBus);
 
+        ModBlockEntities.register(modEventBus);
+
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -104,6 +107,8 @@ public class TestingMod {
         //TOOLS TAB
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
             event.accept(ModItems.I_DO_MUSIC_DISC);
+            event.accept(ModItems.DRIFT_AWAY_MUSIC_DISC);
+            event.accept(ModItems.JAZZ_JAZZ_JAZZ_MUSIC_DISC);
             event.accept(ModItems.SCRUB_DADDY);
             event.accept(ModItems.ADVANCED_SCRUB_DADDY);
             event.accept(ModItems.CHISEL);
