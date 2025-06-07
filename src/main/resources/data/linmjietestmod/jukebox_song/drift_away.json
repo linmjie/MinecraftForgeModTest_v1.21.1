@@ -1,0 +1,8 @@
+{
+  "comparator_output": 15,
+  "description": {
+    "translate": "item.linmjietestmod.drift_away_music_disc.desc"
+  },
+  "length_in_seconds": 334.0,
+  "sound_event": "linmjietestmod:drift_away"
+}

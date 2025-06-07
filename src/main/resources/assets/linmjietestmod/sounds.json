@@ -49,5 +49,21 @@
         "stream": true
       }
     ]
+  },
+  "drift_away": {
+    "sounds": [
+      {
+        "name": "linmjietestmod:drift_away",
+        "stream": true
+      }
+    ]
+  },
+  "jazz_jazz_jazz": {
+    "sounds": [
+      {
+        "name": "linmjietestmod:jazz_jazz_jazz",
+        "stream": true
+      }
+    ]
   }
 }

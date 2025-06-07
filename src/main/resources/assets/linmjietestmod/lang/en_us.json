@@ -36,6 +36,12 @@
   "item.linmjietestmod.i_do_music_disc": "§aMusic Disc",
   "item.linmjietestmod.i_do_music_disc.desc": "Rhema Erebholo, Joseph Kasongo, Victor Minero-Erazo, Shyota Smith - I Do",
 
+  "item.linmjietestmod.drift_away_music_disc": "§aMusic Disc",
+  "item.linmjietestmod.drift_away_music_disc.desc": "Joseph Kasango & Shyota Smith - Drift Away",
+
+  "item.linmjietestmod.jazz_jazz_jazz_music_disc": "§aMusic Disc",
+  "item.linmjietestmod.jazz_jazz_jazz_music_disc.desc": "Joseph Kasaongo, Shyota Smith, Grant Weidinger - Jazz Jazz Jazz",
+
 
   "block.linmjietestmod.atm": "ATM",
 
@@ -107,6 +113,7 @@
   "tooltip.linmjietestmod.radioactive_armor_tooltip": "§cWARNING§r: §eRADIOACTIVE§r!",
   "tooltip.linmjietestmod.terraria_not_plagarized_tooltip": "Definitely not stolen from Terraria",
   "tooltip.linmjietestmod.banana_tooltip": "So this is how bananas really grow?",
+  "tooltip.linmjietestmod.non_functional": "Non-Functional",
 
   "sound.linmjietestmod.monkey_noise": "Evan Britton making Monkey Noises",
   "sound.linmjietestmod.jack_black_ambient": "Jack Black Making Noise",

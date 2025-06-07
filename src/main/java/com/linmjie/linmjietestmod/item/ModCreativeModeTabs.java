@@ -41,6 +41,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.URANIUM_BOOTS.get());
                         output.accept(ModItems.NETHERITE_HORSE_ARMOR.get());
                         output.accept(ModItems.I_DO_MUSIC_DISC.get());
+                        output.accept(ModItems.DRIFT_AWAY_MUSIC_DISC.get());
+                        output.accept(ModItems.JAZZ_JAZZ_JAZZ_MUSIC_DISC.get());
                         output.accept(ModItems.REPEATER.get());
                         output.accept(ModItems.BANANA_BOOTS.get());
                         output.accept(ModItems.BANK_CARD.get());

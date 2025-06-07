@@ -1,6 +1,7 @@
 package com.linmjie.linmjietestmod.sound;
 
 import com.linmjie.linmjietestmod.TestingMod;
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -16,6 +17,9 @@ public class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, TestingMod.MOD_ID);
 
+
+    public static final RegistryObject<SoundEvent> JAZZ_JAZZ_JAZZ = registrySoundEvent("jazz_jazz_jazz");
+    public static final RegistryObject<SoundEvent> DRIFT_AWAY = registrySoundEvent("drift_away");
     public static final RegistryObject<SoundEvent> I_DO = registrySoundEvent("i_do");
     public static final RegistryObject<SoundEvent> MONKEY_NOISE = registrySoundEvent("monkey_noise");
 
@@ -28,6 +32,12 @@ public class ModSounds {
 
     public static final ResourceKey<JukeboxSong> I_DO_KEY = ResourceKey.create(Registries.JUKEBOX_SONG,
             ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "i_do"));
+
+    public static final ResourceKey<JukeboxSong> DRIFT_AWAY_KEY = ResourceKey.create(Registries.JUKEBOX_SONG,
+            ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "drift_away"));
+
+    public static final ResourceKey<JukeboxSong> JAZZ_JAZZ_JAZZ_KEY = ResourceKey.create(Registries.JUKEBOX_SONG,
+            ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "jazz_jazz_jazz"));
 
     private static RegistryObject<SoundEvent> registrySoundEvent(String name){
         return SOUND_EVENTS.register(name,
