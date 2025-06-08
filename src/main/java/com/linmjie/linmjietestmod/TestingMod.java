@@ -12,10 +12,13 @@ import com.linmjie.linmjietestmod.item.ModCreativeModeTabs;
 import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.loot.ModLootModifiers;
 import com.linmjie.linmjietestmod.potions.ModPotions;
+import com.linmjie.linmjietestmod.screen.ModMenuTypes;
+import com.linmjie.linmjietestmod.screen.custom.ATMScreen;
 import com.linmjie.linmjietestmod.sound.ModSounds;
 import com.linmjie.linmjietestmod.util.ModItemProperties;
 import com.linmjie.linmjietestmod.villager.ModVillagers;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -73,6 +76,8 @@ public class TestingMod {
         ModLootModifiers.register(modEventBus);
 
         ModBlockEntities.register(modEventBus);
+
+        ModMenuTypes.register(modEventBus);
 
 
         // Register the item to a creative tab
@@ -182,6 +187,8 @@ public class TestingMod {
             ModItemProperties.addCustomItemProperties();
             EntityRenderers.register(ModEntities.BETA_EVAN.get(), EvanRenderer::new);
             EntityRenderers.register(ModEntities.JACK_BLACK.get(), JackBlackRenderer::new);
+
+            MenuScreens.register(ModMenuTypes.ATM_MENU.get(), ATMScreen::new);
         }
     }
 }

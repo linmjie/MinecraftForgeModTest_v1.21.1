@@ -8,12 +8,14 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -89,6 +91,16 @@ public class ATMBlock extends BaseEntityBlock {
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel,
                                               BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
         if(pLevel.getBlockEntity(pPos) instanceof ATMBlockEntity atmBlockEntity && pHand == InteractionHand.MAIN_HAND){
+            if(pPlayer.isCrouching() && !pLevel.isClientSide()){
+                ((ServerPlayer) pPlayer).openMenu(new SimpleMenuProvider(atmBlockEntity, Component.literal("Deposit and Withdraw Emeralds")), pPos);
+                return ItemInteractionResult.SUCCESS;
+            }
+
+            if (pPlayer.isCrouching() && pLevel.isClientSide()){
+                return ItemInteractionResult.SUCCESS;
+            }
+
+
             if(atmBlockEntity.inventory.getStackInSlot(0).isEmpty() && !pStack.isEmpty()){ //ATM inv empty, there is an item in interaction hand
                 if(pStack.getItem() instanceof BankCardItem) { //Can only put a bank card item inside
                     atmBlockEntity.inventory.insertItem(0, pStack.copy(), false);

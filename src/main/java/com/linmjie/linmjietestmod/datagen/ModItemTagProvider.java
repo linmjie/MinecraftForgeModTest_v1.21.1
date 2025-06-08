@@ -25,11 +25,37 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.DEEPSLATE_SOLID)
                 .add(Items.DEEPSLATE)
                 .add(Items.COBBLED_DEEPSLATE);
+
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.URANIUM_HELMET.get())
                 .add(ModItems.URANIUM_CHESTPLATE.get())
                 .add(ModItems.URANIUM_LEGGINGS.get())
                 .add(ModItems.URANIUM_BOOTS.get());
+        tag(ItemTags.HEAD_ARMOR)
+                .add(ModItems.URANIUM_HELMET.get());
+        tag(ItemTags.CHEST_ARMOR)
+                .add(ModItems.URANIUM_CHESTPLATE.get());
+        tag(ItemTags.LEG_ARMOR)
+                .add(ModItems.URANIUM_LEGGINGS.get());
+        tag(ItemTags.FOOT_ARMOR)
+                .add(ModItems.URANIUM_BOOTS.get())
+                .add(ModItems.BANANA_BOOTS.get());
+
+        tag(ItemTags.SWORDS)
+                .add(ModItems.URANIUM_SWORD.get());
+        tag(ItemTags.PICKAXES)
+                .add(ModItems.URANIUM_PICKAXE.get());
+        tag(ItemTags.CLUSTER_MAX_HARVESTABLES)
+                .add(ModItems.URANIUM_PICKAXE.get());
+        tag(ItemTags.AXES)
+                .add(ModItems.URANIUM_AXE.get());
+        tag(ItemTags.HOES)
+                .add(ModItems.URANIUM_HOE.get());
+        tag(ItemTags.SHOVELS)
+                .add(ModItems.URANIUM_SHOVEL.get());
+        tag(ItemTags.DURABILITY_ENCHANTABLE)
+                .add(ModItems.URANIUM_PLOUGH.get());
+
         tag(ItemTags.LOGS_THAT_BURN)
                 .add(ModBlocks.FIR_LOG.get().asItem())
                 .add(ModBlocks.FIR_WOOD.get().asItem())
