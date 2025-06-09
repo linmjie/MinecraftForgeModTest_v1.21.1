@@ -1,5 +1,6 @@
 package com.linmjie.linmjietestmod.block.custom;
 
+import com.linmjie.linmjietestmod.block.entity.ModBlockEntities;
 import com.linmjie.linmjietestmod.block.entity.custom.ATMBlockEntity;
 import com.linmjie.linmjietestmod.component.ModDataComponentTypes;
 import com.linmjie.linmjietestmod.event.ModEventsClass;
@@ -29,6 +30,8 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -51,6 +54,10 @@ public class ATMBlock extends BaseEntityBlock {
             Block.box(1, 0, 1, 15, 16, 15),
             Block.box(1, 0, 1, 15, 14, 15)
     };
+
+    private static final int CARD_SLOT = 0;
+    private static final int DEPOSIT_SLOT = 1;
+    private static final int WITHDRAW_SLOT = 2;
 
     public ATMBlock(Properties pProperties) {
         super(pProperties);
@@ -101,16 +108,16 @@ public class ATMBlock extends BaseEntityBlock {
             }
 
 
-            if(atmBlockEntity.inventory.getStackInSlot(0).isEmpty() && !pStack.isEmpty()){ //ATM inv empty, there is an item in interaction hand
+            /*if(atmBlockEntity.inventory.getStackInSlot(CARD_SLOT).isEmpty() && !pStack.isEmpty()){ //ATM inv empty, there is an item in interaction hand
                 if(pStack.getItem() instanceof BankCardItem) { //Can only put a bank card item inside
-                    atmBlockEntity.inventory.insertItem(0, pStack.copy(), false);
+                    atmBlockEntity.inventory.insertItem(CARD_SLOT, pStack.copy(), false);
                     pStack.shrink(1);
                     pLevel.playSound(pPlayer, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1F, 2F);
                 }
                 //Just in case check for item in ATM inv being a bank card plus a check that interaction hand contains emerald to put into the bank card
-            } else if (atmBlockEntity.inventory.getStackInSlot(0).getItem() instanceof BankCardItem
+            } else if (atmBlockEntity.inventory.getStackInSlot(CARD_SLOT).getItem() instanceof BankCardItem
                     && pStack.getItem() == Items.EMERALD) {
-                ItemStack bankCardInMachine = atmBlockEntity.inventory.getStackInSlot(0);
+                ItemStack bankCardInMachine = atmBlockEntity.inventory.getStackInSlot(CARD_SLOT);
                 int currentEmeralds = bankCardInMachine.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get()) != null ?
                         bankCardInMachine.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get()) : 0;
                 System.out.println(currentEmeralds);
@@ -118,13 +125,15 @@ public class ATMBlock extends BaseEntityBlock {
                 pStack.shrink(pStack.getCount());
                 pLevel.playSound(pPlayer, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1F, 2F);
             } else if(pStack.isEmpty()) { //When interaction hand is empty
-                ItemStack stackInMachine = atmBlockEntity.inventory.extractItem(0, 1, false);
+                ItemStack stackInMachine = atmBlockEntity.inventory.extractItem(CARD_SLOT, 1, false);
                 if(!stackInMachine.isEmpty()) {
                     pPlayer.setItemInHand(InteractionHand.MAIN_HAND, stackInMachine);
                     atmBlockEntity.clearContents();
                     pLevel.playSound(pPlayer, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1F, 1F);
                 }
             }
+
+             */
         }
 
         return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHitResult);
@@ -205,5 +214,16 @@ public class ATMBlock extends BaseEntityBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(FACING).add(HALF);
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
+        if(pLevel.isClientSide()) {
+            return null;
+        }
+
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.ATM_BE.get(),
+                (level, blockPos, blockState, growthChamberBlockEntity) -> growthChamberBlockEntity.tick(level, blockPos, blockState));
     }
 }

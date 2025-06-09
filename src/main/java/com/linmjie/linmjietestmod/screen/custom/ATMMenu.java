@@ -2,6 +2,8 @@ package com.linmjie.linmjietestmod.screen.custom;
 
 import com.linmjie.linmjietestmod.block.ModBlocks;
 import com.linmjie.linmjietestmod.block.entity.custom.ATMBlockEntity;
+import com.linmjie.linmjietestmod.component.ModDataComponentTypes;
+import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -11,14 +13,20 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.SlotItemHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ATMMenu extends AbstractContainerMenu {
     public final ATMBlockEntity blockEntity;
     private final Level level;
+
+    private static final int CARD_SLOT = 0;
+    private static final int DEPOSIT_SLOT = 1;
+    private static final int WITHDRAW_SLOT = 2;
 
     public ATMMenu(int pContainerId, Inventory inventory, FriendlyByteBuf extraData) {
         this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()));
@@ -32,7 +40,26 @@ public class ATMMenu extends AbstractContainerMenu {
         addPlayerInventory(inventory);
         addPlayerHotbar(inventory);
 
-        this.addSlot(new SlotItemHandler(this.blockEntity.inventory, 0, 114, 18));
+        this.addSlot(new SlotItemHandler(this.blockEntity.inventory, CARD_SLOT, 114, 18){
+            @Override
+            public boolean mayPlace(@NotNull ItemStack stack) {
+                return stack.is(ModItems.BANK_CARD.get());
+            }
+        });
+
+        this.addSlot(new SlotItemHandler(this.blockEntity.inventory, DEPOSIT_SLOT, 54, 18){
+            @Override
+            public boolean mayPlace(@NotNull ItemStack stack) {
+                return stack.is(Items.EMERALD);
+            }
+        });
+
+        this.addSlot(new SlotItemHandler(this.blockEntity.inventory, WITHDRAW_SLOT, 114, 61){
+            @Override
+            public boolean mayPlace(@NotNull ItemStack stack) {
+                return false;
+            }
+        });
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -51,7 +78,7 @@ public class ATMMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 1;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
@@ -85,6 +112,49 @@ public class ATMMenu extends AbstractContainerMenu {
         return copyOfSourceStack;
     }
 
+    @Override
+    public boolean clickMenuButton(Player pPlayer, int pId) {
+        if (pId < 4) {
+            ItemStack card = this.blockEntity.inventory.getStackInSlot(CARD_SLOT);
+            ItemStack withdrawal = this.blockEntity.inventory.getStackInSlot(WITHDRAW_SLOT);
+            if(card.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get()) != null && withdrawal.getCount() != 64) {
+                int emeraldsToDeposit = pId == 0 ? 1:
+                                        pId == 1 ? 8:
+                                        pId == 2 ? 32:
+                                                   64;
+                int emeraldsInAccount = card.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get());
+
+                if((emeraldsInAccount >= emeraldsToDeposit)) {
+                    if(withdrawal.is(Items.EMERALD)) {
+                        withdrawal.grow(emeraldsToDeposit);
+                    } else {
+                        this.blockEntity.inventory.setStackInSlot(WITHDRAW_SLOT, new ItemStack(Items.EMERALD, emeraldsToDeposit));
+                    }
+                    card.set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), emeraldsInAccount - emeraldsToDeposit);
+                } else {
+                    emeraldsToDeposit = card.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get());
+                    this.blockEntity.inventory.setStackInSlot(WITHDRAW_SLOT, new ItemStack(Items.EMERALD, emeraldsToDeposit));
+                    card.set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), 0);
+                }
+
+//                if(emeraldsInAccount >= emeraldsToDeposit) {
+//                    if(withdrawal.is(Items.EMERALD)) {
+//                        withdrawal.grow(emeraldsToDeposit);
+//                    } else {
+//                        this.blockEntity.inventory.setStackInSlot(WITHDRAW_SLOT, new ItemStack(Items.EMERALD, emeraldsToDeposit));
+//                    }
+//                    card.set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), emeraldsInAccount - emeraldsToDeposit);
+//                } else {
+//                    emeraldsToDeposit = card.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get());
+//                    this.blockEntity.inventory.setStackInSlot(WITHDRAW_SLOT, new ItemStack(Items.EMERALD, emeraldsToDeposit));
+//                    card.set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), 0);
+//                }
+
+            }
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public boolean stillValid(Player pPlayer) {
