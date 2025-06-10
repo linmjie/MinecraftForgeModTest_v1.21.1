@@ -2,6 +2,7 @@ package com.linmjie.linmjietestmod;
 
 import com.linmjie.linmjietestmod.block.ModBlocks;
 import com.linmjie.linmjietestmod.block.entity.ModBlockEntities;
+import com.linmjie.linmjietestmod.block.entity.renderer.ATMBlockEntityRenderer;
 import com.linmjie.linmjietestmod.component.ModDataComponentTypes;
 import com.linmjie.linmjietestmod.effect.ModEffects;
 import com.linmjie.linmjietestmod.enchantment.ModEnchantmentsEffects;
@@ -22,6 +23,7 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -189,6 +191,11 @@ public class TestingMod {
             EntityRenderers.register(ModEntities.JACK_BLACK.get(), JackBlackRenderer::new);
 
             MenuScreens.register(ModMenuTypes.ATM_MENU.get(), ATMScreen::new);
+        }
+
+        @SubscribeEvent
+        public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerBlockEntityRenderer(ModBlockEntities.ATM_BE.get(), ATMBlockEntityRenderer::new);
         }
     }
 }

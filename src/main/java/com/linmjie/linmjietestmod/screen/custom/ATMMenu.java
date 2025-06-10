@@ -7,6 +7,7 @@ import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -137,7 +138,7 @@ public class ATMMenu extends AbstractContainerMenu {
                 }
                 card.set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), (emeraldsInAccount - emeraldsToWithdraw) != 0 ?
                         emeraldsInAccount - emeraldsToWithdraw : null);
-                pPlayer.playSound(SoundEvents.ITEM_PICKUP, 1.0F, 2.0F);
+                this.blockEntity.getLevel().playSound(null, this.blockEntity.getBlockPos(), SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0F, 2.0F);
             }
             return true;
         }
