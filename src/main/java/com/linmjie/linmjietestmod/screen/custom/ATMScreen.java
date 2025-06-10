@@ -8,8 +8,10 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public class ATMScreen extends AbstractContainerScreen<ATMMenu> {
     private static final ResourceLocation GUI_TEXTURE =
             ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "textures/gui/atm/atm_gui.png");
@@ -30,13 +32,13 @@ public class ATMScreen extends AbstractContainerScreen<ATMMenu> {
 
         for (int i = 0; i < 4; i++) {
             double d0 = pMouseX - (double)(x + 144);
-            double d1 = pMouseY - (double)(y + 17 + i * 20);
+            double d1 = pMouseY - (double)(y + 17 + i * 16);
             if (d0 >= 0.0 && d1 >= 0.0 && d0 < 24.0 && d1 < 16.0 && this.menu.clickMenuButton(this.minecraft.player, i)) {
+                System.out.println("ITERATION "+i);
                 this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, i);
                 return true;
             }
         }
-        System.out.println(pButton);
 
         return super.mouseClicked(pMouseX, pMouseY, pButton);
     }

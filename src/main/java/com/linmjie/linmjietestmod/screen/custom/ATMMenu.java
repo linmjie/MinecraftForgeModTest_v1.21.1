@@ -10,7 +10,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -18,7 +17,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class ATMMenu extends AbstractContainerMenu {
     public final ATMBlockEntity blockEntity;
@@ -124,32 +122,20 @@ public class ATMMenu extends AbstractContainerMenu {
                                                    64;
                 int emeraldsInAccount = card.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get());
 
-                if((emeraldsInAccount >= emeraldsToDeposit)) {
-                    if(withdrawal.is(Items.EMERALD)) {
-                        withdrawal.grow(emeraldsToDeposit);
-                    } else {
-                        this.blockEntity.inventory.setStackInSlot(WITHDRAW_SLOT, new ItemStack(Items.EMERALD, emeraldsToDeposit));
-                    }
-                    card.set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), emeraldsInAccount - emeraldsToDeposit);
-                } else {
+                if(emeraldsInAccount < emeraldsToDeposit) {
                     emeraldsToDeposit = card.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get());
-                    this.blockEntity.inventory.setStackInSlot(WITHDRAW_SLOT, new ItemStack(Items.EMERALD, emeraldsToDeposit));
-                    card.set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), 0);
+                }
+                if((withdrawal.getCount() + emeraldsToDeposit) >= 64){
+                    emeraldsToDeposit = 64 - withdrawal.getCount();
                 }
 
-//                if(emeraldsInAccount >= emeraldsToDeposit) {
-//                    if(withdrawal.is(Items.EMERALD)) {
-//                        withdrawal.grow(emeraldsToDeposit);
-//                    } else {
-//                        this.blockEntity.inventory.setStackInSlot(WITHDRAW_SLOT, new ItemStack(Items.EMERALD, emeraldsToDeposit));
-//                    }
-//                    card.set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), emeraldsInAccount - emeraldsToDeposit);
-//                } else {
-//                    emeraldsToDeposit = card.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get());
-//                    this.blockEntity.inventory.setStackInSlot(WITHDRAW_SLOT, new ItemStack(Items.EMERALD, emeraldsToDeposit));
-//                    card.set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), 0);
-//                }
-
+                if(withdrawal.is(Items.EMERALD)) {
+                    withdrawal.grow(emeraldsToDeposit);
+                } else {
+                    this.blockEntity.inventory.setStackInSlot(WITHDRAW_SLOT, new ItemStack(Items.EMERALD, emeraldsToDeposit));
+                }
+                card.set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), (emeraldsInAccount - emeraldsToDeposit) != 0 ?
+                        emeraldsInAccount - emeraldsToDeposit : null);
             }
             return true;
         }

@@ -2,27 +2,18 @@ package com.linmjie.linmjietestmod.block.custom;
 
 import com.linmjie.linmjietestmod.block.entity.ModBlockEntities;
 import com.linmjie.linmjietestmod.block.entity.custom.ATMBlockEntity;
-import com.linmjie.linmjietestmod.component.ModDataComponentTypes;
-import com.linmjie.linmjietestmod.event.ModEventsClass;
-import com.linmjie.linmjietestmod.item.custom.BankCardItem;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -43,8 +34,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class ATMBlock extends BaseEntityBlock {
     public static final MapCodec<ATMBlock> CODEC = simpleCodec(ATMBlock::new);
@@ -97,43 +86,15 @@ public class ATMBlock extends BaseEntityBlock {
     @Override
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel,
                                               BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
-        if(pLevel.getBlockEntity(pPos) instanceof ATMBlockEntity atmBlockEntity && pHand == InteractionHand.MAIN_HAND){
-            if(pPlayer.isCrouching() && !pLevel.isClientSide()){
+        if(pLevel.getBlockEntity(pPos) instanceof ATMBlockEntity atmBlockEntity){
+            if(!pLevel.isClientSide()){
                 ((ServerPlayer) pPlayer).openMenu(new SimpleMenuProvider(atmBlockEntity, Component.literal("Deposit and Withdraw Emeralds")), pPos);
                 return ItemInteractionResult.SUCCESS;
             }
 
-            if (pPlayer.isCrouching() && pLevel.isClientSide()){
+            if (pLevel.isClientSide()){
                 return ItemInteractionResult.SUCCESS;
             }
-
-
-            /*if(atmBlockEntity.inventory.getStackInSlot(CARD_SLOT).isEmpty() && !pStack.isEmpty()){ //ATM inv empty, there is an item in interaction hand
-                if(pStack.getItem() instanceof BankCardItem) { //Can only put a bank card item inside
-                    atmBlockEntity.inventory.insertItem(CARD_SLOT, pStack.copy(), false);
-                    pStack.shrink(1);
-                    pLevel.playSound(pPlayer, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1F, 2F);
-                }
-                //Just in case check for item in ATM inv being a bank card plus a check that interaction hand contains emerald to put into the bank card
-            } else if (atmBlockEntity.inventory.getStackInSlot(CARD_SLOT).getItem() instanceof BankCardItem
-                    && pStack.getItem() == Items.EMERALD) {
-                ItemStack bankCardInMachine = atmBlockEntity.inventory.getStackInSlot(CARD_SLOT);
-                int currentEmeralds = bankCardInMachine.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get()) != null ?
-                        bankCardInMachine.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get()) : 0;
-                System.out.println(currentEmeralds);
-               bankCardInMachine.set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), currentEmeralds + pStack.getCount());
-                pStack.shrink(pStack.getCount());
-                pLevel.playSound(pPlayer, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1F, 2F);
-            } else if(pStack.isEmpty()) { //When interaction hand is empty
-                ItemStack stackInMachine = atmBlockEntity.inventory.extractItem(CARD_SLOT, 1, false);
-                if(!stackInMachine.isEmpty()) {
-                    pPlayer.setItemInHand(InteractionHand.MAIN_HAND, stackInMachine);
-                    atmBlockEntity.clearContents();
-                    pLevel.playSound(pPlayer, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1F, 1F);
-                }
-            }
-
-             */
         }
 
         return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHitResult);
