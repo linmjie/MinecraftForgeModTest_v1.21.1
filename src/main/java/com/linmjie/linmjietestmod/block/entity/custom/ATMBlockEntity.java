@@ -2,6 +2,7 @@ package com.linmjie.linmjietestmod.block.entity.custom;
 
 import com.linmjie.linmjietestmod.block.entity.ModBlockEntities;
 import com.linmjie.linmjietestmod.component.ModDataComponentTypes;
+import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.screen.custom.ATMMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -10,6 +11,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -73,12 +77,13 @@ public class  ATMBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState){
-        if (this.inventory.getStackInSlot(DEPOSIT_SLOT).is(Items.EMERALD)){
+        if (this.inventory.getStackInSlot(DEPOSIT_SLOT).is(Items.EMERALD) && this.inventory.getStackInSlot(CARD_SLOT).is(ModItems.BANK_CARD.get())){
             int emeraldCount = this.inventory.getStackInSlot(DEPOSIT_SLOT).getCount();
             int currentEmeralds = this.inventory.getStackInSlot(CARD_SLOT).get(ModDataComponentTypes.EMERALDS_ACCOUNT.get()) != null ?
                     this.inventory.getStackInSlot(CARD_SLOT).get(ModDataComponentTypes.EMERALDS_ACCOUNT.get()) : 0;
             this.inventory.getStackInSlot(CARD_SLOT).set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), currentEmeralds + emeraldCount);
             this.inventory.getStackInSlot(DEPOSIT_SLOT).shrink(emeraldCount);
+            pLevel.playSound(null, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0F, 1.0F);
         }
     }
 

@@ -185,6 +185,6 @@ public class ATMBlock extends BaseEntityBlock {
         }
 
         return createTickerHelper(pBlockEntityType, ModBlockEntities.ATM_BE.get(),
-                (level, blockPos, blockState, growthChamberBlockEntity) -> growthChamberBlockEntity.tick(level, blockPos, blockState));
+                (level, blockPos, blockState, atmBlockEntity) -> atmBlockEntity.tick(level, blockPos, blockState));
     }
 }

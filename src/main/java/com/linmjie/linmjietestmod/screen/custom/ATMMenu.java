@@ -6,6 +6,7 @@ import com.linmjie.linmjietestmod.component.ModDataComponentTypes;
 import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -116,26 +117,27 @@ public class ATMMenu extends AbstractContainerMenu {
             ItemStack card = this.blockEntity.inventory.getStackInSlot(CARD_SLOT);
             ItemStack withdrawal = this.blockEntity.inventory.getStackInSlot(WITHDRAW_SLOT);
             if(card.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get()) != null && withdrawal.getCount() != 64) {
-                int emeraldsToDeposit = pId == 0 ? 1:
+                int emeraldsToWithdraw = pId == 0 ? 1:
                                         pId == 1 ? 8:
                                         pId == 2 ? 32:
                                                    64;
                 int emeraldsInAccount = card.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get());
 
-                if(emeraldsInAccount < emeraldsToDeposit) {
-                    emeraldsToDeposit = card.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get());
+                if(emeraldsInAccount < emeraldsToWithdraw) {
+                    emeraldsToWithdraw = card.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get());
                 }
-                if((withdrawal.getCount() + emeraldsToDeposit) >= 64){
-                    emeraldsToDeposit = 64 - withdrawal.getCount();
+                if((withdrawal.getCount() + emeraldsToWithdraw) >= 64){
+                    emeraldsToWithdraw = 64 - withdrawal.getCount();
                 }
 
                 if(withdrawal.is(Items.EMERALD)) {
-                    withdrawal.grow(emeraldsToDeposit);
+                    withdrawal.grow(emeraldsToWithdraw);
                 } else {
-                    this.blockEntity.inventory.setStackInSlot(WITHDRAW_SLOT, new ItemStack(Items.EMERALD, emeraldsToDeposit));
+                    this.blockEntity.inventory.setStackInSlot(WITHDRAW_SLOT, new ItemStack(Items.EMERALD, emeraldsToWithdraw));
                 }
-                card.set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), (emeraldsInAccount - emeraldsToDeposit) != 0 ?
-                        emeraldsInAccount - emeraldsToDeposit : null);
+                card.set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), (emeraldsInAccount - emeraldsToWithdraw) != 0 ?
+                        emeraldsInAccount - emeraldsToWithdraw : null);
+                pPlayer.playSound(SoundEvents.ITEM_PICKUP, 1.0F, 2.0F);
             }
             return true;
         }
