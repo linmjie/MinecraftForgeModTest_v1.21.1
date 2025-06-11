@@ -118,10 +118,11 @@ public class ATMMenu extends AbstractContainerMenu {
             ItemStack card = this.blockEntity.inventory.getStackInSlot(CARD_SLOT);
             ItemStack withdrawal = this.blockEntity.inventory.getStackInSlot(WITHDRAW_SLOT);
             if(card.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get()) != null && withdrawal.getCount() != 64) {
+                //How many emeralds each button (by pId) will draw default
                 int emeraldsToWithdraw = pId == 0 ? 1:
-                                        pId == 1 ? 8:
-                                        pId == 2 ? 32:
-                                                   64;
+                                         pId == 1 ? 8:
+                                         pId == 2 ? 32:
+                                                    64;
                 int emeraldsInAccount = card.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get());
 
                 if(emeraldsInAccount < emeraldsToWithdraw) {

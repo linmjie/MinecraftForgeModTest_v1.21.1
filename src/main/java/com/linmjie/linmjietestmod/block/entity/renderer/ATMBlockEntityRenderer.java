@@ -23,9 +23,6 @@ public class ATMBlockEntityRenderer implements BlockEntityRenderer<ATMBlockEntit
 
     }
 
-    public static final float[] var10000 = new float[]{
-            0.275F, 0.21F, 0.05F
-    };
     @Override
     public void render(ATMBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack,
                        MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {

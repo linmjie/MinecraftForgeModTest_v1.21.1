@@ -44,10 +44,6 @@ public class ATMBlock extends BaseEntityBlock {
             Block.box(1, 0, 1, 15, 14, 15)
     };
 
-    private static final int CARD_SLOT = 0;
-    private static final int DEPOSIT_SLOT = 1;
-    private static final int WITHDRAW_SLOT = 2;
-
     public ATMBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(HALF, DoubleBlockHalf.LOWER));
@@ -86,6 +82,9 @@ public class ATMBlock extends BaseEntityBlock {
     @Override
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel,
                                               BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
+        if (pState.getValue(HALF) == DoubleBlockHalf.LOWER){
+            pPos = pPos.above();
+        }
         if(pLevel.getBlockEntity(pPos) instanceof ATMBlockEntity atmBlockEntity){
             if(!pLevel.isClientSide()){
                 ((ServerPlayer) pPlayer).openMenu(new SimpleMenuProvider(atmBlockEntity, Component.literal("Deposit and Withdraw Emeralds")), pPos);
