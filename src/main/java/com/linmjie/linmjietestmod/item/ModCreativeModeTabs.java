@@ -84,6 +84,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.FIR_LEAVES.get());
                         output.accept(ModBlocks.LAVA_CHICKEN.get());
                         output.accept(ModBlocks.ATM.get());
+                        output.accept(ModBlocks.SLOTS_MACHINE.get());
                     }).build());
 
 

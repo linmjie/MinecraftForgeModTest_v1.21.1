@@ -164,6 +164,7 @@ public class TestingMod {
             event.accept(ModBlocks.NEON_DOOR);
             event.accept(ModBlocks.NEON_TRAPDOOR);
             event.accept(ModBlocks.ATM);
+            event.accept(ModBlocks.SLOTS_MACHINE);
 
         }
 
