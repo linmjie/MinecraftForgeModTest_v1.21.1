@@ -2,6 +2,7 @@ package com.linmjie.linmjietestmod.datagen;
 
 import com.linmjie.linmjietestmod.block.ModBlocks;
 import com.linmjie.linmjietestmod.block.custom.ATMBlock;
+import com.linmjie.linmjietestmod.block.custom.SlotsMachineBlock;
 import com.linmjie.linmjietestmod.item.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
@@ -64,6 +65,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.FIR_SAPLING.get());
 
         this.add(ModBlocks.ATM.get(), block -> this.createSinglePropConditionTable(block, ATMBlock.HALF, DoubleBlockHalf.LOWER));
+        this.add(ModBlocks.SLOTS_MACHINE.get(), block -> this.createSinglePropConditionTable(block, SlotsMachineBlock.HALF, DoubleBlockHalf.LOWER));
 
         this.add(ModBlocks.FIR_LEAVES.get(), block ->
                 createLeavesDrops(block, ModBlocks.FIR_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));

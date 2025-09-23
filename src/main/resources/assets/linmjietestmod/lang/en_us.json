@@ -42,8 +42,12 @@
   "item.linmjietestmod.jazz_jazz_jazz_music_disc": "§aMusic Disc",
   "item.linmjietestmod.jazz_jazz_jazz_music_disc.desc": "Joseph Kasaongo, Shyota Smith, Grant Weidinger - Jazz! Jazz! Jazz!",
 
+  "item.linmjietestmod.vivace_music_disc": "§aMusic Disc",
+  "item.linmjietestmod.vivace_music_disc.desc": "Shyota Smith Music - Vivace",
+
 
   "block.linmjietestmod.atm": "ATM",
+  "block.linmjietestmod.slots_machine": "Slots Machine",
 
   "block.linmjietestmod.soap_block": "Soap Block",
   "block.linmjietestmod.condensed_soap_block": "Condensed Soap Block",

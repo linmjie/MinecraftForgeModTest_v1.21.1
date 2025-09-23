@@ -17,9 +17,9 @@ public class ATMScreen extends AbstractContainerScreen<ATMMenu> {
             ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "textures/gui/atm/atm_gui.png");
 
     private static final ResourceLocation WITHDRAWAL_BUTTON =
-            ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "atm/withdrawal_button");
+            ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "money/withdrawal_button");
     private static final ResourceLocation WITHDRAWAL_BUTTON_HIGHLIGHTED =
-            ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "atm/withdrawal_button_highlighted");
+            ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "money/withdrawal_button_highlighted");
 
     public ATMScreen(ATMMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);

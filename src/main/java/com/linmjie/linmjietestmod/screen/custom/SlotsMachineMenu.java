@@ -40,7 +40,7 @@ public class SlotsMachineMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                pPlayer, ModBlocks.ATM.get());
+                pPlayer, ModBlocks.SLOTS_MACHINE.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory){

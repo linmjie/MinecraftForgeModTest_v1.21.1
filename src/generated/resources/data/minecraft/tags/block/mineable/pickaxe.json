@@ -17,6 +17,7 @@
     "linmjietestmod:neon_wall",
     "linmjietestmod:neon_door",
     "linmjietestmod:neon_trapdoor",
-    "linmjietestmod:atm"
+    "linmjietestmod:atm",
+    "linmjietestmod:slots_machine"
   ]
 }

@@ -15,6 +15,8 @@ import com.linmjie.linmjietestmod.loot.ModLootModifiers;
 import com.linmjie.linmjietestmod.potions.ModPotions;
 import com.linmjie.linmjietestmod.screen.ModMenuTypes;
 import com.linmjie.linmjietestmod.screen.custom.ATMScreen;
+import com.linmjie.linmjietestmod.screen.custom.SlotsMachineMenu;
+import com.linmjie.linmjietestmod.screen.custom.SlotsMachineScreen;
 import com.linmjie.linmjietestmod.sound.ModSounds;
 import com.linmjie.linmjietestmod.util.ModItemProperties;
 import com.linmjie.linmjietestmod.villager.ModVillagers;
@@ -192,6 +194,7 @@ public class TestingMod {
             EntityRenderers.register(ModEntities.JACK_BLACK.get(), JackBlackRenderer::new);
 
             MenuScreens.register(ModMenuTypes.ATM_MENU.get(), ATMScreen::new);
+            MenuScreens.register(ModMenuTypes.SLOTS_MACHINE_MENU.get(), SlotsMachineScreen::new);
         }
 
         @SubscribeEvent

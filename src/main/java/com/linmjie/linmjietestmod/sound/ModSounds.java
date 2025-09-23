@@ -18,6 +18,7 @@ public class ModSounds {
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, TestingMod.MOD_ID);
 
 
+    public static final RegistryObject<SoundEvent> VIVACE = registrySoundEvent("vivace");
     public static final RegistryObject<SoundEvent> JAZZ_JAZZ_JAZZ = registrySoundEvent("jazz_jazz_jazz");
     public static final RegistryObject<SoundEvent> DRIFT_AWAY = registrySoundEvent("drift_away");
     public static final RegistryObject<SoundEvent> I_DO = registrySoundEvent("i_do");
@@ -38,6 +39,9 @@ public class ModSounds {
 
     public static final ResourceKey<JukeboxSong> JAZZ_JAZZ_JAZZ_KEY = ResourceKey.create(Registries.JUKEBOX_SONG,
             ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "jazz_jazz_jazz"));
+
+    public static final ResourceKey<JukeboxSong> VIVACE_KEY = ResourceKey.create(Registries.JUKEBOX_SONG,
+            ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "vivace"));
 
     private static RegistryObject<SoundEvent> registrySoundEvent(String name){
         return SOUND_EVENTS.register(name,

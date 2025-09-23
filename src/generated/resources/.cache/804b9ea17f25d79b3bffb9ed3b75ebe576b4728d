@@ -1,0 +1,17 @@
+// 1.21.1	2025-06-07T22:31:18.61755644	Tags for minecraft:item mod id linmjietestmod
+07e455922db27041b7ef9c02c7f84212e31c9b7a data/linmjietestmod/tags/item/deepslate_solid.json
+e1ed1b30cb85d9f9b23d3cf5c8f6adc63bb7b94d data/linmjietestmod/tags/item/fir_logs.json
+969fc55ee105f06741a7999d947278be618cb803 data/minecraft/tags/item/axes.json
+65b330e43fc55b463301d535cf5dd64c6c7188b4 data/minecraft/tags/item/chest_armor.json
+bd52248654634f689b4bcae5f1e47647ef174487 data/minecraft/tags/item/cluster_max_harvestables.json
+d5aaf02f9bf38acea1ef797e50174aecbaafec0b data/minecraft/tags/item/enchantable/durability.json
+1017e067d1c59bd4af14e4b3db640870e43ed78c data/minecraft/tags/item/foot_armor.json
+183a0e8446dfa549a017ccd5936faa6ef7b1270f data/minecraft/tags/item/head_armor.json
+22746b99623a10c1b5bc2998b14c223fb7547cbb data/minecraft/tags/item/hoes.json
+d41b8010ca95a0c96752d15086019b528dc0451e data/minecraft/tags/item/leg_armor.json
+e1ed1b30cb85d9f9b23d3cf5c8f6adc63bb7b94d data/minecraft/tags/item/logs_that_burn.json
+bd52248654634f689b4bcae5f1e47647ef174487 data/minecraft/tags/item/pickaxes.json
+b29228d762da50ba25483d8922088e7853151440 data/minecraft/tags/item/planks.json
+39009fab5cefd3f36a60ed3fc8486526e80eb18b data/minecraft/tags/item/shovels.json
+4321da1d1dbe16615179bc499dd466dd716f6dc0 data/minecraft/tags/item/swords.json
+f32b1233867b1eb99be9176b622811baa9cbeba0 data/minecraft/tags/item/trimmable_armor.json

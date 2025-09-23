@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,half=lower": {
+      "model": "linmjietestmod:block/slots_machine_bottom"
+    },
+    "facing=south,half=lower": {
+      "model": "linmjietestmod:block/slots_machine_bottom",
+      "y": 180
+    },
+    "facing=east,half=lower": {
+      "model": "linmjietestmod:block/slots_machine_bottom",
+      "y": 90
+    },
+    "facing=west,half=lower": {
+      "model": "linmjietestmod:block/slots_machine_bottom",
+      "y": 270
+    },
+    "facing=north,half=upper": {
+      "model": "linmjietestmod:block/slots_machine_top"
+    },
+    "facing=south,half=upper": {
+      "model": "linmjietestmod:block/slots_machine_top",
+      "y": 180
+    },
+    "facing=east,half=upper": {
+      "model": "linmjietestmod:block/slots_machine_top",
+      "y": 90
+    },
+    "facing=west,half=upper": {
+      "model": "linmjietestmod:block/slots_machine_top",
+      "y": 270
+    }
+  }
+}

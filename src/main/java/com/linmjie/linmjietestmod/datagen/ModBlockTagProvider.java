@@ -37,7 +37,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.NEON_WALL.get())
                 .add(ModBlocks.NEON_DOOR.get())
                 .add(ModBlocks.NEON_TRAPDOOR.get())
-                .add(ModBlocks.ATM.get());
+                .add(ModBlocks.ATM.get())
+                .add(ModBlocks.SLOTS_MACHINE.get());
 
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.SOAP_BLOCK.get());

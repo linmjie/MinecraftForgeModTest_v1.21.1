@@ -65,5 +65,13 @@
         "stream": true
       }
     ]
+  },
+  "vivace": {
+    "sounds": [
+      {
+        "name": "linmjietestmod:vivace",
+        "stream": true
+      }
+    ]
   }
 }

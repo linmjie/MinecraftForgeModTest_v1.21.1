@@ -1,0 +1,16 @@
+// 1.21.1	2025-08-02T15:52:46.124698511	Tags for minecraft:block mod id linmjietestmod
+e1ed1b30cb85d9f9b23d3cf5c8f6adc63bb7b94d data/linmjietestmod/tags/block/fir_logs.json
+a249c46329a41538f49a564e1f14338aaf1be5a0 data/linmjietestmod/tags/block/incorrect_for_uranium_tool.json
+82b4632abdb2bfe993d7350f45c1af4a83046e6f data/linmjietestmod/tags/block/needs_netherite_tool.json
+b5021bc37fbdf10bc9f8eb259ef5e4a007758e91 data/linmjietestmod/tags/block/needs_uranium_tool.json
+05430ca657d7c2eab03ad33d6dd402d6ef166890 data/minecraft/tags/block/fence_gates.json
+ee8e31d5bb8c179d6150c5b9a17eaab984f967f0 data/minecraft/tags/block/fences.json
+e24030cbfbd760666e9f9f29d9794a3353b32283 data/minecraft/tags/block/incorrect_for_diamond_tool.json
+0109bb7325be37e38f32a430388c5e56ce52e2be data/minecraft/tags/block/incorrect_for_gold_tool.json
+0109bb7325be37e38f32a430388c5e56ce52e2be data/minecraft/tags/block/incorrect_for_iron_tool.json
+0109bb7325be37e38f32a430388c5e56ce52e2be data/minecraft/tags/block/incorrect_for_stone_tool.json
+0109bb7325be37e38f32a430388c5e56ce52e2be data/minecraft/tags/block/incorrect_for_wooden_tool.json
+e1ed1b30cb85d9f9b23d3cf5c8f6adc63bb7b94d data/minecraft/tags/block/logs_that_burn.json
+64880bb4628807cf3aaaf09001c508a34bcaf0b1 data/minecraft/tags/block/mineable/hoe.json
+f4f0c1ebfbc593357b620d1cadcbe6df23af3d78 data/minecraft/tags/block/mineable/pickaxe.json
+678402aac43c8f31ad9e204e337902aaaa4b506d data/minecraft/tags/block/walls.json

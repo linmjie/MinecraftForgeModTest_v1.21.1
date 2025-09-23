@@ -1,9 +1,18 @@
 package com.linmjie.linmjietestmod.block.custom;
 
+import com.linmjie.linmjietestmod.block.custom.SlotsMachineBlock;
+import com.linmjie.linmjietestmod.block.entity.ModBlockEntities;
+import com.linmjie.linmjietestmod.block.entity.custom.ATMBlockEntity;
+import com.linmjie.linmjietestmod.block.entity.custom.SlotsMachineBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -23,6 +32,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
@@ -53,7 +63,42 @@ public class SlotsMachineBlock extends BaseEntityBlock {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+        if (pState.getValue(HALF) == DoubleBlockHalf.UPPER){
+            return new SlotsMachineBlockEntity(pPos, pState);
+        }
         return null;
+    }
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel,
+                                              BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
+        if (pState.getValue(HALF) == DoubleBlockHalf.LOWER){
+            pPos = pPos.above();
+        }
+        if(pLevel.getBlockEntity(pPos) instanceof SlotsMachineBlockEntity slotsMachineBlockEntity){
+            if(!pLevel.isClientSide()){
+                ((ServerPlayer) pPlayer).openMenu(new SimpleMenuProvider(slotsMachineBlockEntity, Component.literal("Win Big!!!")), pPos);
+                return ItemInteractionResult.SUCCESS;
+            }
+
+            if (pLevel.isClientSide()){
+                return ItemInteractionResult.SUCCESS;
+            }
+        }
+
+        return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHitResult);
+    }
+
+    @Override
+    protected void onRemove(BlockState pState, Level pLevel, BlockPos pPos,
+                            BlockState pNewState, boolean pMovedByPiston) {
+        if(pState.getBlock() != pNewState.getBlock()){
+            if(pLevel.getBlockEntity(pPos) instanceof SlotsMachineBlockEntity slotsMachineBlock){
+                slotsMachineBlock.drops();
+                pLevel.updateNeighbourForOutputSignal(pPos, this);
+            }
+        }
+        super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
     }
 
     @Override
@@ -136,6 +181,11 @@ public class SlotsMachineBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        return null;
+        if(pLevel.isClientSide()) {
+            return null;
+        }
+
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.SLOTS_MACHINE_BE.get(),
+                (level, blockPos, blockState, SlotsMachineBlockEntity) -> SlotsMachineBlockEntity.tick(level, blockPos, blockState));
     }
 }
