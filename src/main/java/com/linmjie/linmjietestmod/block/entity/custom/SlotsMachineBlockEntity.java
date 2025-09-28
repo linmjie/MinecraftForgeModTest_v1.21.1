@@ -1,6 +1,8 @@
 package com.linmjie.linmjietestmod.block.entity.custom;
 
 import com.linmjie.linmjietestmod.block.entity.ModBlockEntities;
+import com.linmjie.linmjietestmod.component.ModDataComponentTypes;
+import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.screen.custom.ATMMenu;
 import com.linmjie.linmjietestmod.screen.custom.SlotsMachineMenu;
 import com.linmjie.linmjietestmod.util.SlotSymbol;
@@ -17,6 +19,9 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -27,7 +32,8 @@ import java.util.HashSet;
 
 public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider {
     public final ItemStackHandler inventory = new ItemStackHandler(1);
-    public int deposit = 0;
+    private int deposit = 0;
+    private int withdraw = 0;
 
     public enum State{
         IDLE,
@@ -59,6 +65,10 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
             return true;
         }
         return false;
+    }
+
+    public String getWithdrawStr (){
+        return Integer.toString(this.withdraw);
     }
 
     public void drops(){
@@ -93,7 +103,25 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
     }
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState){
-
+        ItemStack itemStack = this.inventory.getStackInSlot(0);
+        if (itemStack.is(ModItems.BANK_CARD.get())){
+            int currentEmeralds = itemStack.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get()) != null?
+                    itemStack.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get()) : 0;
+            itemStack.set(ModDataComponentTypes.EMERALDS_ACCOUNT.get(), currentEmeralds + this.withdraw);
+            this.withdraw = 0;
+        } else {
+            int emeraldsToWithdraw = this.withdraw;
+            int currentCount = itemStack.getCount();
+            if (emeraldsToWithdraw + currentCount >= 64){
+                emeraldsToWithdraw = 64 - currentCount;
+            }
+            if (itemStack.is(Items.EMERALD)){
+                itemStack.grow(emeraldsToWithdraw);
+            } else {
+                this.inventory.setStackInSlot(0, new ItemStack(Items.EMERALD, emeraldsToWithdraw));
+            }
+            this.withdraw -= emeraldsToWithdraw;
+        }
     }
 
     @Override

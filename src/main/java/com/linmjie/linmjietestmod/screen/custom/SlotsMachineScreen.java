@@ -30,6 +30,8 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
 
     public SlotsMachineScreen(SlotsMachineMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
+        this.imageHeight = 222;
+        this.inventoryLabelY = this.imageHeight - 94;
     }
 
     @Override
@@ -37,11 +39,11 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
         super.init();
         int i = (this.width - this.imageWidth) / 2;
         int j = (this.height - this.imageHeight) / 2;
-        this.numberInput = new NumEditBox(this.font, i + 46, j + 66, 82, 13, Component.translatable("container.gamble"));
+        this.numberInput = new NumEditBox(this.font, i + 45, j + 113, 82, 13, Component.translatable("container.gamble"));
         this.numberInput.setCanLoseFocus(false);
         this.numberInput.setTextColor(-1);
         this.numberInput.setBordered(false);
-        this.numberInput.setMaxLength(50);
+        this.numberInput.setMaxLength(80);
         this.numberInput.setResponder(this::onNumberInput);
         this.numberInput.setValue("");
         this.numberInput.setVisible(true);
@@ -68,8 +70,15 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
         RenderSystem.setShaderTexture(0, WITHDRAW_FIELD);
         RenderSystem.setShaderTexture(0, DEPOSIT_FIELD);
 
-        pGuiGraphics.blitSprite(WITHDRAW_FIELD, x + 43+20, y + 7, 89-20, 17);
-        pGuiGraphics.blitSprite(DEPOSIT_FIELD, x + 43+20, y + 61, 89-20, 17);
+        pGuiGraphics.blitSprite(WITHDRAW_FIELD, x + 42, y + 18, 89, 17);
+        String withdrawString = this.blockEntity.getWithdrawStr();
+        int textWidth = font.width(withdrawString);
+        int textX = x + 42 + (89 - textWidth) / 2;
+        int textY = y + 18 + (17 - font.lineHeight) / 2 + 2;
+
+        pGuiGraphics.drawString(font, withdrawString, textX, textY, 0x000000, false);
+
+        pGuiGraphics.blitSprite(DEPOSIT_FIELD, x + 42, y + 107, 89, 17);
     }
 
     @Override

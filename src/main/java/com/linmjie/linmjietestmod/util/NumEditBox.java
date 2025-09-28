@@ -16,8 +16,8 @@ public class NumEditBox extends EditBox {
 
     private static boolean isIntegerOrEmpty(String s){
         try{
-            Integer.parseInt(s);
-            return true;
+            int i = Integer.parseInt(s);
+            return i >= 0;
         } catch (NumberFormatException e) {
             return s.isEmpty();
         }
