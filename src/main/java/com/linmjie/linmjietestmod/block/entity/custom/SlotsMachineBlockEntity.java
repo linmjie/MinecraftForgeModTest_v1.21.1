@@ -32,8 +32,9 @@ import java.util.HashSet;
 
 public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider {
     public final ItemStackHandler inventory = new ItemStackHandler(1);
-    private int deposit = 0;
+    private int emeraldsToGamble;
     private int withdraw = 0;
+    private int tickCounter;
 
     public enum State{
         IDLE,
@@ -45,10 +46,6 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
 
     public SlotsMachineBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.SLOTS_MACHINE_BE.get(), pPos, pBlockState);
-    }
-
-    public void setDeposit(int deposit){
-        this.deposit = deposit;
     }
 
     public State getState() {
@@ -94,7 +91,7 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
 
     @Override
     public Component getDisplayName() {
-        return Component.literal("ATM");
+        return Component.literal("Slots Machine");
     }
 
     @Override
@@ -102,7 +99,7 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
         return new SlotsMachineMenu(pContainerId, pPlayerInventory, this);
     }
 
-    public void tick(Level level, BlockPos blockPos, BlockState blockState){
+    public void automaticWithdraw(Level level, BlockPos blockPos, BlockState blockState){
         ItemStack itemStack = this.inventory.getStackInSlot(0);
         if (itemStack.is(ModItems.BANK_CARD.get())){
             int currentEmeralds = itemStack.get(ModDataComponentTypes.EMERALDS_ACCOUNT.get()) != null?
@@ -122,6 +119,34 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
             }
             this.withdraw -= emeraldsToWithdraw;
         }
+    }
+
+    public void initializeReels(Level level, BlockPos blockPos, BlockState blockState){
+
+        this.state = State.ONGOING;
+    }
+
+    public void tick(Level level, BlockPos blockPos, BlockState blockState){
+        //Automatic withdraw of emeralds from in-machine account
+        if (this.withdraw > 0) {
+            automaticWithdraw(level, blockPos, blockState);
+        }
+
+        //Slots Ongoing (Currently Rolling
+        if (this.state == State.ONGOING){
+
+            this.tickCounter--;
+        }
+
+        //State : Prepare -> Ongoing
+        if (this.state == State.PREPARING){
+            initializeReels(level, blockPos, blockState);
+        }
+    }
+
+    public void activateSlots(int emeralds){
+        this.prepareState();
+        this.emeraldsToGamble = emeralds;
     }
 
     @Override

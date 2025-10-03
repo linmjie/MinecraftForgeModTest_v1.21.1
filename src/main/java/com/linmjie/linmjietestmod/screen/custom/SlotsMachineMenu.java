@@ -1,7 +1,6 @@
 package com.linmjie.linmjietestmod.screen.custom;
 
 import com.linmjie.linmjietestmod.block.ModBlocks;
-import com.linmjie.linmjietestmod.block.entity.custom.ATMBlockEntity;
 import com.linmjie.linmjietestmod.block.entity.custom.SlotsMachineBlockEntity;
 import com.linmjie.linmjietestmod.item.ModItems;
 import com.linmjie.linmjietestmod.screen.ModMenuTypes;
@@ -10,7 +9,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -18,11 +16,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class SlotsMachineMenu extends AbstractContainerMenu {
     public final SlotsMachineBlockEntity blockEntity;
     private final Level level;
+    private int emeraldsToGamble = 0;
 
     public SlotsMachineMenu(int pContainerId, Inventory inventory, FriendlyByteBuf extraData) {
         this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()));
@@ -91,6 +89,15 @@ public class SlotsMachineMenu extends AbstractContainerMenu {
         }
         sourceSlot.onTake(playerIn, sourceStack);
         return copyOfSourceStack;
+    }
+
+    @Override
+    public boolean clickMenuButton(Player pPlayer, int pId) {
+        if (pId == 0){ //Activate Slots
+            this.blockEntity.activateSlots(emeraldsToGamble);
+            return true;
+        }
+        return false;
     }
 
     @Override

@@ -79,6 +79,9 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
         pGuiGraphics.drawString(font, withdrawString, textX, textY, 0x000000, false);
 
         pGuiGraphics.blitSprite(DEPOSIT_FIELD, x + 42, y + 107, 89, 17);
+
+        //Slots visuals
+
     }
 
     @Override
