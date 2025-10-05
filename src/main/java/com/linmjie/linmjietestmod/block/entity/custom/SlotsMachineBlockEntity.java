@@ -3,8 +3,8 @@ package com.linmjie.linmjietestmod.block.entity.custom;
 import com.linmjie.linmjietestmod.block.entity.ModBlockEntities;
 import com.linmjie.linmjietestmod.component.ModDataComponentTypes;
 import com.linmjie.linmjietestmod.item.ModItems;
-import com.linmjie.linmjietestmod.screen.custom.ATMMenu;
 import com.linmjie.linmjietestmod.screen.custom.SlotsMachineMenu;
+import com.linmjie.linmjietestmod.util.ModUtils;
 import com.linmjie.linmjietestmod.util.SlotSymbol;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -19,7 +19,6 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -28,13 +27,21 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 
 public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider {
     public final ItemStackHandler inventory = new ItemStackHandler(1);
     private int emeraldsToGamble;
     private int withdraw = 0;
     private int tickCounter;
+    private final SlotSymbol[] slotSymbols = new SlotSymbol[]{
+            SlotSymbol.IRON,
+            SlotSymbol.GOLD,
+            SlotSymbol.DIAMOND,
+            SlotSymbol.NETHERITE
+    };
+    private final ArrayList<SlotSymbol> virtualReel = new ArrayList<>();
+    private int payMultiplier = 0;
 
     public enum State{
         IDLE,
@@ -46,6 +53,12 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
 
     public SlotsMachineBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.SLOTS_MACHINE_BE.get(), pPos, pBlockState);
+
+        for (SlotSymbol slotSymbol : slotSymbols) {
+            for (int j = 0; j < slotSymbol.getInstances(); j++) {
+                virtualReel.add(slotSymbol);
+            }
+        }
     }
 
     public State getState() {
@@ -75,18 +88,6 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
         }
 
         Containers.dropContents(this.level, this.worldPosition, inv);
-    }
-
-    private static void createSymbolTable(HashSet<SlotSymbol> basicSet){
-        float total = 0F;
-        for (SlotSymbol slotSymbol: basicSet){
-            total += slotSymbol.odds;
-        }
-
-        float multiplier = 1.0F / total; //standardize all symbols as a fractional event
-        for (SlotSymbol slotSymbol: basicSet){
-            slotSymbol.odds = slotSymbol.odds * multiplier;
-        }
     }
 
     @Override
@@ -121,18 +122,28 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
         }
     }
 
-    public void initializeReels(Level level, BlockPos blockPos, BlockState blockState){
+    public SlotSymbol rollSingleReel() {
+        return virtualReel.get(ModUtils.randomIndex(virtualReel.size()-1));
+    }
 
+    public void initializeReels(Level level, BlockPos blockPos, BlockState blockState){
+        SlotSymbol virtualSlot1 = rollSingleReel();
+        SlotSymbol virtualSlot2 = rollSingleReel();
+        SlotSymbol virtualSlot3 = rollSingleReel();
+
+        if (virtualSlot1 == virtualSlot2 && virtualSlot2 == virtualSlot3){
+            this.payMultiplier = virtualSlot1.getMultiplier();
+        }
         this.state = State.ONGOING;
     }
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState){
-        //Automatic withdraw of emeralds from in-machine account
+        //Automatic withdraw of emeralds from an in-machine account
         if (this.withdraw > 0) {
             automaticWithdraw(level, blockPos, blockState);
         }
 
-        //Slots Ongoing (Currently Rolling
+        //Slots Ongoing (Currently Rolling)
         if (this.state == State.ONGOING){
 
             this.tickCounter--;

@@ -3,10 +3,9 @@ package com.linmjie.linmjietestmod.util;
 import com.google.common.collect.Lists;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModUtils {
@@ -64,5 +63,9 @@ public class ModUtils {
             case EAST -> adder*intProperty+3;
             default -> adder*intProperty;
         };
+    }
+
+    public static int randomIndex(int max){
+        return Math.toIntExact((long) (Math.random() * max));
     }
 }
