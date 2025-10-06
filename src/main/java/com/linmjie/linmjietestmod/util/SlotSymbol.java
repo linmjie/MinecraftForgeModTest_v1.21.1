@@ -5,7 +5,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class SlotSymbol {
     private final ResourceLocation resourceLocation;
-    private int instances;
+    private final int instances;
     private final int multiplier;
 
 

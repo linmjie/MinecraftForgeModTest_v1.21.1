@@ -65,6 +65,10 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
         return state;
     }
 
+    public SlotSymbol[] getSlotSymbols() {
+        return slotSymbols;
+    }
+
     public boolean isIdle(){
         return this.state == State.IDLE;
     }

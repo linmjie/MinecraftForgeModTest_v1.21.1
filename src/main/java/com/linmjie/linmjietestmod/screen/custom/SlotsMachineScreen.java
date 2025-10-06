@@ -3,6 +3,8 @@ package com.linmjie.linmjietestmod.screen.custom;
 import com.linmjie.linmjietestmod.TestingMod;
 import com.linmjie.linmjietestmod.block.entity.custom.SlotsMachineBlockEntity;
 import com.linmjie.linmjietestmod.util.NumEditBox;
+import com.linmjie.linmjietestmod.util.SlotSymbol;
+import com.linmjie.linmjietestmod.util.VirtualBlitSprite;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
@@ -25,6 +27,10 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
     private static final ResourceLocation DEPOSIT_FIELD =
             ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "slots_machine/deposit_field");
 
+    private final VirtualBlitSprite[] virtualBlitSprites1;
+    private final VirtualBlitSprite[] virtualBlitSprites2;
+    private final VirtualBlitSprite[] virtualBlitSprites3;
+
     private final SlotsMachineBlockEntity blockEntity = menu.blockEntity;
     private NumEditBox numberInput;
 
@@ -32,6 +38,18 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
         super(pMenu, pPlayerInventory, pTitle);
         this.imageHeight = 222;
         this.inventoryLabelY = this.imageHeight - 94;
+
+        SlotSymbol[] slotSymbols = this.menu.blockEntity.getSlotSymbols();
+        virtualBlitSprites1 = new VirtualBlitSprite[slotSymbols.length];
+        virtualBlitSprites2 = new VirtualBlitSprite[slotSymbols.length];
+        virtualBlitSprites3 = new VirtualBlitSprite[slotSymbols.length];
+
+        for (int i = 0; i < slotSymbols.length; i++) {
+            //placeholder values
+            virtualBlitSprites1[i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(), 12, 50 + i*48);
+            virtualBlitSprites2[i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(), 24, 50 + i*48);
+            virtualBlitSprites3[i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(), 36, 50 + i*48);
+        }
     }
 
     @Override
@@ -81,8 +99,14 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
         pGuiGraphics.blitSprite(DEPOSIT_FIELD, x + 42, y + 107, 89, 17);
 
         //Slots visuals
-
+        for (int i = 0; i < virtualBlitSprites1.length; i++) {
+            virtualBlitSprites1[i].drawIfInVerticalFrame(pGuiGraphics);
+            virtualBlitSprites2[i].drawIfInVerticalFrame(pGuiGraphics);
+            virtualBlitSprites3[i].drawIfInVerticalFrame(pGuiGraphics);
+        }
     }
+
+
 
     @Override
     public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
