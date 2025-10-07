@@ -12,16 +12,16 @@ public class VirtualBlitSprite {
     int miny;
     int maxy;
 
-    public VirtualBlitSprite(ResourceLocation resourceLocation, int x, int y){
+    public VirtualBlitSprite(ResourceLocation resourceLocation, int x, int y, int miny, int maxy){
         this.resourceLocation = resourceLocation;
         this.x = x;
         this.y = y;
 
         //Placeholder values
-        this.width = 32;
-        this.height = 32;
-        this.miny = 10;
-        this.maxy = 20;
+        this.width = 16;
+        this.height = 16;
+        this.miny = miny;
+        this.maxy = maxy;
     }
 
     public void drawIfInVerticalFrame(GuiGraphics pGuiGraphics){
@@ -32,5 +32,17 @@ public class VirtualBlitSprite {
 
     public void changeYPos (int y){
         this.y = y;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getMiny() {
+        return miny;
+    }
+
+    public int getMaxy() {
+        return maxy;
     }
 }

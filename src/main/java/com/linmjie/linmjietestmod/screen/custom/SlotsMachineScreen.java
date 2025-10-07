@@ -27,9 +27,13 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
     private static final ResourceLocation DEPOSIT_FIELD =
             ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "slots_machine/deposit_field");
 
-    private final VirtualBlitSprite[] virtualBlitSprites1;
-    private final VirtualBlitSprite[] virtualBlitSprites2;
-    private final VirtualBlitSprite[] virtualBlitSprites3;
+    //TESTING
+    private static final ResourceLocation CLICK_HERE =
+            ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "slots_machine/click_here");
+
+    private VirtualBlitSprite[] virtualBlitSprites1;
+    private VirtualBlitSprite[] virtualBlitSprites2;
+    private VirtualBlitSprite[] virtualBlitSprites3;
 
     private final SlotsMachineBlockEntity blockEntity = menu.blockEntity;
     private NumEditBox numberInput;
@@ -39,17 +43,24 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
         this.imageHeight = 222;
         this.inventoryLabelY = this.imageHeight - 94;
 
-        SlotSymbol[] slotSymbols = this.menu.blockEntity.getSlotSymbols();
-        virtualBlitSprites1 = new VirtualBlitSprite[slotSymbols.length];
-        virtualBlitSprites2 = new VirtualBlitSprite[slotSymbols.length];
-        virtualBlitSprites3 = new VirtualBlitSprite[slotSymbols.length];
 
-        for (int i = 0; i < slotSymbols.length; i++) {
-            //placeholder values
-            virtualBlitSprites1[i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(), 12, 50 + i*48);
-            virtualBlitSprites2[i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(), 24, 50 + i*48);
-            virtualBlitSprites3[i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(), 36, 50 + i*48);
+    }
+
+    //TESTING WITH DUMB BUTTON
+    @Override
+    public boolean mouseClicked(double pMouseX, double pMouseY, int pButton) {
+        int x = (this.width - this.imageWidth) / 2;
+        int y = (this.height - this.imageHeight) / 2;
+
+            double d0 = pMouseX - (double)(x + 134);
+            double d1 = pMouseY - (double)(y + 45);
+            if (d0 >= 0.0 && d1 >= 0.0 && d0 < 16.0 && d1 < 16.0 && this.menu.clickMenuButton(this.minecraft.player, 0)) {
+                this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, 0);
+                return true;
+
         }
+
+        return super.mouseClicked(pMouseX, pMouseY, pButton);
     }
 
     @Override
@@ -66,6 +77,16 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
         this.numberInput.setValue("");
         this.numberInput.setVisible(true);
         this.addWidget(numberInput);
+        SlotSymbol[] slotSymbols = this.menu.blockEntity.getSlotSymbols();
+        virtualBlitSprites1 = new VirtualBlitSprite[slotSymbols.length];
+        virtualBlitSprites2 = new VirtualBlitSprite[slotSymbols.length];
+        virtualBlitSprites3 = new VirtualBlitSprite[slotSymbols.length];
+
+        for (int k = 0; k < slotSymbols.length; k++) {
+            virtualBlitSprites1[k] = new VirtualBlitSprite(slotSymbols[k].getResourceLocation(), i + 42, j + 42 + k*20, j + 20, j + 120);
+            virtualBlitSprites2[k] = new VirtualBlitSprite(slotSymbols[k].getResourceLocation(), i + 78, j + 42 + k*20, j + 20, j + 120);
+            virtualBlitSprites3[k] = new VirtualBlitSprite(slotSymbols[k].getResourceLocation(), i + 114, j + 42 + k*20, j + 20, j + 120);
+        }
     }
 
     private void onNumberInput(String s){
@@ -88,6 +109,17 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
         RenderSystem.setShaderTexture(0, WITHDRAW_FIELD);
         RenderSystem.setShaderTexture(0, DEPOSIT_FIELD);
 
+        //TESTING
+        pGuiGraphics.blitSprite(CLICK_HERE, x + 134, y + 45, 16, 16);
+
+        //Slots visuals
+            for (int i = 0; i < virtualBlitSprites1.length; i++) {
+                virtualBlitSprites1[i].drawIfInVerticalFrame(pGuiGraphics);
+                virtualBlitSprites2[i].drawIfInVerticalFrame(pGuiGraphics);
+                virtualBlitSprites3[i].drawIfInVerticalFrame(pGuiGraphics);
+            }
+
+        //Other
         pGuiGraphics.blitSprite(WITHDRAW_FIELD, x + 42, y + 18, 89, 17);
         String withdrawString = this.blockEntity.getWithdrawStr();
         int textWidth = font.width(withdrawString);
@@ -97,13 +129,6 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
         pGuiGraphics.drawString(font, withdrawString, textX, textY, 0x000000, false);
 
         pGuiGraphics.blitSprite(DEPOSIT_FIELD, x + 42, y + 107, 89, 17);
-
-        //Slots visuals
-        for (int i = 0; i < virtualBlitSprites1.length; i++) {
-            virtualBlitSprites1[i].drawIfInVerticalFrame(pGuiGraphics);
-            virtualBlitSprites2[i].drawIfInVerticalFrame(pGuiGraphics);
-            virtualBlitSprites3[i].drawIfInVerticalFrame(pGuiGraphics);
-        }
     }
 
 

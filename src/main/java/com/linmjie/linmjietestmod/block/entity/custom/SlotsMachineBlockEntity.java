@@ -157,6 +157,7 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
         if (this.state == State.PREPARING){
             initializeReels(level, blockPos, blockState);
         }
+
     }
 
     public void activateSlots(int emeralds){
