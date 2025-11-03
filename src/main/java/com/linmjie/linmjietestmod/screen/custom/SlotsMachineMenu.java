@@ -95,6 +95,8 @@ public class SlotsMachineMenu extends AbstractContainerMenu {
     public boolean clickMenuButton(Player pPlayer, int pId) {
         if (pId == 0){ //Activate Slots
             this.blockEntity.activateSlots(emeraldsToGamble);
+            System.out.println(this.blockEntity);
+            System.out.println(this);
             return true;
         }
         return false;
@@ -102,8 +104,12 @@ public class SlotsMachineMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player pPlayer) {
-        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
+        boolean bool = stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
                 pPlayer, ModBlocks.SLOTS_MACHINE.get());
+        if (!bool){
+            this.blockEntity.setInvalidMenu();
+        }
+        return bool;
     }
 
     private void addPlayerInventory(Inventory playerInventory){

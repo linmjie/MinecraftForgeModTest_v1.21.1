@@ -18,6 +18,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import java.util.Arrays;
+
 @OnlyIn(Dist.CLIENT)
 public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu> {
     private static final ResourceLocation GUI_TEXTURE =
@@ -31,11 +33,10 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
     private static final ResourceLocation CLICK_HERE =
             ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "slots_machine/click_here");
 
-    private VirtualBlitSprite[] virtualBlitSprites1;
-    private VirtualBlitSprite[] virtualBlitSprites2;
-    private VirtualBlitSprite[] virtualBlitSprites3;
+    public VirtualBlitSprite[] virtualBlitSprites1;
+    public VirtualBlitSprite[] virtualBlitSprites2;
+    public VirtualBlitSprite[] virtualBlitSprites3;
 
-    private final SlotsMachineBlockEntity blockEntity = menu.blockEntity;
     private NumEditBox numberInput;
 
     public SlotsMachineScreen(SlotsMachineMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
@@ -57,7 +58,6 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
             if (d0 >= 0.0 && d1 >= 0.0 && d0 < 16.0 && d1 < 16.0 && this.menu.clickMenuButton(this.minecraft.player, 0)) {
                 this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, 0);
                 return true;
-
         }
 
         return super.mouseClicked(pMouseX, pMouseY, pButton);
@@ -77,16 +77,10 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
         this.numberInput.setValue("");
         this.numberInput.setVisible(true);
         this.addWidget(numberInput);
-        SlotSymbol[] slotSymbols = this.menu.blockEntity.getSlotSymbols();
-        virtualBlitSprites1 = new VirtualBlitSprite[slotSymbols.length];
-        virtualBlitSprites2 = new VirtualBlitSprite[slotSymbols.length];
-        virtualBlitSprites3 = new VirtualBlitSprite[slotSymbols.length];
 
-        for (int k = 0; k < slotSymbols.length; k++) {
-            virtualBlitSprites1[k] = new VirtualBlitSprite(slotSymbols[k].getResourceLocation(), i + 42, j + 42 + k*20, j + 20, j + 120);
-            virtualBlitSprites2[k] = new VirtualBlitSprite(slotSymbols[k].getResourceLocation(), i + 78, j + 42 + k*20, j + 20, j + 120);
-            virtualBlitSprites3[k] = new VirtualBlitSprite(slotSymbols[k].getResourceLocation(), i + 114, j + 42 + k*20, j + 20, j + 120);
-        }
+        virtualBlitSprites1 = this.menu.blockEntity.virtualBlitSprites1;
+        virtualBlitSprites2 = this.menu.blockEntity.virtualBlitSprites2;
+        virtualBlitSprites3 = this.menu.blockEntity.virtualBlitSprites3;
     }
 
     private void onNumberInput(String s){
@@ -97,14 +91,16 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
 
     @Override
     protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
+        //this.connection.
+
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, GUI_TEXTURE);
 
-        int x = (width - imageWidth) / 2;
-        int y = (height - imageHeight) / 2;
+        int x = (this.width - this.imageWidth) / 2;
+        int y = (this.height - this.imageHeight) / 2;
 
-        pGuiGraphics.blit(GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
+        pGuiGraphics.blit(GUI_TEXTURE, x, y, 0, 0, this.imageWidth, this.imageHeight);
 
         RenderSystem.setShaderTexture(0, WITHDRAW_FIELD);
         RenderSystem.setShaderTexture(0, DEPOSIT_FIELD);
@@ -112,16 +108,21 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
         //TESTING
         pGuiGraphics.blitSprite(CLICK_HERE, x + 134, y + 45, 16, 16);
 
+        this.menu.blockEntity.doSomething();
+
         //Slots visuals
             for (int i = 0; i < virtualBlitSprites1.length; i++) {
-                virtualBlitSprites1[i].drawIfInVerticalFrame(pGuiGraphics);
-                virtualBlitSprites2[i].drawIfInVerticalFrame(pGuiGraphics);
-                virtualBlitSprites3[i].drawIfInVerticalFrame(pGuiGraphics);
+                System.out.println("ARE OBJECTS EQUAL????" + (virtualBlitSprites1[1].getY() == this.menu.blockEntity.virtualBlitSprites1[1].getY()));
+                System.out.println(this.menu.blockEntity);
+                System.out.println(i + "REAL " + this.getMenu().blockEntity.virtualBlitSprites1[i].getY());
+                this.menu.blockEntity.virtualBlitSprites1[i].drawIfInVerticalFrame(pGuiGraphics, x, y);
+                virtualBlitSprites2[i].drawIfInVerticalFrame(pGuiGraphics, x, y);
+                virtualBlitSprites3[i].drawIfInVerticalFrame(pGuiGraphics, x, y);
             }
 
         //Other
         pGuiGraphics.blitSprite(WITHDRAW_FIELD, x + 42, y + 18, 89, 17);
-        String withdrawString = this.blockEntity.getWithdrawStr();
+        String withdrawString = this.menu.blockEntity.getWithdrawStr();
         int textWidth = font.width(withdrawString);
         int textX = x + 42 + (89 - textWidth) / 2;
         int textY = y + 18 + (17 - font.lineHeight) / 2 + 2;

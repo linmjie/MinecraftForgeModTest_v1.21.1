@@ -24,13 +24,17 @@ public class VirtualBlitSprite {
         this.maxy = maxy;
     }
 
-    public void drawIfInVerticalFrame(GuiGraphics pGuiGraphics){
-        if(this.y >= miny && this.y <= maxy){
-            pGuiGraphics.blitSprite(resourceLocation, x, y, width, height);
+    public void drawIfInVerticalFrame(GuiGraphics pGuiGraphics, int x_shift, int y_shift){
+        if(this.y >= miny+y_shift && this.y <= maxy+y_shift){
+            pGuiGraphics.blitSprite(resourceLocation, x+x_shift, y+y_shift, width, height);
         }
     }
 
     public void changeYPos (int y){
+        this.y += y;
+    }
+
+    public void setY (int y){
         this.y = y;
     }
 

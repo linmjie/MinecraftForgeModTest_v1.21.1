@@ -68,4 +68,10 @@ public class ModUtils {
     public static int randomIndex(int max){
         return Math.toIntExact((long) (Math.random() * max));
     }
+    public static int randomInt(int i){
+        return Math.toIntExact((long) Math.ceil(Math.random() * i));
+    }
+    public static int randomInt(int min, int max){
+        return randomInt(max-min) + min;
+    }
 }

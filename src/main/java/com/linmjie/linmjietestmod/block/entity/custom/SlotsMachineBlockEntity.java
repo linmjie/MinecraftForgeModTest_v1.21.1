@@ -3,9 +3,13 @@ package com.linmjie.linmjietestmod.block.entity.custom;
 import com.linmjie.linmjietestmod.block.entity.ModBlockEntities;
 import com.linmjie.linmjietestmod.component.ModDataComponentTypes;
 import com.linmjie.linmjietestmod.item.ModItems;
+import com.linmjie.linmjietestmod.network.ModPackets;
+import com.linmjie.linmjietestmod.network.SyncSlotsMachinePacket;
 import com.linmjie.linmjietestmod.screen.custom.SlotsMachineMenu;
+import com.linmjie.linmjietestmod.screen.custom.SlotsMachineScreen;
 import com.linmjie.linmjietestmod.util.ModUtils;
 import com.linmjie.linmjietestmod.util.SlotSymbol;
+import com.linmjie.linmjietestmod.util.VirtualBlitSprite;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -25,6 +29,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -42,6 +47,9 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
     };
     private final ArrayList<SlotSymbol> virtualReel = new ArrayList<>();
     private int payMultiplier = 0;
+    private int rollSpeed;
+
+    private int containerId;
 
     public enum State{
         IDLE,
@@ -51,6 +59,10 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
 
     private State state = State.IDLE;
 
+    public VirtualBlitSprite[] virtualBlitSprites1 = new VirtualBlitSprite[slotSymbols.length];
+    public VirtualBlitSprite[] virtualBlitSprites2 = new VirtualBlitSprite[slotSymbols.length];
+    public VirtualBlitSprite[] virtualBlitSprites3 = new VirtualBlitSprite[slotSymbols.length];
+
     public SlotsMachineBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.SLOTS_MACHINE_BE.get(), pPos, pBlockState);
 
@@ -58,6 +70,12 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
             for (int j = 0; j < slotSymbol.getInstances(); j++) {
                 virtualReel.add(slotSymbol);
             }
+        }
+
+        for (int i = 0; i < slotSymbols.length; i++) {
+            virtualBlitSprites1[i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(),  42, 42 + i*20, 20, 120);
+            virtualBlitSprites2[i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(), 78, 42 + i*20, 20, 120);
+            virtualBlitSprites3[i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(), 114, 42 + i*20,  20, 120);
         }
     }
 
@@ -101,7 +119,12 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
+        this.containerId = pContainerId;
         return new SlotsMachineMenu(pContainerId, pPlayerInventory, this);
+    }
+
+    public void setInvalidMenu(){
+        this.containerId = -1;
     }
 
     public void automaticWithdraw(Level level, BlockPos blockPos, BlockState blockState){
@@ -138,6 +161,7 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
         if (virtualSlot1 == virtualSlot2 && virtualSlot2 == virtualSlot3){
             this.payMultiplier = virtualSlot1.getMultiplier();
         }
+        this.rollSpeed = ModUtils.randomInt(3, 7);
         this.state = State.ONGOING;
     }
 
@@ -148,9 +172,18 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
         }
 
         //Slots Ongoing (Currently Rolling)
-        if (this.state == State.ONGOING){
-
-            this.tickCounter--;
+        if (this.state == State.ONGOING) {
+            System.out.println("STATE" + this.state);
+            System.out.println(this);
+                for (int i = 0; i < virtualBlitSprites1.length; i++) {
+                    System.out.println(i + " " +this.virtualBlitSprites1[i].getY());
+                    virtualBlitSprites1[i].changeYPos(this.rollSpeed);
+                    if (virtualBlitSprites1[i].getY() > virtualBlitSprites1[i].getMaxy()) {
+                        virtualBlitSprites1[i].setY(
+                                virtualBlitSprites1[i].getMiny() + (virtualBlitSprites1[i].getY() - virtualBlitSprites1[i].getMaxy()));
+                    }
+                }
+                this.tickCounter--;
         }
 
         //State : Prepare -> Ongoing
@@ -158,6 +191,15 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
             initializeReels(level, blockPos, blockState);
         }
 
+        if (containerId != -1){
+            ModPackets.INSTANCE.send(
+                    new SyncSlotsMachinePacket(this.getBlockPos(), this.getLevel(), virtualBlitSprites1, virtualBlitSprites2, virtualBlitSprites3),
+                    PacketDistributor.TRACKING_CHUNK.with(level.getChunkAt(blockPos)));
+        }
+    }
+
+    public void doSomething(){
+        System.out.println("STATE"+this.state);
     }
 
     public void activateSlots(int emeralds){
