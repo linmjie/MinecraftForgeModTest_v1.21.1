@@ -59,9 +59,7 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
 
     private State state = State.IDLE;
 
-    public VirtualBlitSprite[] virtualBlitSprites1 = new VirtualBlitSprite[slotSymbols.length];
-    public VirtualBlitSprite[] virtualBlitSprites2 = new VirtualBlitSprite[slotSymbols.length];
-    public VirtualBlitSprite[] virtualBlitSprites3 = new VirtualBlitSprite[slotSymbols.length];
+    public VirtualBlitSprite[][] virtualBlitSprites = new VirtualBlitSprite[2][slotSymbols.length];
 
     public SlotsMachineBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.SLOTS_MACHINE_BE.get(), pPos, pBlockState);
@@ -73,9 +71,9 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
         }
 
         for (int i = 0; i < slotSymbols.length; i++) {
-            virtualBlitSprites1[i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(),  42, 42 + i*20, 20, 120);
-            virtualBlitSprites2[i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(), 78, 42 + i*20, 20, 120);
-            virtualBlitSprites3[i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(), 114, 42 + i*20,  20, 120);
+            virtualBlitSprites[0][i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(),  42, 42 + i*20, 20, 120);
+            virtualBlitSprites[1][i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(), 78, 42 + i*20, 20, 120);
+            virtualBlitSprites[2][i] = new VirtualBlitSprite(slotSymbols[i].getResourceLocation(), 114, 42 + i*20,  20, 120);
         }
     }
 
@@ -175,12 +173,13 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
         if (this.state == State.ONGOING) {
             System.out.println("STATE" + this.state);
             System.out.println(this);
-                for (int i = 0; i < virtualBlitSprites1.length; i++) {
-                    System.out.println(i + " " +this.virtualBlitSprites1[i].getY());
-                    virtualBlitSprites1[i].changeYPos(this.rollSpeed);
-                    if (virtualBlitSprites1[i].getY() > virtualBlitSprites1[i].getMaxy()) {
-                        virtualBlitSprites1[i].setY(
-                                virtualBlitSprites1[i].getMiny() + (virtualBlitSprites1[i].getY() - virtualBlitSprites1[i].getMaxy()));
+            int VAR = 0;
+                for (int i = 0; i < virtualBlitSprites[VAR].length; i++) {
+                    System.out.println(i + " " +this.virtualBlitSprites[VAR][i].getY());
+                    virtualBlitSprites[VAR][i].changeYPos(this.rollSpeed);
+                    if (virtualBlitSprites[VAR][i].getY() > virtualBlitSprites[VAR][i].getMaxy()) {
+                        virtualBlitSprites[VAR][i].setY(
+                                virtualBlitSprites[VAR][i].getMiny() + (virtualBlitSprites[VAR][i].getY() - virtualBlitSprites[VAR][i].getMaxy()));
                     }
                 }
                 this.tickCounter--;
@@ -193,7 +192,7 @@ public class SlotsMachineBlockEntity extends BlockEntity implements MenuProvider
 
         if (containerId != -1){
             ModPackets.INSTANCE.send(
-                    new SyncSlotsMachinePacket(this.getBlockPos(), this.getLevel(), virtualBlitSprites1, virtualBlitSprites2, virtualBlitSprites3),
+                    new SyncSlotsMachinePacket(this.getBlockPos(), virtualBlitSprites),
                     PacketDistributor.TRACKING_CHUNK.with(level.getChunkAt(blockPos)));
         }
     }

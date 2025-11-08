@@ -34,6 +34,22 @@ public class VirtualBlitSprite {
         this.y += y;
     }
 
+    public ResourceLocation getResourceLocation() {
+        return resourceLocation;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getX() {
+        return x;
+    }
+
     public void setY (int y){
         this.y = y;
     }

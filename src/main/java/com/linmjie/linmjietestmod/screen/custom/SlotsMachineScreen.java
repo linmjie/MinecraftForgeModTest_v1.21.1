@@ -33,9 +33,7 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
     private static final ResourceLocation CLICK_HERE =
             ResourceLocation.fromNamespaceAndPath(TestingMod.MOD_ID, "slots_machine/click_here");
 
-    public VirtualBlitSprite[] virtualBlitSprites1;
-    public VirtualBlitSprite[] virtualBlitSprites2;
-    public VirtualBlitSprite[] virtualBlitSprites3;
+    public VirtualBlitSprite[][] virtualBlitSprites;
 
     private NumEditBox numberInput;
 
@@ -78,9 +76,6 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
         this.numberInput.setVisible(true);
         this.addWidget(numberInput);
 
-        virtualBlitSprites1 = this.menu.blockEntity.virtualBlitSprites1;
-        virtualBlitSprites2 = this.menu.blockEntity.virtualBlitSprites2;
-        virtualBlitSprites3 = this.menu.blockEntity.virtualBlitSprites3;
     }
 
     private void onNumberInput(String s){
@@ -111,13 +106,10 @@ public class SlotsMachineScreen extends AbstractContainerScreen<SlotsMachineMenu
         this.menu.blockEntity.doSomething();
 
         //Slots visuals
-            for (int i = 0; i < virtualBlitSprites1.length; i++) {
-                System.out.println("ARE OBJECTS EQUAL????" + (virtualBlitSprites1[1].getY() == this.menu.blockEntity.virtualBlitSprites1[1].getY()));
-                System.out.println(this.menu.blockEntity);
-                System.out.println(i + "REAL " + this.getMenu().blockEntity.virtualBlitSprites1[i].getY());
-                this.menu.blockEntity.virtualBlitSprites1[i].drawIfInVerticalFrame(pGuiGraphics, x, y);
-                virtualBlitSprites2[i].drawIfInVerticalFrame(pGuiGraphics, x, y);
-                virtualBlitSprites3[i].drawIfInVerticalFrame(pGuiGraphics, x, y);
+            for (int i = 0; i < virtualBlitSprites[0].length; i++) {
+                virtualBlitSprites[0][i].drawIfInVerticalFrame(pGuiGraphics, x, y);
+                virtualBlitSprites[1][i].drawIfInVerticalFrame(pGuiGraphics, x, y);
+                virtualBlitSprites[2][i].drawIfInVerticalFrame(pGuiGraphics, x, y);
             }
 
         //Other
